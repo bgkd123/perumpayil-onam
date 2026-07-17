@@ -46,7 +46,7 @@
             background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 40%, #a8e063 100%);
         }
 
-        /* ===== BACKGROUND FLOWER PATTERN (Athapoo) ===== */
+        /* ===== BACKGROUND FLOWER PATTERN ===== */
         body::before {
             content: "🌸🌼🌺🌻🌷🌹💐🌸🌼🌺🌻🌷🌹💐🌸🌼🌺🌻🌷🌹💐";
             position: fixed;
@@ -69,7 +69,7 @@
         }
 
         /* ============================================================
-           FALLING FLOWERS (ON TOP - z-index: 9999)
+           FALLING FLOWERS
            ============================================================ */
         .confetti-container {
             position: fixed;
@@ -88,30 +88,16 @@
             opacity: 0.7;
             animation: fallDown linear infinite;
         }
-        .pellet {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-        .flower-emoji {
-            font-size: 1.6rem;
-        }
+        .pellet { width: 8px; height: 8px; border-radius: 50%; }
+        .flower-emoji { font-size: 1.6rem; }
         @keyframes fallDown {
-            0% {
-                top: -10%;
-                opacity: 0.8;
-                transform: rotate(0deg) scale(0.6);
-            }
+            0% { top: -10%; opacity: 0.8; transform: rotate(0deg) scale(0.6); }
             10% { opacity: 1; }
-            100% {
-                top: 110%;
-                opacity: 0.1;
-                transform: rotate(720deg) scale(1.1);
-            }
+            100% { top: 110%; opacity: 0.1; transform: rotate(720deg) scale(1.1); }
         }
 
         /* ============================================================
-           CLEAN SPLASH SCREEN (Image Only)
+           SPLASH SCREEN (Pause after 2s - Continue Button)
            ============================================================ */
         #splash-screen {
             position: fixed;
@@ -122,6 +108,7 @@
             z-index: 99999;
             background: #000;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
@@ -136,9 +123,48 @@
         }
         #splash-screen img {
             width: 100%;
-            height: 100%;
+            height: 85%;
             object-fit: cover;
             display: block;
+        }
+        
+        /* Continue Button */
+        .splash-continue-btn {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(145deg, #ffd700, #ff8c00);
+            color: #3f2a14;
+            border: none;
+            padding: 16px 48px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+            z-index: 100000;
+            opacity: 0;
+            visibility: hidden;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 2.2s;
+        }
+        .splash-continue-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .splash-continue-btn:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.6);
+        }
+        .splash-continue-btn:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateX(-50%) translateY(30px); }
+            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
 
         /* ===== MODERN GLASSMORPHISM CARD ===== */
@@ -213,14 +239,8 @@
             animation: burstFlower 1.2s ease-out forwards;
         }
         @keyframes burstFlower {
-            0% {
-                transform: translate(0, 0) scale(0.5) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(720deg);
-                opacity: 0;
-            }
+            0% { transform: translate(0, 0) scale(0.5) rotate(0deg); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(720deg); opacity: 0; }
         }
 
         /* ===== SIZE CONTROLLER ===== */
@@ -263,6 +283,7 @@
             font-size:0.8rem;
         }
 
+        /* ===== HEADER ===== */
         .header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; flex-wrap:wrap; gap:10px; }
         .title-group { display:flex; flex-direction:column; }
         .brand { font-size:1.9rem; font-weight:700; letter-spacing:1px; color:#4a2a0e; line-height:1.1; text-shadow:2px 2px 0 rgba(255,215,0,0.3); }
@@ -272,9 +293,17 @@
             border-radius:40px; margin-top:2px; width:fit-content; border:1px solid rgba(255,215,0,0.3);
             backdrop-filter:blur(4px);
         }
+
+        /* ===== BIGGER LOGO ===== */
         .header-logo {
-            width:60px; height:60px; border-radius:50%; border:3px solid #ffd700;
-            box-shadow:0 4px 20px rgba(255,215,0,0.3); object-fit:cover; background:#fff8ec; flex-shrink:0;
+            width:100px;
+            height:100px;
+            border-radius:50%;
+            border:3px solid #ffd700;
+            box-shadow:0 4px 30px rgba(255,215,0,0.4);
+            object-fit:cover;
+            background:#fff8ec;
+            flex-shrink:0;
         }
 
         .meat-icons {
@@ -292,6 +321,7 @@
         }
         .premium-badge i { margin-right:6px; color:#f7c56e; }
 
+        /* ===== BUTTONS ===== */
         .wish-btn-open {
             background: linear-gradient(145deg, #8b4e1a, #5a3010);
             color: #fcf3e2;
@@ -315,17 +345,9 @@
             position: relative;
             overflow: hidden;
         }
-        .wish-btn-open:hover {
-            transform: scale(1.02);
-            box-shadow: 0 12px 40px rgba(139, 78, 26, 0.5), 0 0 50px rgba(255, 215, 0, 0.2);
-        }
-        .wish-btn-open:active {
-            transform: translateY(5px) scale(0.98);
-            box-shadow: 0 4px 20px rgba(139, 78, 26, 0.3);
-        }
-        .wish-btn-open i.fa-gift {
-            animation: giftShake 2s ease-in-out infinite;
-        }
+        .wish-btn-open:hover { transform: scale(1.02); }
+        .wish-btn-open:active { transform: translateY(5px) scale(0.98); }
+        .wish-btn-open i.fa-gift { animation: giftShake 2s ease-in-out infinite; }
         @keyframes giftShake {
             0%, 100% { transform: rotate(0deg); }
             10% { transform: rotate(15deg); }
@@ -355,17 +377,9 @@
             margin: 8px auto;
             border: 2px solid #ffd700;
         }
-        .share-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 35px rgba(26, 107, 74, 0.5);
-        }
-        .share-btn:active {
-            transform: translateY(4px) scale(0.98);
-        }
-        .share-btn i {
-            color: #ffd700;
-            font-size: 1.2rem;
-        }
+        .share-btn:hover { transform: scale(1.02); }
+        .share-btn:active { transform: translateY(4px) scale(0.98); }
+        .share-btn i { color: #ffd700; font-size: 1.2rem; }
 
         .toast {
             position: fixed;
@@ -385,9 +399,7 @@
             pointer-events: none;
             white-space: nowrap;
         }
-        .toast.show {
-            opacity: 1;
-        }
+        .toast.show { opacity: 1; }
 
         /* ===== POPUP ===== */
         .popup-overlay {
@@ -405,20 +417,11 @@
             animation: curtainDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             transform-origin: top;
         }
-        .popup-overlay.active {
-            display: flex;
-        }
+        .popup-overlay.active { display: flex; }
         @keyframes curtainDown {
-            0% {
-                transform: scaleY(0);
-                opacity: 0;
-            }
-            100% {
-                transform: scaleY(1);
-                opacity: 1;
-            }
+            0% { transform: scaleY(0); opacity: 0; }
+            100% { transform: scaleY(1); opacity: 1; }
         }
-
         .popup-card {
             width: 100%;
             height: 100%;
@@ -429,13 +432,7 @@
             border-radius: 0;
             overflow: hidden;
         }
-        .popup-card video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            background: #111;
-        }
+        .popup-card video { width: 100%; height: 100%; object-fit: cover; display: block; background: #111; }
 
         .popup-close-btn {
             position: fixed;
@@ -501,6 +498,7 @@
         }
         .popup-close-hint i { margin-right: 8px; }
 
+        /* ===== INFO GRID ===== */
         .info-grid { display:flex; flex-direction:column; gap:12px; margin:16px 0 22px; }
         .info-item {
             background:rgba(255,255,255,0.2); backdrop-filter:blur(8px); padding:12px 16px; border-radius:60px;
@@ -508,10 +506,7 @@
             box-shadow:0 4px 15px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
         }
-        .info-item:hover {
-            background:rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
+        .info-item:hover { background:rgba(255,255,255,0.3); transform: translateY(-2px); }
         .info-item i { width:28px; font-size:1.3rem; color:#4a2a0e; text-align:center; }
         .info-item .content { flex:1; font-size:0.95rem; font-weight:500; color:#2d1e0e; word-break:break-word; }
         .info-item .content small { font-weight:400; color:#6b4d2b; display:block; font-size:0.75rem; }
@@ -572,7 +567,7 @@
 
         @media (max-width:420px) {
             .brand { font-size:1.6rem; }
-            .header-logo { width:50px; height:50px; }
+            .header-logo { width:80px; height:80px; }
             .maveli-float-img { width:90px; }
             .maveli-fallback { font-size:3.5rem; }
             .maveli-container { right:10px; top:12%; }
@@ -582,10 +577,7 @@
             .popup-close-btn { top:12px; right:12px; width:38px; height:38px; font-size:1.5rem; }
             .popup-close-hint { font-size:0.7rem; padding:6px 14px; bottom:16px; }
             .onam-tag { font-size:1.5rem; }
-            .splash-ring { width:130px; height:130px; }
-            .splash-ring-inner { width:100px; height:100px; }
-            .splash-ring-inner img { width:70px; }
-            .splash-title { font-size:2.2rem; }
+            .splash-continue-btn { bottom:40px; padding:14px 32px; font-size:1rem; }
             .footer-note .malayalam { font-size:1rem; }
             .footer-note .english { font-size:1.2rem; }
         }
@@ -594,10 +586,12 @@
 <body>
 
     <!-- ============================================================
-    CLEAN SPLASH SCREEN (Image Only)
+    SPLASH SCREEN WITH CONTINUE BUTTON
     ============================================================ -->
     <div id="splash-screen">
-        <img src="onam26.png" alt="Onam 2026" />
+        <img src="onam26.webp" alt="Onam 2026" 
+             onerror="this.onerror=null; this.src='onam26.png';" />
+        <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
     <!-- ===== AUDIO ===== -->
@@ -620,12 +614,12 @@
     </div>
 
     <!-- ============================================================
-    FALLING FLOWERS (30 items only - fast)
+    FALLING FLOWERS
     ============================================================ -->
     <div class="confetti-container" id="confettiBox"></div>
 
     <!-- ===== MAIN CARD ===== -->
-    <div class="onam-card">
+    <div class="onam-card" id="mainCard">
         <div class="header">
             <div class="title-group">
                 <div class="brand">PERUMPAYIL <small>🦆🐷</small></div>
@@ -739,17 +733,42 @@
                 bgIsPlaying = true;
             }).catch(e => {
                 console.log('⏳ Autoplay blocked, waiting for interaction...');
-                const startOnInteraction = () => {
-                    bgAudio.play().then(() => {
-                        console.log('✅ Background audio started on interaction.');
-                        bgIsPlaying = true;
-                    }).catch(err => {});
-                    document.removeEventListener('click', startOnInteraction);
-                    document.removeEventListener('touchstart', startOnInteraction);
-                };
-                document.addEventListener('click', startOnInteraction);
-                document.addEventListener('touchstart', startOnInteraction);
+                bgIsPlaying = false;
             });
+        }
+
+        function pauseBackgroundMusic() {
+            if (bgIsPlaying) {
+                bgAudio.pause();
+                bgIsPlaying = false;
+                console.log('⏸️ Background audio paused.');
+            }
+        }
+
+        function resumeBackgroundMusic() {
+            if (!bgIsPlaying && audioInitAttempted) {
+                bgAudio.play().then(() => {
+                    bgIsPlaying = true;
+                    console.log('▶️ Background audio resumed.');
+                }).catch(e => {
+                    console.log('Could not resume:', e);
+                });
+            }
+        }
+
+        // =============================================================
+        // CONTINUE BUTTON
+        // =============================================================
+        function continueApp() {
+            // Start music
+            startBackgroundMusic();
+            
+            // Hide splash screen
+            const splash = document.getElementById('splash-screen');
+            splash.classList.add('hidden');
+            
+            // Show main card (already visible, but ensure it's interactive)
+            document.getElementById('mainCard').style.pointerEvents = 'auto';
         }
 
         // =============================================================
@@ -823,16 +842,16 @@
         // POPUP
         // =============================================================
         function openPopupWithBurst() {
+            // Pause background music
+            pauseBackgroundMusic();
+            
+            // Burst flowers
             createBurstFlowers();
+            
             setTimeout(() => { openPopup(); }, 150);
         }
 
         function openPopup() {
-            if (bgIsPlaying) {
-                bgAudio.pause();
-                bgIsPlaying = false;
-            }
-
             document.getElementById('popupOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
 
@@ -850,9 +869,8 @@
             const video = document.getElementById('popupVideo');
             if (video) { video.pause(); }
 
-            if (!bgIsPlaying) {
-                bgAudio.play().then(() => { bgIsPlaying = true; }).catch(() => {});
-            }
+            // Resume background music
+            resumeBackgroundMusic();
         }
 
         document.addEventListener('keydown', function(e) {
@@ -870,22 +888,6 @@
                 btn.querySelector('i').className = video.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
             }
         }
-
-        // =============================================================
-        // SPLASH SCREEN
-        // =============================================================
-        function hideSplash() {
-            const splash = document.getElementById('splash-screen');
-            if (splash) {
-                splash.classList.add('hidden');
-            }
-        }
-
-        // Hide splash after page load
-        window.addEventListener('load', function() {
-            setTimeout(hideSplash, 2500);
-        });
-        setTimeout(hideSplash, 4000);
 
         // =============================================================
         // MAVELI SIZE
@@ -906,7 +908,7 @@
         }
 
         // =============================================================
-        // FALLING FLOWERS (30 items only - fast)
+        // FALLING FLOWERS
         // =============================================================
         (function() {
             const container = document.getElementById('confettiBox');
@@ -948,13 +950,16 @@
         }
 
         // =============================================================
-        // START AUDIO
+        // SPLASH SCREEN - Show Continue button after 2 seconds
         // =============================================================
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', startBackgroundMusic);
-        } else {
-            startBackgroundMusic();
-        }
+        setTimeout(function() {
+            const btn = document.querySelector('.splash-continue-btn');
+            if (btn) {
+                btn.classList.add('show');
+                btn.style.opacity = '1';
+                btn.style.visibility = 'visible';
+            }
+        }, 2000);
     </script>
 </body>
 </html>
