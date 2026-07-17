@@ -1,8 +1,8 @@
 {
-  "name": "Perumpayil Duck & Pork - Onam 2026",
+  "name": "Perumpayil Onam 2026",
   "short_name": "Perumpayil",
-  "description": "Fresh premium Duck & Pork for Onam celebrations.",
-  "start_url": "/",
+  "description": "Onam 2026 Wish App for Perumpayil Duck & Pork",
+  "start_url": "/perumpayil-onam/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fef7e6",

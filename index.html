@@ -15,26 +15,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
     <style>
-        /* ============================================================
-               FONTS
-               ============================================================ */
+        /* ===== FONTS ===== */
         @font-face {
             font-family: 'TarmilesAction';
-            src: url('./TarmilesAction.otf') format('opentype');
+            src: url('TarmilesAction.otf') format('opentype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Anakha';
-            src: url('./MLU-Anakha.ttf') format('truetype');
+            src: url('MLU-Anakha.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'CelebrateScript';
-            src: url('./Pacifico.ttf') format('truetype');
+            src: url('Pacifico.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
@@ -48,9 +46,7 @@
             background: radial-gradient(circle at 20% 30%, #ffecd2 0%, #fcb69f 50%, #a8e063 120%);
         }
 
-        /* ============================================================
-               SPLASH SCREEN
-               ============================================================ */
+        /* ===== SPLASH SCREEN ===== */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -160,9 +156,7 @@
             40% { transform: scale(1.2); opacity: 1; }
         }
 
-        /* ============================================================
-               ATHAPOO
-               ============================================================ */
+        /* ===== ATHAPOO ===== */
         .athapoo-bg {
             position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
             width:500px; height:500px; border-radius:50%;
@@ -180,9 +174,7 @@
         }
         @keyframes spin { 100% { transform:translate(-50%,-50%) rotate(360deg); } }
 
-        /* ============================================================
-               ONAM TAG
-               ============================================================ */
+        /* ===== ONAM TAG ===== */
         .onam-tag {
             font-family: 'Anakha', 'Baloo 2', 'Segoe UI', cursive, sans-serif;
             background: linear-gradient(135deg, #f7e2c4, #fae5c0);
@@ -204,9 +196,7 @@
                 0 0 15px rgba(255, 215, 0, 0.2);
         }
 
-        /* ============================================================
-               MAVELI
-               ============================================================ */
+        /* ===== MAVELI ===== */
         .maveli-container {
             position:fixed; right:20px; top:15%; z-index:999;
             display:flex; align-items:center; justify-content:center;
@@ -230,9 +220,7 @@
             100% { transform:translateY(0px) rotate(-6deg); }
         }
 
-        /* ============================================================
-               CONFETTI
-               ============================================================ */
+        /* ===== CONFETTI ===== */
         .confetti-container {
             position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:10; overflow:hidden;
         }
@@ -248,9 +236,7 @@
             100% { top: 110%; opacity:0.1; transform: rotate(720deg) scale(1.1); }
         }
 
-        /* ============================================================
-               BURST FLOWERS
-               ============================================================ */
+        /* ===== BURST FLOWERS ===== */
         .burst-flower {
             position: fixed;
             pointer-events: none;
@@ -269,9 +255,7 @@
             }
         }
 
-        /* ============================================================
-               SIZE CONTROLLER
-               ============================================================ */
+        /* ===== SIZE CONTROLLER ===== */
         .size-controller {
             position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
             z-index:1000;
@@ -311,9 +295,7 @@
             font-size:0.8rem;
         }
 
-        /* ============================================================
-               MAIN CARD
-               ============================================================ */
+        /* ===== MAIN CARD ===== */
         .onam-card {
             max-width:440px; width:100%; position:relative; z-index:20;
             background:rgba(255, 248, 235, 0.88); backdrop-filter:blur(6px);
@@ -361,9 +343,7 @@
         }
         .premium-badge i { margin-right:6px; color:#f7c56e; }
 
-        /* ============================================================
-               BUTTONS
-               ============================================================ */
+        /* ===== BUTTONS ===== */
         .wish-btn-open {
             background: linear-gradient(145deg, #8b4e1a, #5a3010);
             color: #fcf3e2;
@@ -455,9 +435,7 @@
             opacity: 1;
         }
 
-        /* ============================================================
-               POPUP
-               ============================================================ */
+        /* ===== POPUP ===== */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -570,9 +548,7 @@
         }
         .popup-close-hint i { margin-right: 8px; }
 
-        /* ============================================================
-               INFO GRID
-               ============================================================ */
+        /* ===== INFO GRID ===== */
         .info-grid { display:flex; flex-direction:column; gap:12px; margin:16px 0 22px; }
         .info-item {
             background:rgba(255,255,255,0.85); backdrop-filter:blur(2px); padding:12px 16px; border-radius:60px;
@@ -605,9 +581,7 @@
         .order-btn.green { background:#1b7a44; box-shadow:0 6px 0 #0f4d2a; }
         .order-btn.amber { background:#b8701a; box-shadow:0 6px 0 #7a4a0e; }
 
-        /* ============================================================
-               FOOTER
-               ============================================================ */
+        /* ===== FOOTER ===== */
         .footer-note {
             margin-top: 24px;
             text-align: center;
@@ -676,7 +650,7 @@
         </div>
     </div>
 
-    <!-- ===== AUDIO (Full Volume, No Fade) ===== -->
+    <!-- ===== AUDIO ===== -->
     <audio id="bgAudio" src="onambg.mp3" loop preload="auto"></audio>
 
     <!-- ===== ATHAPOO ===== -->
@@ -801,7 +775,7 @@
 
     <script>
         // =============================================================
-        // BACKGROUND MUSIC - FULL VOLUME, NO FADE
+        // BACKGROUND MUSIC
         // =============================================================
         const bgAudio = document.getElementById('bgAudio');
         let bgIsPlaying = false;
@@ -811,21 +785,17 @@
             if (audioInitAttempted) return;
             audioInitAttempted = true;
 
-            // Set volume to 1 (full)
             bgAudio.volume = 1;
             bgAudio.play().then(() => {
-                console.log('✅ Background audio started (full volume).');
+                console.log('✅ Background audio started.');
                 bgIsPlaying = true;
             }).catch(e => {
                 console.log('⏳ Autoplay blocked, waiting for interaction...');
-                bgIsPlaying = false;
                 const startOnInteraction = () => {
                     bgAudio.play().then(() => {
                         console.log('✅ Background audio started on interaction.');
                         bgIsPlaying = true;
-                    }).catch(err => {
-                        console.log('Still blocked:', err);
-                    });
+                    }).catch(err => {});
                     document.removeEventListener('click', startOnInteraction);
                     document.removeEventListener('touchstart', startOnInteraction);
                 };
@@ -846,12 +816,10 @@
             };
 
             if (navigator.share) {
-                navigator.share(shareData)
-                    .then(() => console.log('✅ Shared'))
-                    .catch((error) => console.log('❌ Share cancelled:', error));
+                navigator.share(shareData).catch(() => {});
             } else {
                 navigator.clipboard.writeText(url).then(() => {
-                    showToast('✅ Link copied to clipboard!');
+                    showToast('✅ Link copied!');
                 }).catch(() => {
                     const textArea = document.createElement('textarea');
                     textArea.value = url;
@@ -861,7 +829,7 @@
                         document.execCommand('copy');
                         showToast('✅ Link copied!');
                     } catch (err) {
-                        showToast('⚠️ Please copy the URL manually.');
+                        showToast('⚠️ Copy URL manually');
                     }
                     document.body.removeChild(textArea);
                 });
@@ -879,8 +847,7 @@
         // BURST FLOWERS
         // =============================================================
         function createBurstFlowers() {
-            const flowerEmojis = ['🌸','🌺','🌼','🌻','🌷','💐','🌸','🌺'];
-            const colors = ['#ff6a00', '#ffd700', '#ff4500', '#32cd32', '#ff1493', '#ffea00'];
+            const flowerEmojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
             const count = 15;
 
             for (let i = 0; i < count; i++) {
@@ -898,7 +865,6 @@
                 flower.style.left = (window.innerWidth / 2 + Math.random() * 40 - 20) + 'px';
                 flower.style.top = (window.innerHeight / 2 + Math.random() * 40 - 20) + 'px';
                 flower.style.fontSize = (1.2 + Math.random() * 1.2) + 'rem';
-                flower.style.color = colors[Math.floor(Math.random() * colors.length)];
                 
                 document.body.appendChild(flower);
                 setTimeout(() => { flower.remove(); }, 1300);
@@ -914,39 +880,30 @@
         }
 
         function openPopup() {
-            // Pause background music when popup opens
             if (bgIsPlaying) {
                 bgAudio.pause();
                 bgIsPlaying = false;
             }
 
-            const overlay = document.getElementById('popupOverlay');
-            overlay.classList.add('active');
+            document.getElementById('popupOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
 
             const video = document.getElementById('popupVideo');
             if (video) {
                 video.muted = false;
-                const btn = document.getElementById('soundToggleBtn');
-                const icon = btn.querySelector('i');
-                icon.className = 'fas fa-volume-up';
-                video.play().catch(e => {});
+                video.play().catch(() => {});
             }
         }
 
         function closePopup() {
-            const overlay = document.getElementById('popupOverlay');
-            overlay.classList.remove('active');
+            document.getElementById('popupOverlay').classList.remove('active');
             document.body.style.overflow = '';
 
             const video = document.getElementById('popupVideo');
             if (video) { video.pause(); }
 
-            // Resume background music
             if (!bgIsPlaying) {
-                bgAudio.play().then(() => {
-                    bgIsPlaying = true;
-                }).catch(e => {});
+                bgAudio.play().then(() => { bgIsPlaying = true; }).catch(() => {});
             }
         }
 
@@ -962,8 +919,7 @@
             const btn = document.getElementById('soundToggleBtn');
             if (video) {
                 video.muted = !video.muted;
-                const icon = btn.querySelector('i');
-                icon.className = video.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+                btn.querySelector('i').className = video.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
             }
         }
 
@@ -1035,14 +991,14 @@
         // =============================================================
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('/perumpayil-onam/sw.js')
                     .then(function(reg) { console.log('✅ SW registered'); })
                     .catch(function(err) { console.log('❌ SW failed: ', err); });
             });
         }
 
         // =============================================================
-        // START AUDIO ON PAGE LOAD
+        // START AUDIO
         // =============================================================
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', startBackgroundMusic);
