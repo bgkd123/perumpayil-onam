@@ -110,7 +110,9 @@
             }
         }
 
-        /* ===== SPLASH SCREEN (No rotation) ===== */
+        /* ============================================================
+           CLEAN SPLASH SCREEN (Image Only)
+           ============================================================ */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -118,105 +120,25 @@
             width: 100%;
             height: 100%;
             z-index: 99999;
-            background: radial-gradient(circle at 30% 40%, #fde6b6, #f5b47a);
+            background: #000;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
             opacity: 1;
             visibility: visible;
-            padding: 20px;
-            text-align: center;
+            padding: 0;
         }
         #splash-screen.hidden {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
         }
-        .splash-content {
-            max-width: 380px;
+        #splash-screen img {
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-        .splash-ring {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, #ffd700, #ff8c00, #ff4500, #32cd32, #ffd700, #ff1493, #ffd700);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.4);
-            margin-bottom: 10px;
-            /* NO ANIMATION - REMOVED spinRing */
-        }
-        .splash-ring-inner {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: #fff8ec;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .splash-ring-inner img {
-            width: 90px;
-            height: auto;
-            object-fit: contain;
-            border-radius: 10px;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
-        }
-        .splash-ring-inner .logo-fallback {
-            font-size: 3.5rem;
-            font-weight: bold;
-            color: #7a3e1b;
-        }
-
-        .splash-title {
-            font-family: 'TarmilesAction', 'Baloo 2', 'Poppins', cursive, sans-serif;
-            font-weight: normal;
-            font-size: 2.8rem;
-            color: #4a2a0e;
-            text-shadow: 3px 3px 0 rgba(255,215,0,0.6), 0 0 30px rgba(255,215,0,0.3);
-            letter-spacing: 2px;
-            margin-top: 4px;
-            line-height: 1.2;
-        }
-        .splash-sub {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            color: #5a3d1e;
-            background: rgba(255,255,255,0.3);
-            padding: 4px 18px;
-            border-radius: 40px;
-            backdrop-filter: blur(4px);
-            border: 1px solid #ffd700;
-        }
-        .splash-loader {
-            margin-top: 16px;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-        .splash-loader .dot {
-            width: 12px;
-            height: 12px;
-            background: #ff8c00;
-            border-radius: 50%;
-            animation: bounceDot 1.2s ease-in-out infinite;
-        }
-        .splash-loader .dot:nth-child(2) { animation-delay: 0.2s; background: #ffd700; }
-        .splash-loader .dot:nth-child(3) { animation-delay: 0.4s; background: #32cd32; }
-        @keyframes bounceDot {
-            0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
-            40% { transform: scale(1.2); opacity: 1; }
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         /* ===== MODERN GLASSMORPHISM CARD ===== */
@@ -671,22 +593,11 @@
 </head>
 <body>
 
-    <!-- ===== SPLASH SCREEN ===== -->
+    <!-- ============================================================
+    CLEAN SPLASH SCREEN (Image Only)
+    ============================================================ -->
     <div id="splash-screen">
-        <div class="splash-content">
-            <div class="splash-ring">
-                <div class="splash-ring-inner">
-                    <img src="Logo.png" alt="Perumpayil" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=logo-fallback>🦆🐷</span>';">
-                </div>
-            </div>
-            <div class="splash-title">PERUMPAYIL</div>
-            <div class="splash-sub">✨ ഹാപ്പി ഓണം 2026 ✨</div>
-            <div class="splash-loader">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </div>
+        <img src="onam26.png" alt="Onam 2026" />
     </div>
 
     <!-- ===== AUDIO ===== -->
@@ -794,7 +705,6 @@
     <!-- ===== VIDEO POPUP ===== -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
-            <!-- No poster text - clean video -->
             <video id="popupVideo" src="onam_wish.mp4" 
                    autoplay loop playsinline webkit-playsinline
                    preload="none"
@@ -970,6 +880,8 @@
                 splash.classList.add('hidden');
             }
         }
+
+        // Hide splash after page load
         window.addEventListener('load', function() {
             setTimeout(hideSplash, 2500);
         });
