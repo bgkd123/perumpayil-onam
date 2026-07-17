@@ -129,9 +129,6 @@
             background: #000;
         }
         
-        /* ============================================================
-           CONTINUE BUTTON - VIBRANT EFFECT
-           ============================================================ */
         .splash-continue-btn {
             position: absolute;
             bottom: 60px;
@@ -155,20 +152,10 @@
             transition: all 0.3s ease;
             overflow: hidden;
         }
-
-        /* Pulse + Glow Animation */
         @keyframes pulseGlow {
-            0%, 100% {
-                transform: translateX(-50%) scale(1);
-                box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-            }
-            50% {
-                transform: translateX(-50%) scale(1.05);
-                box-shadow: 0 0 50px rgba(255, 215, 0, 0.7), 0 0 80px rgba(255, 215, 0, 0.3);
-            }
+            0%, 100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+            50% { transform: translateX(-50%) scale(1.05); box-shadow: 0 0 50px rgba(255, 215, 0, 0.7), 0 0 80px rgba(255, 215, 0, 0.3); }
         }
-
-        /* Shimmer Effect */
         .splash-continue-btn::before {
             content: '';
             position: absolute;
@@ -176,40 +163,24 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 40%,
-                rgba(255, 255, 255, 0.3) 50%,
-                transparent 60%
-            );
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
             animation: shimmer 3s ease-in-out infinite;
             transform: rotate(25deg);
         }
-
         @keyframes shimmer {
             0% { transform: translateX(-100%) rotate(25deg); }
             100% { transform: translateX(100%) rotate(25deg); }
         }
-
-        .splash-continue-btn.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        .splash-continue-btn:hover {
-            transform: translateX(-50%) scale(1.08);
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
-        }
-        .splash-continue-btn:active {
-            transform: translateX(-50%) scale(0.95);
-        }
-
+        .splash-continue-btn.show { opacity: 1; visibility: visible; }
+        .splash-continue-btn:hover { transform: translateX(-50%) scale(1.08); box-shadow: 0 0 60px rgba(255, 215, 0, 0.8); }
+        .splash-continue-btn:active { transform: translateX(-50%) scale(0.95); }
         @keyframes fadeInUp {
             0% { opacity: 0; transform: translateX(-50%) translateY(30px); }
             100% { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
 
         /* ============================================================
-           MAIN CARD (blur: 4px - bg01.webp visible)
+           MAIN CARD (blur: 4px)
            ============================================================ */
         .onam-card {
             max-width:440px; 
@@ -228,8 +199,6 @@
             background-blend-mode: overlay;
             background-color: rgba(255, 248, 235, 0.3);
         }
-
-        /* Glassmorphism with blur: 4px */
         .onam-card::before {
             content: '';
             position: absolute;
@@ -244,12 +213,9 @@
             z-index: 0;
             pointer-events: none;
         }
-        .onam-card > * {
-            position: relative;
-            z-index: 1;
-        }
+        .onam-card > * { position: relative; z-index: 1; }
 
-        /* ===== HEADER - Big Logo on Top, then PERUMPAYIL ===== */
+        /* ===== HEADER ===== */
         .header {
             display: flex;
             flex-direction: column;
@@ -302,9 +268,12 @@
             backdrop-filter: blur(4px);
         }
 
+        /* ============================================================
+           ONAM TAG - KUMKUMA BACKGROUND + WHITE TEXT
+           ============================================================ */
         .onam-tag {
             font-family: 'Anakha', 'Baloo 2', 'Segoe UI', cursive, sans-serif;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.2));
+            background: #f4a460;  /* Kumkuma / Saffron color */
             padding: 16px 12px 12px;
             border-radius: 100px;
             text-align: center;
@@ -313,22 +282,24 @@
             letter-spacing: 2px;
             margin: 14px 0 12px;
             border: 2px solid #ffd700;
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.2), 0 4px 0 #b6894e;
-            color: #ff6a00;
+            box-shadow: 0 0 40px rgba(244, 164, 96, 0.4), 0 4px 0 #b6894e;
+            color: #ffffff;
             text-shadow: 
-                -2px -2px 0 #ffffff,
-                2px -2px 0 #ffffff,
-                -2px 2px 0 #ffffff,
-                2px 2px 0 #ffffff,
-                0 0 30px rgba(255, 215, 0, 0.3);
+                -1px -1px 0 rgba(0,0,0,0.3),
+                1px -1px 0 rgba(0,0,0,0.3),
+                -1px 1px 0 rgba(0,0,0,0.3),
+                1px 1px 0 rgba(0,0,0,0.3),
+                0 0 20px rgba(255, 215, 0, 0.2);
             animation: glowPulse 3s ease-in-out infinite;
         }
         @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.15), 0 4px 0 #b6894e; }
-            50% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.4), 0 0 80px rgba(255, 215, 0, 0.2), 0 4px 0 #b6894e; }
+            0%, 100% { box-shadow: 0 0 30px rgba(244, 164, 96, 0.3), 0 4px 0 #b6894e; }
+            50% { box-shadow: 0 0 60px rgba(244, 164, 96, 0.6), 0 0 80px rgba(244, 164, 96, 0.2), 0 4px 0 #b6894e; }
         }
 
-        /* ===== MAVELI ===== */
+        /* ============================================================
+           MAVELI - 150px (Default)
+           ============================================================ */
         .maveli-container {
             position:fixed; right:20px; top:15%; z-index:999;
             display:flex; align-items:center; justify-content:center;
@@ -337,12 +308,13 @@
             animation: floatMaveli 3s ease-in-out infinite;
         }
         .maveli-float-img {
-            width:120px; height:auto; 
+            width:150px;  /* 120px → 150px */
+            height:auto; 
             border-radius:20px;
             display:block;
         }
         .maveli-fallback {
-            font-size:4.5rem; 
+            font-size:5rem; 
             filter: drop-shadow(0 10px 25px rgba(255, 215, 0, 0.6));
             display:none;
         }
@@ -405,6 +377,7 @@
             font-size:0.8rem;
         }
 
+        /* ===== REST OF STYLES ===== */
         .meat-icons {
             display:flex; justify-content:center; gap:30px; background:rgba(255,255,255,0.3); backdrop-filter:blur(4px); border-radius:60px;
             padding:12px 8px; margin:8px 0 16px; border:1px solid rgba(255,215,0,0.2);
@@ -596,7 +569,6 @@
         }
         .popup-close-hint i { margin-right: 8px; }
 
-        /* ===== INFO GRID ===== */
         .info-grid { display:flex; flex-direction:column; gap:12px; margin:16px 0 22px; }
         .info-item {
             background:rgba(255,255,255,0.3); backdrop-filter:blur(4px); padding:12px 16px; border-radius:60px;
@@ -666,8 +638,8 @@
         @media (max-width:420px) {
             .brand { font-size:1.6rem; }
             .header-logo { width:90px; height:90px; }
-            .maveli-float-img { width:90px; }
-            .maveli-fallback { font-size:3.5rem; }
+            .maveli-float-img { width:120px; }
+            .maveli-fallback { font-size:4rem; }
             .maveli-container { right:10px; top:12%; }
             .size-controller { padding:10px 16px; gap:10px; bottom:16px; }
             .size-controller input[type="range"] { width:100px; }
@@ -683,9 +655,7 @@
 </head>
 <body>
 
-    <!-- ============================================================
-    SPLASH SCREEN
-    ============================================================ -->
+    <!-- ===== SPLASH SCREEN ===== -->
     <div id="splash-screen">
         <img src="onam26.webp" alt="Onam 2026" 
              onerror="this.onerror=null; this.src='onam26.png';" />
@@ -706,31 +676,25 @@
     <div class="size-controller">
         <i class="fas fa-arrows-alt-h" style="color:#ffd700;"></i>
         <span style="font-size:0.8rem;">Size</span>
-        <input type="range" id="sizeSlider" min="30" max="250" value="120" 
+        <input type="range" id="sizeSlider" min="30" max="250" value="150" 
                oninput="updateMaveliSize(this.value)">
-        <span class="size-label" id="sizeDisplay">120</span>
+        <span class="size-label" id="sizeDisplay">150</span>
     </div>
 
-    <!-- ============================================================
-    FALLING FLOWERS
-    ============================================================ -->
+    <!-- ===== FALLING FLOWERS ===== -->
     <div class="confetti-container" id="confettiBox"></div>
 
-    <!-- ============================================================
-    MAIN CARD (Logo on Top, then PERUMPAYIL)
-    ============================================================ -->
+    <!-- ===== MAIN CARD ===== -->
     <div class="onam-card" id="mainCard">
         <div class="header">
-            <!-- Big Logo on Top -->
             <img class="header-logo" src="Logo.png" alt="Perumpayil Logo" onerror="this.style.display='none';">
-            
-            <!-- Brand Name Below Logo -->
             <div class="title-group">
                 <div class="brand">PERUMPAYIL <small>🦆🐷</small></div>
                 <div class="subhead"><i class="fas fa-leaf" style="color:#6f8f4b;"></i> Premium Quality</div>
             </div>
         </div>
 
+        <!-- ===== ONAM TAG WITH KUMKUMA BACKGROUND ===== -->
         <div class="onam-tag">ഹാപ്പി ഓണം 2026</div>
 
         <div class="meat-icons">
@@ -743,7 +707,6 @@
             <span class="premium-badge"><i class="fas fa-star"></i> Fresh Always · Farm sourced</span>
         </div>
 
-        <!-- ===== BUTTONS ===== -->
         <button class="wish-btn-open" onclick="openPopupWithBurst()">
             <i class="fas fa-gift"></i> A Gift For You <i class="fas fa-video"></i>
         </button>
@@ -819,9 +782,7 @@
     </div>
 
     <script>
-        // =============================================================
-        // BACKGROUND MUSIC
-        // =============================================================
+        // ===== BACKGROUND MUSIC =====
         const bgAudio = document.getElementById('bgAudio');
         let bgIsPlaying = false;
         let audioInitAttempted = false;
@@ -829,201 +790,111 @@
         function startBackgroundMusic() {
             if (audioInitAttempted) return;
             audioInitAttempted = true;
-
             bgAudio.volume = 1;
-            bgAudio.play().then(() => {
-                console.log('✅ Background audio started.');
-                bgIsPlaying = true;
-            }).catch(e => {
-                console.log('⏳ Autoplay blocked, waiting for interaction...');
-                bgIsPlaying = false;
-            });
+            bgAudio.play().then(() => { bgIsPlaying = true; }).catch(() => { bgIsPlaying = false; });
         }
 
         function pauseBackgroundMusic() {
-            if (bgIsPlaying) {
-                bgAudio.pause();
-                bgIsPlaying = false;
-                console.log('⏸️ Background audio paused.');
-            }
+            if (bgIsPlaying) { bgAudio.pause(); bgIsPlaying = false; }
         }
 
         function resumeBackgroundMusic() {
             if (!bgIsPlaying && audioInitAttempted) {
-                bgAudio.play().then(() => {
-                    bgIsPlaying = true;
-                    console.log('▶️ Background audio resumed.');
-                }).catch(e => {
-                    console.log('Could not resume:', e);
-                });
+                bgAudio.play().then(() => { bgIsPlaying = true; }).catch(() => {});
             }
         }
 
-        // =============================================================
-        // CONTINUE BUTTON
-        // =============================================================
         function continueApp() {
-            // Start music
             startBackgroundMusic();
-            
-            // Hide splash screen
-            const splash = document.getElementById('splash-screen');
-            splash.classList.add('hidden');
-            
-            // Show main card (already visible, but ensure it's interactive)
+            document.getElementById('splash-screen').classList.add('hidden');
             document.getElementById('mainCard').style.pointerEvents = 'auto';
         }
 
-        // =============================================================
-        // SHARE FUNCTION
-        // =============================================================
+        // ===== SHARE =====
         function shareApp() {
             const url = window.location.href;
-            const shareData = {
-                title: 'Perumpayil - Onam 2026',
-                text: '🎉 Happy Onam 2026! Check out this amazing Onam wish from Perumpayil Duck & Pork! 🦆🐷',
-                url: url
-            };
-
             if (navigator.share) {
-                navigator.share(shareData).catch(() => {});
+                navigator.share({ title: 'Perumpayil - Onam 2026', text: '🎉 Happy Onam 2026!', url: url }).catch(() => {});
             } else {
-                navigator.clipboard.writeText(url).then(() => {
-                    showToast('✅ Link copied!');
-                }).catch(() => {
-                    const textArea = document.createElement('textarea');
-                    textArea.value = url;
-                    document.body.appendChild(textArea);
-                    textArea.select();
-                    try {
-                        document.execCommand('copy');
-                        showToast('✅ Link copied!');
-                    } catch (err) {
-                        showToast('⚠️ Copy URL manually');
-                    }
-                    document.body.removeChild(textArea);
+                navigator.clipboard.writeText(url).then(() => showToast('✅ Link copied!')).catch(() => {
+                    const ta = document.createElement('textarea');
+                    ta.value = url;
+                    document.body.appendChild(ta);
+                    ta.select();
+                    try { document.execCommand('copy'); showToast('✅ Link copied!'); } catch (e) { showToast('⚠️ Copy manually'); }
+                    document.body.removeChild(ta);
                 });
             }
         }
+        function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000); }
 
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => { toast.classList.remove('show'); }, 3000);
-        }
-
-        // =============================================================
-        // BURST FLOWERS
-        // =============================================================
+        // ===== BURST FLOWERS =====
         function createBurstFlowers() {
-            const flowerEmojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
-            const count = 12;
-
-            for (let i = 0; i < count; i++) {
-                const flower = document.createElement('div');
-                flower.className = 'burst-flower';
-                flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
-                
-                const angle = Math.random() * 2 * Math.PI;
-                const distance = 60 + Math.random() * 120;
-                const tx = Math.cos(angle) * distance;
-                const ty = Math.sin(angle) * distance - 80;
-                
-                flower.style.setProperty('--tx', tx + 'px');
-                flower.style.setProperty('--ty', ty + 'px');
-                flower.style.left = (window.innerWidth / 2 + Math.random() * 30 - 15) + 'px';
-                flower.style.top = (window.innerHeight / 2 + Math.random() * 30 - 15) + 'px';
-                flower.style.fontSize = (1.0 + Math.random() * 1.0) + 'rem';
-                
-                document.body.appendChild(flower);
-                setTimeout(() => { flower.remove(); }, 1300);
+            const emojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
+            for (let i = 0; i < 12; i++) {
+                const f = document.createElement('div');
+                f.className = 'burst-flower';
+                f.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                const a = Math.random() * 2 * Math.PI, d = 60 + Math.random() * 120;
+                f.style.setProperty('--tx', Math.cos(a) * d + 'px');
+                f.style.setProperty('--ty', Math.sin(a) * d - 80 + 'px');
+                f.style.left = (window.innerWidth / 2 + Math.random() * 30 - 15) + 'px';
+                f.style.top = (window.innerHeight / 2 + Math.random() * 30 - 15) + 'px';
+                f.style.fontSize = (1 + Math.random() * 1) + 'rem';
+                document.body.appendChild(f);
+                setTimeout(() => f.remove(), 1300);
             }
         }
 
-        // =============================================================
-        // POPUP
-        // =============================================================
         function openPopupWithBurst() {
-            // Pause background music
             pauseBackgroundMusic();
-            
-            // Burst flowers
             createBurstFlowers();
-            
-            setTimeout(() => { openPopup(); }, 150);
+            setTimeout(() => openPopup(), 150);
         }
 
         function openPopup() {
             document.getElementById('popupOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
-
-            const video = document.getElementById('popupVideo');
-            if (video) {
-                video.muted = false;
-                video.play().catch(() => {});
-            }
+            const v = document.getElementById('popupVideo');
+            if (v) { v.muted = false; v.play().catch(() => {}); }
         }
 
         function closePopup() {
             document.getElementById('popupOverlay').classList.remove('active');
             document.body.style.overflow = '';
-
-            const video = document.getElementById('popupVideo');
-            if (video) { video.pause(); }
-
-            // Resume background music
+            const v = document.getElementById('popupVideo');
+            if (v) v.pause();
             resumeBackgroundMusic();
         }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closePopup();
-        });
-
-        // =============================================================
-        // SOUND TOGGLE
-        // =============================================================
         function toggleSound() {
-            const video = document.getElementById('popupVideo');
+            const v = document.getElementById('popupVideo');
             const btn = document.getElementById('soundToggleBtn');
-            if (video) {
-                video.muted = !video.muted;
-                btn.querySelector('i').className = video.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
-            }
+            if (v) { v.muted = !v.muted; btn.querySelector('i').className = v.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up'; }
         }
 
-        // =============================================================
-        // MAVELI SIZE
-        // =============================================================
         function updateMaveliSize(val) {
             const img = document.getElementById('maveliImage');
             const fallback = document.getElementById('maveliFallback');
             const display = document.getElementById('sizeDisplay');
-            if (img && img.style.display !== 'none') {
-                img.style.width = val + 'px';
-            }
-            if (fallback) {
-                fallback.style.fontSize = (val * 0.4) + 'px';
-            }
-            if (display) {
-                display.textContent = val;
-            }
+            if (img && img.style.display !== 'none') img.style.width = val + 'px';
+            if (fallback) fallback.style.fontSize = (val * 0.4) + 'px';
+            if (display) display.textContent = val;
         }
 
-        // =============================================================
-        // FALLING FLOWERS
-        // =============================================================
+        // ===== CONFETTI =====
         (function() {
             const container = document.getElementById('confettiBox');
             const colors = ['#ffd700','#ff8c00','#ff4500','#32cd32','#ff1493','#ffea00'];
             const flowerEmojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
-            for(let i=0; i<30; i++) {
+            for (let i = 0; i < 30; i++) {
                 const isFlower = Math.random() > 0.4;
                 const el = document.createElement('div');
-                if(isFlower) {
+                if (isFlower) {
                     el.className = 'flower-emoji';
                     el.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
-                    el.style.fontSize = (1.0 + Math.random() * 1.2) + 'rem';
+                    el.style.fontSize = (1 + Math.random() * 1.2) + 'rem';
                 } else {
                     el.className = 'pellet';
                     el.style.background = colors[Math.floor(Math.random() * colors.length)];
@@ -1041,27 +912,19 @@
             }
         })();
 
-        // =============================================================
-        // SERVICE WORKER (PWA)
-        // =============================================================
+        // ===== SERVICE WORKER =====
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
+            window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/perumpayil-onam/sw.js')
-                    .then(function(reg) { console.log('✅ SW registered'); })
-                    .catch(function(err) { console.log('❌ SW failed: ', err); });
+                    .then(() => console.log('✅ SW registered'))
+                    .catch(() => console.log('❌ SW failed'));
             });
         }
 
-        // =============================================================
-        // SPLASH SCREEN - Show Continue button after 2 seconds
-        // =============================================================
-        setTimeout(function() {
+        // ===== SHOW CONTINUE BUTTON AFTER 2s =====
+        setTimeout(() => {
             const btn = document.querySelector('.splash-continue-btn');
-            if (btn) {
-                btn.classList.add('show');
-                btn.style.opacity = '1';
-                btn.style.visibility = 'visible';
-            }
+            if (btn) { btn.classList.add('show'); btn.style.opacity = '1'; btn.style.visibility = 'visible'; }
         }, 2000);
     </script>
 </body>
