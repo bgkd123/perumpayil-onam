@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Perumpayil · Duck & Pork · Onam 2026</title>
+
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#7a3e1b" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Perumpayil" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
+    <style>
+        /* ============================================================
+               FONTS
+               ============================================================ */
+        @font-face {
+            font-family: 'TarmilesAction';
+            src: url('./TarmilesAction.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Anakha';
+            src: url('./MLU-Anakha.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'CelebrateScript';
+            src: url('./Pacifico.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Roboto,system-ui,sans-serif; }
+        body {
+            min-height:100vh; padding:16px 12px 40px;
+            display:flex; flex-direction:column; align-items:center; justify-content:center;
+            position:relative; overflow-x:hidden;
+            background: radial-gradient(circle at 20% 30%, #ffecd2 0%, #fcb69f 50%, #a8e063 120%);
+        }
+
+        /* ============================================================
+               SPLASH SCREEN
+               ============================================================ */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99999;
+            background: radial-gradient(circle at 30% 40%, #fde6b6, #f5b47a);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+            opacity: 1;
+            visibility: visible;
+            padding: 20px;
+            text-align: center;
+        }
+        #splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .splash-content {
+            max-width: 380px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .splash-ring {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #ffd700, #ff8c00, #ff4500, #32cd32, #ffd700, #ff1493, #ffd700);
+            animation: spinRing 8s linear infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.4);
+            margin-bottom: 10px;
+        }
+        @keyframes spinRing { 100% { transform: rotate(360deg); } }
+        .splash-ring-inner {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #fff8ec;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .splash-ring-inner img {
+            width: 90px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+        .splash-ring-inner .logo-fallback {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #7a3e1b;
+        }
+
+        .splash-title {
+            font-family: 'TarmilesAction', 'Baloo 2', 'Poppins', cursive, sans-serif;
+            font-weight: normal;
+            font-size: 2.8rem;
+            color: #4a2a0e;
+            text-shadow: 3px 3px 0 rgba(255,215,0,0.6), 0 0 30px rgba(255,215,0,0.3);
+            letter-spacing: 2px;
+            margin-top: 4px;
+            line-height: 1.2;
+        }
+        .splash-sub {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #5a3d1e;
+            background: rgba(255,255,255,0.3);
+            padding: 4px 18px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            border: 1px solid #ffd700;
+        }
+        .splash-loader {
+            margin-top: 16px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .splash-loader .dot {
+            width: 12px;
+            height: 12px;
+            background: #ff8c00;
+            border-radius: 50%;
+            animation: bounceDot 1.2s ease-in-out infinite;
+        }
+        .splash-loader .dot:nth-child(2) { animation-delay: 0.2s; background: #ffd700; }
+        .splash-loader .dot:nth-child(3) { animation-delay: 0.4s; background: #32cd32; }
+        @keyframes bounceDot {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
+            40% { transform: scale(1.2); opacity: 1; }
+        }
+
+        /* ============================================================
+               ATHAPOO
+               ============================================================ */
+        .athapoo-bg {
+            position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+            width:500px; height:500px; border-radius:50%;
+            background: repeating-conic-gradient(from 0deg, #ffd700 0deg 20deg, #ff8c00 20deg 40deg, #ff4500 40deg 60deg, #32cd32 60deg 80deg, #ff1493 80deg 100deg, #ffd700 100deg 120deg);
+            opacity:0.10; z-index:1;
+            animation: spin 20s linear infinite;
+            pointer-events:none;
+        }
+        .athapoo-bg::after {
+            content: "🌸🌼🌺🌻🌷🌸🌼🌺🌻🌷";
+            position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+            font-size:2.5rem; letter-spacing:20px; opacity:0.2; white-space:nowrap;
+            animation: spin 30s linear infinite reverse;
+            width:100%; text-align:center;
+        }
+        @keyframes spin { 100% { transform:translate(-50%,-50%) rotate(360deg); } }
+
+        /* ============================================================
+               ONAM TAG
+               ============================================================ */
+        .onam-tag {
+            font-family: 'Anakha', 'Baloo 2', 'Segoe UI', cursive, sans-serif;
+            background: linear-gradient(135deg, #f7e2c4, #fae5c0);
+            padding: 14px 12px 10px;
+            border-radius: 100px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.9rem;
+            letter-spacing: 2px;
+            margin: 14px 0 12px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 4px 0 #b6894e;
+            color: #ff6a00;
+            text-shadow: 
+                -2px -2px 0 #ffffff,
+                2px -2px 0 #ffffff,
+                -2px 2px 0 #ffffff,
+                2px 2px 0 #ffffff,
+                0 0 15px rgba(255, 215, 0, 0.2);
+        }
+
+        /* ============================================================
+               MAVELI
+               ============================================================ */
+        .maveli-container {
+            position:fixed; right:20px; top:15%; z-index:999;
+            display:flex; align-items:center; justify-content:center;
+            pointer-events:none;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+            animation: floatMaveli 3s ease-in-out infinite;
+        }
+        .maveli-float-img {
+            width:120px; height:auto; 
+            border-radius:20px;
+            display:block;
+        }
+        .maveli-fallback {
+            font-size:4.5rem; 
+            filter: drop-shadow(0 10px 25px rgba(255, 215, 0, 0.6));
+            display:none;
+        }
+        @keyframes floatMaveli {
+            0% { transform:translateY(0px) rotate(-6deg); }
+            50% { transform:translateY(-30px) rotate(6deg); }
+            100% { transform:translateY(0px) rotate(-6deg); }
+        }
+
+        /* ============================================================
+               CONFETTI
+               ============================================================ */
+        .confetti-container {
+            position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:10; overflow:hidden;
+        }
+        .pellet, .flower-emoji {
+            position:absolute; left:0; top:-10%; opacity:0.5;
+            animation: fallDown linear infinite;
+        }
+        .pellet { width:8px; height:8px; border-radius:50%; }
+        .flower-emoji { font-size:1.2rem; }
+        @keyframes fallDown {
+            0% { top: -10%; opacity:0.6; transform: rotate(0deg) scale(0.6); }
+            10% { opacity:1; }
+            100% { top: 110%; opacity:0.1; transform: rotate(720deg) scale(1.1); }
+        }
+
+        /* ============================================================
+               BURST FLOWERS
+               ============================================================ */
+        .burst-flower {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.8rem;
+            z-index: 9998;
+            animation: burstFlower 1.2s ease-out forwards;
+        }
+        @keyframes burstFlower {
+            0% {
+                transform: translate(0, 0) scale(0.5) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* ============================================================
+               SIZE CONTROLLER
+               ============================================================ */
+        .size-controller {
+            position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+            z-index:1000;
+            background:rgba(0,0,0,0.7); backdrop-filter:blur(10px);
+            padding:12px 20px; border-radius:60px;
+            display:flex; align-items:center; gap:16px;
+            border:1px solid #ffd700;
+            box-shadow:0 8px 30px rgba(0,0,0,0.4);
+            color:white;
+            font-weight:600;
+            font-size:0.9rem;
+            white-space:nowrap;
+        }
+        .size-controller input[type="range"] {
+            width:140px; height:4px;
+            -webkit-appearance:none; appearance:none;
+            background:linear-gradient(90deg, #ffd700, #ff8c00);
+            border-radius:4px;
+            outline:none;
+            cursor:pointer;
+        }
+        .size-controller input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance:none; appearance:none;
+            width:18px; height:18px;
+            background:#ffd700;
+            border-radius:50%;
+            border:2px solid #fff;
+            box-shadow:0 0 10px rgba(255,215,0,0.5);
+            cursor:pointer;
+        }
+        .size-controller .size-label {
+            min-width:40px;
+            text-align:center;
+            background:rgba(255,255,255,0.15);
+            padding:2px 8px;
+            border-radius:20px;
+            font-size:0.8rem;
+        }
+
+        /* ============================================================
+               MAIN CARD
+               ============================================================ */
+        .onam-card {
+            max-width:440px; width:100%; position:relative; z-index:20;
+            background:rgba(255, 248, 235, 0.88); backdrop-filter:blur(6px);
+            border-radius:48px 48px 32px 32px;
+            padding:24px 20px 32px; 
+            border:3px solid transparent;
+            background-clip:padding-box;
+            box-shadow:0 20px 60px rgba(180,80,20,0.3), 0 0 0 4px #ffd700 inset, 0 0 0 6px #ff8c00 inset;
+            position:relative;
+        }
+        .onam-card::before {
+            content: '';
+            position:absolute;
+            top:-3px; left:-3px; right:-3px; bottom:-3px;
+            border-radius:50px 50px 35px 35px;
+            background: linear-gradient(135deg, #ffd700, #ff8c00, #ff4500, #32cd32, #ffd700);
+            z-index:-1;
+        }
+
+        .header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; flex-wrap:wrap; gap:10px; }
+        .title-group { display:flex; flex-direction:column; }
+        .brand { font-size:1.9rem; font-weight:700; letter-spacing:1px; color:#7a3e1b; line-height:1.1; text-shadow:2px 2px 0 #f7d9b0; }
+        .brand small { font-size:1rem; font-weight:500; color:#a55d2a; letter-spacing:2px; margin-left:6px; }
+        .subhead {
+            font-size:0.9rem; color:#8b5a33; background:#faead4; display:inline-block; padding:0 14px 0 10px;
+            border-radius:40px; margin-top:2px; width:fit-content; border:1px solid #eccbaa;
+        }
+        .header-logo {
+            width:60px; height:60px; border-radius:50%; border:3px solid #b57d4a;
+            box-shadow:0 4px 12px rgba(100,60,10,0.3); object-fit:cover; background:#faeedb; flex-shrink:0;
+        }
+
+        .meat-icons {
+            display:flex; justify-content:center; gap:30px; background:#fff6e7; border-radius:60px;
+            padding:12px 8px; margin:8px 0 16px; border:2px solid #eaccb0;
+        }
+        .meat-icons span { font-size:2.2rem; filter:drop-shadow(0 4px 6px rgba(150,70,0,0.2)); }
+        .meat-icons .label { font-size:0.8rem; font-weight:600; color:#5b391d; display:block; text-align:center; letter-spacing:1px; }
+
+        .premium-badge {
+            background: linear-gradient(135deg, #0f3b2c, #1f6e4a);
+            color:#f7efd6; padding:8px 12px; border-radius:40px; display:inline-block;
+            font-weight:600; font-size:0.85rem; letter-spacing:1px; margin-bottom:6px;
+            border:1px solid #ffd700; box-shadow:0 4px 0 #1f5e44;
+        }
+        .premium-badge i { margin-right:6px; color:#f7c56e; }
+
+        /* ============================================================
+               BUTTONS
+               ============================================================ */
+        .wish-btn-open {
+            background: linear-gradient(145deg, #8b4e1a, #5a3010);
+            color: #fcf3e2;
+            border: none;
+            padding: 18px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2), 0 8px 0 #2f1a08;
+            transition: all 0.2s ease;
+            width: 100%;
+            max-width: 320px;
+            margin: 12px auto 6px;
+            border: 2px solid #ffd700;
+            position: relative;
+            overflow: hidden;
+        }
+        .wish-btn-open i.fa-gift {
+            animation: giftShake 2s ease-in-out infinite;
+        }
+        @keyframes giftShake {
+            0%, 100% { transform: rotate(0deg); }
+            10% { transform: rotate(15deg); }
+            20% { transform: rotate(-10deg); }
+            30% { transform: rotate(5deg); }
+            40%, 100% { transform: rotate(0deg); }
+        }
+        .wish-btn-open:active {
+            transform: translateY(5px);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), 0 3px 0 #2f1a08;
+        }
+
+        .share-btn {
+            background: linear-gradient(145deg, #1a6b4a, #0f3b2c);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.0rem;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #0a2a1a, 0 0 20px rgba(0, 200, 100, 0.15);
+            transition: all 0.2s ease;
+            width: 100%;
+            max-width: 320px;
+            margin: 8px auto;
+            border: 2px solid #ffd700;
+        }
+        .share-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #0a2a1a;
+        }
+        .share-btn i {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(8px);
+            border: 1px solid #ffd700;
+            z-index: 99999;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .toast.show {
+            opacity: 1;
+        }
+
+        /* ============================================================
+               POPUP
+               ============================================================ */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            animation: curtainDown 0.5s ease-out forwards;
+            transform-origin: top;
+        }
+        .popup-overlay.active {
+            display: flex;
+        }
+        @keyframes curtainDown {
+            0% {
+                transform: scaleY(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+        }
+
+        .popup-card {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            border-radius: 0;
+            overflow: hidden;
+        }
+        .popup-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #111;
+        }
+
+        .popup-close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10000;
+            transition: 0.2s;
+            backdrop-filter: blur(4px);
+            line-height: 1;
+        }
+        .popup-close-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
+        .popup-close-btn:active { transform: scale(0.9); }
+
+        .popup-sound-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10000;
+            transition: 0.2s;
+            backdrop-filter: blur(4px);
+        }
+        .popup-sound-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
+        .popup-sound-btn:active { transform: scale(0.9); }
+
+        .popup-close-hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 10000;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .popup-close-hint i { margin-right: 8px; }
+
+        /* ============================================================
+               INFO GRID
+               ============================================================ */
+        .info-grid { display:flex; flex-direction:column; gap:12px; margin:16px 0 22px; }
+        .info-item {
+            background:rgba(255,255,255,0.85); backdrop-filter:blur(2px); padding:12px 16px; border-radius:60px;
+            display:flex; align-items:center; gap:14px; border:1px solid #ffd700; box-shadow:0 4px 8px rgba(140,80,20,0.1);
+        }
+        .info-item i { width:28px; font-size:1.3rem; color:#7a4a1f; text-align:center; }
+        .info-item .content { flex:1; font-size:0.95rem; font-weight:500; color:#2d1e0e; word-break:break-word; }
+        .info-item .content small { font-weight:400; color:#6b4d2b; display:block; font-size:0.75rem; }
+        .info-item .action-link {
+            background:#1b6b4a; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;
+            font-size:0.8rem; font-weight:600; white-space:nowrap; border:1px solid #ffd700;
+            transition:0.15s; box-shadow:0 3px 0 #0d412e;
+        }
+        .info-item .action-link i { color:white; font-size:0.9rem; margin-right:4px; }
+        .info-item .action-link.whatsapp { background:#1f8b4c; box-shadow:0 3px 0 #0d5e31; }
+
+        .order-section {
+            background:linear-gradient(145deg, #f5e3ca, #e7d5ba); border-radius:48px 48px 28px 28px; padding:18px 16px 22px;
+            margin:16px 0 8px; border:2px solid #ffd700; box-shadow:inset 0 -6px 0 #b6894e;
+        }
+        .order-section h3 { display:flex; align-items:center; gap:10px; font-size:1.3rem; color:#3f2b13; margin-bottom:12px; justify-content:center; }
+        .order-btn-group { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
+        .order-btn {
+            background:#2a1c0e; color:#fcf3e2; border:none; padding:14px 24px; border-radius:60px;
+            font-weight:700; font-size:1rem; display:inline-flex; align-items:center; gap:12px;
+            box-shadow:0 6px 0 #0f0a06; transition:0.1s ease; cursor:pointer; border:1px solid #ffd700;
+            flex:1 1 auto; justify-content:center; text-decoration:none; color:#fcf3e2;
+        }
+        .order-btn:active { transform:translateY(4px); box-shadow:0 2px 0 #0f0a06; }
+        .order-btn.green { background:#1b7a44; box-shadow:0 6px 0 #0f4d2a; }
+        .order-btn.amber { background:#b8701a; box-shadow:0 6px 0 #7a4a0e; }
+
+        /* ============================================================
+               FOOTER
+               ============================================================ */
+        .footer-note {
+            margin-top: 24px;
+            text-align: center;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-note .malayalam {
+            font-family: 'Anakha', 'Segoe UI', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #5a3d1e;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .footer-note .english {
+            font-family: 'CelebrateScript', 'Pacifico', 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            font-weight: normal;
+            color: #7a3e1b;
+            display: block;
+            text-shadow: 1px 1px 0 rgba(255,215,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        @media (max-width:420px) {
+            .brand { font-size:1.6rem; }
+            .header-logo { width:50px; height:50px; }
+            .maveli-float-img { width:90px; }
+            .maveli-fallback { font-size:3.5rem; }
+            .maveli-container { right:10px; top:12%; }
+            .size-controller { padding:10px 16px; gap:10px; bottom:16px; }
+            .size-controller input[type="range"] { width:100px; }
+            .popup-sound-btn { top:12px; left:12px; width:38px; height:38px; font-size:1.2rem; }
+            .popup-close-btn { top:12px; right:12px; width:38px; height:38px; font-size:1.5rem; }
+            .popup-close-hint { font-size:0.7rem; padding:6px 14px; bottom:16px; }
+            .onam-tag { font-size:1.5rem; }
+            .athapoo-bg { width:300px; height:300px; }
+            .flower-emoji { font-size:1rem; }
+            .splash-ring { width:130px; height:130px; }
+            .splash-ring-inner { width:100px; height:100px; }
+            .splash-ring-inner img { width:70px; }
+            .splash-title { font-size:2.2rem; }
+            .footer-note .malayalam { font-size:1rem; }
+            .footer-note .english { font-size:1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== SPLASH SCREEN ===== -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="splash-ring">
+                <div class="splash-ring-inner">
+                    <img src="Logo.png" alt="Perumpayil" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=logo-fallback>🦆🐷</span>';">
+                </div>
+            </div>
+            <div class="splash-title">PERUMPAYIL</div>
+            <div class="splash-sub">✨ ഹാപ്പി ഓണം 2026 ✨</div>
+            <div class="splash-loader">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== AUDIO (Full Volume, No Fade) ===== -->
+    <audio id="bgAudio" src="onambg.mp3" loop preload="auto"></audio>
+
+    <!-- ===== ATHAPOO ===== -->
+    <div class="athapoo-bg"></div>
+
+    <!-- ===== MAVELI ===== -->
+    <div class="maveli-container" id="maveliContainer">
+        <img id="maveliImage" src="maveli.png" alt="Maveli" class="maveli-float-img" 
+             onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
+        <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
+    </div>
+
+    <!-- ===== SIZE CONTROLLER ===== -->
+    <div class="size-controller">
+        <i class="fas fa-arrows-alt-h" style="color:#ffd700;"></i>
+        <span style="font-size:0.8rem;">Size</span>
+        <input type="range" id="sizeSlider" min="30" max="250" value="120" 
+               oninput="updateMaveliSize(this.value)">
+        <span class="size-label" id="sizeDisplay">120</span>
+    </div>
+
+    <!-- ===== CONFETTI ===== -->
+    <div class="confetti-container" id="confettiBox"></div>
+
+    <!-- ===== MAIN CARD ===== -->
+    <div class="onam-card">
+        <div class="header">
+            <div class="title-group">
+                <div class="brand">PERUMPAYIL <small>🦆🐷</small></div>
+                <div class="subhead"><i class="fas fa-leaf" style="color:#6f8f4b;"></i> Premium Quality</div>
+            </div>
+            <img class="header-logo" src="Logo.png" alt="Perumpayil Logo" onerror="this.style.display='none';">
+        </div>
+
+        <div class="onam-tag">ഹാപ്പി ഓണം 2026</div>
+
+        <div class="meat-icons">
+            <div><span>🦆</span><span class="label">DUCK</span></div>
+            <div><span>🐷</span><span class="label">PORK</span></div>
+            <div><span>🥩</span><span class="label">FRESH</span></div>
+        </div>
+
+        <div style="text-align:center;">
+            <span class="premium-badge"><i class="fas fa-star"></i> Fresh Always · Farm sourced</span>
+        </div>
+
+        <!-- ===== BUTTONS ===== -->
+        <button class="wish-btn-open" onclick="openPopupWithBurst()">
+            <i class="fas fa-gift"></i> A Gift For You <i class="fas fa-video"></i>
+        </button>
+
+        <button class="share-btn" onclick="shareApp()">
+            <i class="fas fa-share-alt"></i> Share
+        </button>
+
+        <div id="toast" class="toast">✅ Link copied!</div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <i class="fas fa-map-pin"></i>
+                <div class="content">
+                    BOAT JETTY ROAD, CHANGANACHERRY MARKET
+                    <small>📍 Perumpayil, Kerala</small>
+                </div>
+                <a href="https://share.google/DgEPDOg0qYXSBWtg6" target="_blank" class="action-link" style="background:#2f5d7a;box-shadow:0 3px 0 #1b3b4f;"><i class="fas fa-directions"></i> Map</a>
+            </div>
+            <div class="info-item">
+                <i class="fab fa-whatsapp" style="color:#1f8b4c;"></i>
+                <div class="content">
+                    +91 6282116735
+                    <small>WhatsApp for orders</small>
+                </div>
+                <a href="https://wa.me/916282116735?text=Onam%20order%20-%20Perumpayil" class="action-link whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat</a>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone-alt"></i>
+                <div class="content">
+                    +91 9388151050
+                    <small>Call 8am – 8pm</small>
+                </div>
+                <a href="tel:+919388151050" class="action-link" style="background:#7a5a2e;box-shadow:0 3px 0 #4d371b;"><i class="fas fa-phone"></i> Call</a>
+            </div>
+        </div>
+
+        <div class="order-section">
+            <h3><i class="fas fa-mobile-alt"></i> Order via Mobile</h3>
+            <div class="order-btn-group">
+                <a href="https://wa.me/916282116735?text=Hi%20Perumpayil%2C%20I%20want%20to%20order%20duck%20%26%20pork%20for%20Onam" target="_blank" class="order-btn green"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="tel:+919388151050" class="order-btn amber"><i class="fas fa-phone"></i> Call</a>
+                <a href="#" class="order-btn" style="background:#4d3a22;box-shadow:0 6px 0 #2f1f0e;"><i class="fas fa-shopping-cart"></i> Quick Order</a>
+            </div>
+            <p style="margin-top:12px;font-size:0.8rem;color:#4e351b;text-align:center;background:#f3ddbe;padding:6px;border-radius:40px;">
+                <i class="fas fa-truck"></i> Free home delivery · Onam special offers
+            </p>
+        </div>
+
+        <div class="footer-note">
+            <span class="malayalam">🌾 ഓണാശംസകൾ</span>
+            <span class="english">Celebrate Onam with Perumpayil</span>
+        </div>
+    </div>
+
+    <!-- ===== VIDEO POPUP ===== -->
+    <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
+        <div class="popup-card" onclick="closePopup()">
+            <video id="popupVideo" src="onam_wish.mp4" 
+                   autoplay loop playsinline webkit-playsinline
+                   preload="none"
+                   poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%231a1a1a'/%3E%3Ctext x='80' y='220' font-size='32' font-family='Segoe UI' fill='%23ffd700'%3E🎬 A Gift For You%3C/text%3E%3Ctext x='100' y='280' font-size='20' fill='%23ffaa00'%3E❤️ Perumpayil%3C/text%3E%3C/svg%3E"
+                   onclick="closePopup()">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <button class="popup-close-btn" onclick="closePopup(); event.stopPropagation();">✕</button>
+        <button class="popup-sound-btn" id="soundToggleBtn" onclick="toggleSound(); event.stopPropagation();">
+            <i class="fas fa-volume-up"></i>
+        </button>
+        <div class="popup-close-hint">
+            <i class="fas fa-hand-pointer"></i> Tap anywhere to close
+        </div>
+    </div>
+
+    <script>
+        // =============================================================
+        // BACKGROUND MUSIC - FULL VOLUME, NO FADE
+        // =============================================================
+        const bgAudio = document.getElementById('bgAudio');
+        let bgIsPlaying = false;
+        let audioInitAttempted = false;
+
+        function startBackgroundMusic() {
+            if (audioInitAttempted) return;
+            audioInitAttempted = true;
+
+            // Set volume to 1 (full)
+            bgAudio.volume = 1;
+            bgAudio.play().then(() => {
+                console.log('✅ Background audio started (full volume).');
+                bgIsPlaying = true;
+            }).catch(e => {
+                console.log('⏳ Autoplay blocked, waiting for interaction...');
+                bgIsPlaying = false;
+                const startOnInteraction = () => {
+                    bgAudio.play().then(() => {
+                        console.log('✅ Background audio started on interaction.');
+                        bgIsPlaying = true;
+                    }).catch(err => {
+                        console.log('Still blocked:', err);
+                    });
+                    document.removeEventListener('click', startOnInteraction);
+                    document.removeEventListener('touchstart', startOnInteraction);
+                };
+                document.addEventListener('click', startOnInteraction);
+                document.addEventListener('touchstart', startOnInteraction);
+            });
+        }
+
+        // =============================================================
+        // SHARE FUNCTION
+        // =============================================================
+        function shareApp() {
+            const url = window.location.href;
+            const shareData = {
+                title: 'Perumpayil - Onam 2026',
+                text: '🎉 Happy Onam 2026! Check out this amazing Onam wish from Perumpayil Duck & Pork! 🦆🐷',
+                url: url
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .then(() => console.log('✅ Shared'))
+                    .catch((error) => console.log('❌ Share cancelled:', error));
+            } else {
+                navigator.clipboard.writeText(url).then(() => {
+                    showToast('✅ Link copied to clipboard!');
+                }).catch(() => {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = url;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        showToast('✅ Link copied!');
+                    } catch (err) {
+                        showToast('⚠️ Please copy the URL manually.');
+                    }
+                    document.body.removeChild(textArea);
+                });
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 3000);
+        }
+
+        // =============================================================
+        // BURST FLOWERS
+        // =============================================================
+        function createBurstFlowers() {
+            const flowerEmojis = ['🌸','🌺','🌼','🌻','🌷','💐','🌸','🌺'];
+            const colors = ['#ff6a00', '#ffd700', '#ff4500', '#32cd32', '#ff1493', '#ffea00'];
+            const count = 15;
+
+            for (let i = 0; i < count; i++) {
+                const flower = document.createElement('div');
+                flower.className = 'burst-flower';
+                flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+                
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = 80 + Math.random() * 150;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance - 100;
+                
+                flower.style.setProperty('--tx', tx + 'px');
+                flower.style.setProperty('--ty', ty + 'px');
+                flower.style.left = (window.innerWidth / 2 + Math.random() * 40 - 20) + 'px';
+                flower.style.top = (window.innerHeight / 2 + Math.random() * 40 - 20) + 'px';
+                flower.style.fontSize = (1.2 + Math.random() * 1.2) + 'rem';
+                flower.style.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                document.body.appendChild(flower);
+                setTimeout(() => { flower.remove(); }, 1300);
+            }
+        }
+
+        // =============================================================
+        // POPUP
+        // =============================================================
+        function openPopupWithBurst() {
+            createBurstFlowers();
+            setTimeout(() => { openPopup(); }, 150);
+        }
+
+        function openPopup() {
+            // Pause background music when popup opens
+            if (bgIsPlaying) {
+                bgAudio.pause();
+                bgIsPlaying = false;
+            }
+
+            const overlay = document.getElementById('popupOverlay');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            const video = document.getElementById('popupVideo');
+            if (video) {
+                video.muted = false;
+                const btn = document.getElementById('soundToggleBtn');
+                const icon = btn.querySelector('i');
+                icon.className = 'fas fa-volume-up';
+                video.play().catch(e => {});
+            }
+        }
+
+        function closePopup() {
+            const overlay = document.getElementById('popupOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+
+            const video = document.getElementById('popupVideo');
+            if (video) { video.pause(); }
+
+            // Resume background music
+            if (!bgIsPlaying) {
+                bgAudio.play().then(() => {
+                    bgIsPlaying = true;
+                }).catch(e => {});
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closePopup();
+        });
+
+        // =============================================================
+        // SOUND TOGGLE
+        // =============================================================
+        function toggleSound() {
+            const video = document.getElementById('popupVideo');
+            const btn = document.getElementById('soundToggleBtn');
+            if (video) {
+                video.muted = !video.muted;
+                const icon = btn.querySelector('i');
+                icon.className = video.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+            }
+        }
+
+        // =============================================================
+        // SPLASH SCREEN
+        // =============================================================
+        function hideSplash() {
+            const splash = document.getElementById('splash-screen');
+            if (splash) {
+                splash.classList.add('hidden');
+            }
+        }
+        window.addEventListener('load', function() {
+            setTimeout(hideSplash, 2500);
+        });
+        setTimeout(hideSplash, 4000);
+
+        // =============================================================
+        // MAVELI SIZE
+        // =============================================================
+        function updateMaveliSize(val) {
+            const img = document.getElementById('maveliImage');
+            const fallback = document.getElementById('maveliFallback');
+            const display = document.getElementById('sizeDisplay');
+            if (img && img.style.display !== 'none') {
+                img.style.width = val + 'px';
+            }
+            if (fallback) {
+                fallback.style.fontSize = (val * 0.4) + 'px';
+            }
+            if (display) {
+                display.textContent = val;
+            }
+        }
+
+        // =============================================================
+        // CONFETTI
+        // =============================================================
+        (function() {
+            const container = document.getElementById('confettiBox');
+            const colors = ['#ffd700','#ff8c00','#ff4500','#32cd32','#ff1493','#ffea00','#00bfff'];
+            const flowerEmojis = ['🌸','🌺','🌼','🌻','🌷'];
+            for(let i=0; i<20; i++) {
+                const isFlower = Math.random() > 0.5;
+                const el = document.createElement('div');
+                if(isFlower) {
+                    el.className = 'flower-emoji';
+                    el.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+                    el.style.fontSize = (0.8 + Math.random() * 1.0) + 'rem';
+                } else {
+                    el.className = 'pellet';
+                    el.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    const size = 4 + Math.floor(Math.random() * 8);
+                    el.style.width = size + 'px';
+                    el.style.height = size + 'px';
+                    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
+                }
+                el.style.left = Math.random() * 100 + '%';
+                el.style.animationDuration = (14 + Math.random() * 18) + 's';
+                el.style.animationDelay = (Math.random() * 20) + 's';
+                el.style.opacity = 0.2 + Math.random() * 0.3;
+                el.style.transform = `rotate(${Math.random() * 360}deg)`;
+                container.appendChild(el);
+            }
+        })();
+
+        // =============================================================
+        // SERVICE WORKER (PWA)
+        // =============================================================
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(reg) { console.log('✅ SW registered'); })
+                    .catch(function(err) { console.log('❌ SW failed: ', err); });
+            });
+        }
+
+        // =============================================================
+        // START AUDIO ON PAGE LOAD
+        // =============================================================
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', startBackgroundMusic);
+        } else {
+            startBackgroundMusic();
+        }
+    </script>
+</body>
+</html>
