@@ -2,11 +2,12 @@
   "name": "Perumpayil Onam 2026",
   "short_name": "Perumpayil",
   "description": "Onam 2026 Wish App for Perumpayil Duck & Pork",
-  "start_url": "/perumpayil-onam/",
+  "start_url": "/perumpayil-onam/index.html",
+  "scope": "/perumpayil-onam/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fef7e6",
-  "theme_color": "#7a3e1b",
+  "theme_color": "#8b4e1a",
   "icons": [
     {
       "src": "icon-192.png",

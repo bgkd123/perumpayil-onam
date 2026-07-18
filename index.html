@@ -69,6 +69,33 @@
         }
 
         /* ============================================================
+           FLOATING FLOWERS
+           ============================================================ */
+        .float-flower {
+            position: fixed;
+            z-index: 15;
+            pointer-events: none;
+            font-size: 2.5rem;
+            opacity: 0.6;
+            animation: floatFlower 4s ease-in-out infinite;
+        }
+        .float-flower-left {
+            left: 10px;
+            bottom: 20%;
+            animation-delay: 0s;
+        }
+        .float-flower-right {
+            right: 10px;
+            bottom: 30%;
+            animation-delay: 1.5s;
+        }
+        @keyframes floatFlower {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-25px) rotate(10deg) scale(1.1); }
+            100% { transform: translateY(0px) rotate(0deg) scale(1); }
+        }
+
+        /* ============================================================
            FALLING FLOWERS
            ============================================================ */
         .confetti-container {
@@ -180,7 +207,7 @@
         }
 
         /* ============================================================
-           MAIN CARD (blur: 4px)
+           MAIN CARD
            ============================================================ */
         .onam-card {
             max-width:440px; 
@@ -268,12 +295,10 @@
             backdrop-filter: blur(4px);
         }
 
-        /* ============================================================
-           ONAM TAG - KUMKUMA BACKGROUND + WHITE TEXT
-           ============================================================ */
+        /* ===== ONAM TAG ===== */
         .onam-tag {
             font-family: 'Anakha', 'Baloo 2', 'Segoe UI', cursive, sans-serif;
-            background: #f4a460;  /* Kumkuma / Saffron color */
+            background: #f4a460;
             padding: 16px 12px 12px;
             border-radius: 100px;
             text-align: center;
@@ -298,30 +323,40 @@
         }
 
         /* ============================================================
-           MAVELI - 150px (Default)
+           WALKING MAVELI (Side to Side)
            ============================================================ */
         .maveli-container {
-            position:fixed; right:20px; top:15%; z-index:999;
-            display:flex; align-items:center; justify-content:center;
-            pointer-events:none;
+            position: fixed;
+            right: 20px;
+            bottom: 25%;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
             filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
-            animation: floatMaveli 3s ease-in-out infinite;
+            animation: walkMaveli 4s ease-in-out infinite;
         }
         .maveli-float-img {
-            width:150px;  /* 120px → 150px */
-            height:auto; 
-            border-radius:20px;
-            display:block;
+            width: 80px;
+            height: auto;
+            border-radius: 20px;
+            display: block;
         }
         .maveli-fallback {
-            font-size:5rem; 
+            font-size: 4rem;
             filter: drop-shadow(0 10px 25px rgba(255, 215, 0, 0.6));
-            display:none;
+            display: none;
         }
-        @keyframes floatMaveli {
-            0% { transform:translateY(0px) rotate(-6deg); }
-            50% { transform:translateY(-30px) rotate(6deg); }
-            100% { transform:translateY(0px) rotate(-6deg); }
+        @keyframes walkMaveli {
+            0% { transform: translateX(0px) translateY(0px) rotate(0deg); }
+            15% { transform: translateX(-30px) translateY(-8px) rotate(-6deg); }
+            30% { transform: translateX(-50px) translateY(0px) rotate(-3deg); }
+            45% { transform: translateX(-30px) translateY(-5px) rotate(-6deg); }
+            60% { transform: translateX(0px) translateY(0px) rotate(0deg); }
+            75% { transform: translateX(30px) translateY(-8px) rotate(6deg); }
+            90% { transform: translateX(50px) translateY(0px) rotate(3deg); }
+            100% { transform: translateX(30px) translateY(-5px) rotate(6deg); }
         }
 
         /* ===== BURST FLOWERS ===== */
@@ -638,9 +673,9 @@
         @media (max-width:420px) {
             .brand { font-size:1.6rem; }
             .header-logo { width:90px; height:90px; }
-            .maveli-float-img { width:120px; }
-            .maveli-fallback { font-size:4rem; }
-            .maveli-container { right:10px; top:12%; }
+            .maveli-float-img { width:60px; }
+            .maveli-fallback { font-size:3rem; }
+            .maveli-container { right:10px; bottom:20%; }
             .size-controller { padding:10px 16px; gap:10px; bottom:16px; }
             .size-controller input[type="range"] { width:100px; }
             .popup-sound-btn { top:12px; left:12px; width:38px; height:38px; font-size:1.2rem; }
@@ -648,12 +683,19 @@
             .popup-close-hint { font-size:0.7rem; padding:6px 14px; bottom:16px; }
             .onam-tag { font-size:1.5rem; }
             .splash-continue-btn { bottom:40px; padding:14px 32px; font-size:1rem; }
+            .float-flower { font-size:1.8rem; }
+            .float-flower-left { left:5px; bottom:15%; }
+            .float-flower-right { right:5px; bottom:25%; }
             .footer-note .malayalam { font-size:1rem; }
             .footer-note .english { font-size:1.2rem; }
         }
     </style>
 </head>
 <body>
+
+    <!-- ===== FLOATING FLOWERS ===== -->
+    <div class="float-flower float-flower-left">🌸</div>
+    <div class="float-flower float-flower-right">🌺</div>
 
     <!-- ===== SPLASH SCREEN ===== -->
     <div id="splash-screen">
@@ -665,7 +707,7 @@
     <!-- ===== AUDIO ===== -->
     <audio id="bgAudio" src="onambg.mp3" loop preload="auto"></audio>
 
-    <!-- ===== MAVELI ===== -->
+    <!-- ===== WALKING MAVELI ===== -->
     <div class="maveli-container" id="maveliContainer">
         <img id="maveliImage" src="maveli.png" alt="Maveli" class="maveli-float-img" 
              onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
@@ -676,9 +718,9 @@
     <div class="size-controller">
         <i class="fas fa-arrows-alt-h" style="color:#ffd700;"></i>
         <span style="font-size:0.8rem;">Size</span>
-        <input type="range" id="sizeSlider" min="30" max="250" value="150" 
+        <input type="range" id="sizeSlider" min="30" max="250" value="80" 
                oninput="updateMaveliSize(this.value)">
-        <span class="size-label" id="sizeDisplay">150</span>
+        <span class="size-label" id="sizeDisplay">80</span>
     </div>
 
     <!-- ===== FALLING FLOWERS ===== -->
@@ -694,7 +736,6 @@
             </div>
         </div>
 
-        <!-- ===== ONAM TAG WITH KUMKUMA BACKGROUND ===== -->
         <div class="onam-tag">ഹാപ്പി ഓണം 2026</div>
 
         <div class="meat-icons">
@@ -912,12 +953,16 @@
             }
         })();
 
-        // ===== SERVICE WORKER =====
+        // ===== SERVICE WORKER (PWA) =====
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
+            window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/perumpayil-onam/sw.js')
-                    .then(() => console.log('✅ SW registered'))
-                    .catch(() => console.log('❌ SW failed'));
+                    .then(function(reg) {
+                        console.log('✅ Service Worker registered successfully!');
+                    })
+                    .catch(function(err) {
+                        console.log('❌ Service Worker registration failed: ', err);
+                    });
             });
         }
 

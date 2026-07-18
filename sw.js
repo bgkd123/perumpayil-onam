@@ -1,4 +1,4 @@
-const CACHE_NAME = 'perumpayil-v2';
+const CACHE_NAME = 'perumpayil-v3';
 const urlsToCache = [
   '/perumpayil-onam/',
   '/perumpayil-onam/index.html',
@@ -7,6 +7,8 @@ const urlsToCache = [
   '/perumpayil-onam/maveli.png',
   '/perumpayil-onam/onambg.mp3',
   '/perumpayil-onam/onam_wish.mp4',
+  '/perumpayil-onam/bg01.webp',
+  '/perumpayil-onam/onam26.webp',
   '/perumpayil-onam/Pacifico.ttf',
   '/perumpayil-onam/TarmilesAction.otf',
   '/perumpayil-onam/MLU-Anakha.ttf',
