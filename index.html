@@ -15,29 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
     <style>
-        /* ===== FONTS ===== */
-        @font-face {
-            font-family: 'TarmilesAction';
-            src: url('TarmilesAction.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Anakha';
-            src: url('MLU-Anakha.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'CelebrateScript';
-            src: url('Pacifico.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
+        /* ===== FONTS (JS will set paths) ===== */
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Roboto,system-ui,sans-serif; }
         body {
             min-height:100vh; padding:16px 12px 40px;
@@ -69,7 +47,7 @@
         }
 
         /* ============================================================
-           FLOATING FLOWERS (Emoji-based - No PNG needed)
+           FLOATING FLOWERS
            ============================================================ */
         .float-flower {
             position: fixed;
@@ -207,7 +185,7 @@
         }
 
         /* ============================================================
-           MAIN CARD (blur: 4px)
+           MAIN CARD
            ============================================================ */
         .onam-card {
             max-width:440px; 
@@ -219,8 +197,6 @@
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(255, 215, 0, 0.2) inset;
             transition: all 0.3s ease;
-            
-            background-image: url('bg01.webp');
             background-size: cover;
             background-position: center;
             background-blend-mode: overlay;
@@ -295,9 +271,7 @@
             backdrop-filter: blur(4px);
         }
 
-        /* ============================================================
-           ONAM TAG - KUMKUMA BACKGROUND
-           ============================================================ */
+        /* ===== ONAM TAG ===== */
         .onam-tag {
             font-family: 'Anakha', 'Baloo 2', 'Segoe UI', cursive, sans-serif;
             background: #f4a460;
@@ -325,30 +299,40 @@
         }
 
         /* ============================================================
-           MAVELI - 150px
+           WALKING MAVELI
            ============================================================ */
         .maveli-container {
-            position:fixed; right:20px; top:15%; z-index:999;
-            display:flex; align-items:center; justify-content:center;
-            pointer-events:none;
+            position: fixed;
+            right: 20px;
+            bottom: 25%;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
             filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
-            animation: floatMaveli 3s ease-in-out infinite;
+            animation: walkMaveli 4s ease-in-out infinite;
         }
         .maveli-float-img {
-            width:150px;
-            height:auto; 
-            border-radius:20px;
-            display:block;
+            width: 80px;
+            height: auto;
+            border-radius: 20px;
+            display: block;
         }
         .maveli-fallback {
-            font-size:5rem; 
+            font-size: 4rem;
             filter: drop-shadow(0 10px 25px rgba(255, 215, 0, 0.6));
-            display:none;
+            display: none;
         }
-        @keyframes floatMaveli {
-            0% { transform:translateY(0px) rotate(-6deg); }
-            50% { transform:translateY(-30px) rotate(6deg); }
-            100% { transform:translateY(0px) rotate(-6deg); }
+        @keyframes walkMaveli {
+            0% { transform: translateX(0px) translateY(0px) rotate(0deg); }
+            15% { transform: translateX(-30px) translateY(-8px) rotate(-6deg); }
+            30% { transform: translateX(-50px) translateY(0px) rotate(-3deg); }
+            45% { transform: translateX(-30px) translateY(-5px) rotate(-6deg); }
+            60% { transform: translateX(0px) translateY(0px) rotate(0deg); }
+            75% { transform: translateX(30px) translateY(-8px) rotate(6deg); }
+            90% { transform: translateX(50px) translateY(0px) rotate(3deg); }
+            100% { transform: translateX(30px) translateY(-5px) rotate(6deg); }
         }
 
         /* ===== BURST FLOWERS ===== */
@@ -530,7 +514,13 @@
             border-radius: 0;
             overflow: hidden;
         }
-        .popup-card video { width: 100%; height: 100%; object-fit: cover; display: block; background: #111; }
+        .popup-card video { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+            background: #111; 
+        }
 
         .popup-close-btn {
             position: fixed;
@@ -665,9 +655,9 @@
         @media (max-width:420px) {
             .brand { font-size:1.6rem; }
             .header-logo { width:90px; height:90px; }
-            .maveli-float-img { width:120px; }
-            .maveli-fallback { font-size:4rem; }
-            .maveli-container { right:10px; top:12%; }
+            .maveli-float-img { width:60px; }
+            .maveli-fallback { font-size:3rem; }
+            .maveli-container { right:10px; bottom:20%; }
             .size-controller { padding:10px 16px; gap:10px; bottom:16px; }
             .size-controller input[type="range"] { width:100px; }
             .popup-sound-btn { top:12px; left:12px; width:38px; height:38px; font-size:1.2rem; }
@@ -685,28 +675,22 @@
 </head>
 <body>
 
-    <!-- ============================================================
-    FLOATING FLOWERS (Emoji - No PNG needed)
-    ============================================================ -->
+    <!-- ===== FLOATING FLOWERS ===== -->
     <div class="float-flower float-flower-left">🌸</div>
     <div class="float-flower float-flower-right">🌺</div>
 
-    <!-- ============================================================
-    SPLASH SCREEN
-    ============================================================ -->
+    <!-- ===== SPLASH SCREEN (JS will set src) ===== -->
     <div id="splash-screen">
-        <img src="onam26.webp" alt="Onam 2026" 
-             onerror="this.onerror=null; this.src='onam26.png';" />
+        <img id="splashImage" src="" alt="Onam 2026" />
         <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
-    <!-- ===== AUDIO ===== -->
-    <audio id="bgAudio" src="onambg.mp3" loop preload="auto"></audio>
+    <!-- ===== AUDIO (JS will set src) ===== -->
+    <audio id="bgAudio" loop preload="auto"></audio>
 
-    <!-- ===== MAVELI ===== -->
+    <!-- ===== WALKING MAVELI (JS will set src) ===== -->
     <div class="maveli-container" id="maveliContainer">
-        <img id="maveliImage" src="maveli.png" alt="Maveli" class="maveli-float-img" 
-             onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
+        <img id="maveliImage" src="" alt="Maveli" class="maveli-float-img" />
         <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
     </div>
 
@@ -714,18 +698,18 @@
     <div class="size-controller">
         <i class="fas fa-arrows-alt-h" style="color:#ffd700;"></i>
         <span style="font-size:0.8rem;">Size</span>
-        <input type="range" id="sizeSlider" min="30" max="250" value="150" 
+        <input type="range" id="sizeSlider" min="30" max="250" value="80" 
                oninput="updateMaveliSize(this.value)">
-        <span class="size-label" id="sizeDisplay">150</span>
+        <span class="size-label" id="sizeDisplay">80</span>
     </div>
 
     <!-- ===== FALLING FLOWERS ===== -->
     <div class="confetti-container" id="confettiBox"></div>
 
     <!-- ===== MAIN CARD ===== -->
-    <div class="onam-card" id="mainCard">
+    <div class="onam-card" id="mainCard" style="background-image: url('');">
         <div class="header">
-            <img class="header-logo" src="Logo.png" alt="Perumpayil Logo" onerror="this.style.display='none';">
+            <img id="headerLogo" class="header-logo" src="" alt="Perumpayil Logo" onerror="this.style.display='none';">
             <div class="title-group">
                 <div class="brand">PERUMPAYIL <small>🦆🐷</small></div>
                 <div class="subhead"><i class="fas fa-leaf" style="color:#6f8f4b;"></i> Premium Quality</div>
@@ -769,7 +753,7 @@
                     +91 6282116735
                     <small>WhatsApp for orders</small>
                 </div>
-                <a href="https://wa.me/916282116735?text=Onam%20order%20-%20Perumpayil" class="action-link whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat</a>
+                <a href="https://wa.me/916282116735?text=Onam%20order%20-%20Perumpayil" class="action-link whatsapp" target="_blank"><i class="fas fa-whatsapp"></i> Chat</a>
             </div>
             <div class="info-item">
                 <i class="fas fa-phone-alt"></i>
@@ -802,10 +786,8 @@
     <!-- ===== VIDEO POPUP ===== -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
-            <video id="popupVideo" src="onam_wish.mp4" 
-                   autoplay loop playsinline webkit-playsinline
-                   preload="none"
-                   onclick="closePopup()">
+            <video id="popupVideo" autoplay loop playsinline webkit-playsinline preload="none" onclick="closePopup()">
+                <source id="videoSource" src="" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -819,7 +801,100 @@
     </div>
 
     <script>
-        // ===== BACKGROUND MUSIC =====
+        // =============================================================
+        // DYNAMIC BASE URL - സ്വയമേവ കണ്ടെത്തുന്നു
+        // =============================================================
+        function getBaseUrl() {
+            // നിലവിലെ URL-ൽ നിന്ന് Base URL കണ്ടെത്തുക
+            const path = window.location.pathname;
+            if (path.includes('/perumpayil-onam/')) {
+                return '/perumpayil-onam/';
+            } else if (path.includes('/Perumpayil-onam/')) {
+                return '/Perumpayil-onam/';
+            } else {
+                // Fallback: Repository പേര്
+                return '/perumpayil-onam/';
+            }
+        }
+
+        const BASE_URL = getBaseUrl();
+
+        // =============================================================
+        // LOAD ALL ASSETS
+        // =============================================================
+        function loadAssets() {
+            // Splash Image
+            const splashImg = document.getElementById('splashImage');
+            splashImg.src = BASE_URL + 'onam26.webp';
+            splashImg.onerror = function() {
+                this.src = BASE_URL + 'onam26.png';
+            };
+
+            // Background Music
+            const audio = document.getElementById('bgAudio');
+            audio.src = BASE_URL + 'onambg.mp3';
+
+            // Maveli Image
+            const maveliImg = document.getElementById('maveliImage');
+            maveliImg.src = BASE_URL + 'maveli.png';
+            maveliImg.onerror = function() {
+                this.style.display = 'none';
+                document.getElementById('maveliFallback').style.display = 'block';
+            };
+
+            // Header Logo
+            const headerLogo = document.getElementById('headerLogo');
+            headerLogo.src = BASE_URL + 'Logo.png';
+
+            // Card Background
+            const card = document.getElementById('mainCard');
+            card.style.backgroundImage = 'url(' + BASE_URL + 'bg01.webp)';
+
+            // Video Source
+            const videoSource = document.getElementById('videoSource');
+            videoSource.src = BASE_URL + 'onam_wish.mp4';
+            const video = document.getElementById('popupVideo');
+            video.load();
+
+            // Load Fonts dynamically
+            loadFonts();
+        }
+
+        // =============================================================
+        // LOAD FONTS DYNAMICALLY
+        // =============================================================
+        function loadFonts() {
+            const fontStyles = `
+                @font-face {
+                    font-family: 'TarmilesAction';
+                    src: url('${BASE_URL}TarmilesAction.otf') format('opentype');
+                    font-weight: normal;
+                    font-style: normal;
+                    font-display: swap;
+                }
+                @font-face {
+                    font-family: 'Anakha';
+                    src: url('${BASE_URL}MLU-Anakha.ttf') format('truetype');
+                    font-weight: normal;
+                    font-style: normal;
+                    font-display: swap;
+                }
+                @font-face {
+                    font-family: 'CelebrateScript';
+                    src: url('${BASE_URL}Pacifico.ttf') format('truetype');
+                    font-weight: normal;
+                    font-style: normal;
+                    font-display: swap;
+                }
+            `;
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = fontStyles;
+            document.head.appendChild(styleSheet);
+        }
+
+        // =============================================================
+        // BACKGROUND MUSIC
+        // =============================================================
         const bgAudio = document.getElementById('bgAudio');
         let bgIsPlaying = false;
         let audioInitAttempted = false;
@@ -847,7 +922,9 @@
             document.getElementById('mainCard').style.pointerEvents = 'auto';
         }
 
-        // ===== SHARE =====
+        // =============================================================
+        // SHARE
+        // =============================================================
         function shareApp() {
             const url = window.location.href;
             if (navigator.share) {
@@ -865,7 +942,9 @@
         }
         function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000); }
 
-        // ===== BURST FLOWERS =====
+        // =============================================================
+        // BURST FLOWERS
+        // =============================================================
         function createBurstFlowers() {
             const emojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
             for (let i = 0; i < 12; i++) {
@@ -920,7 +999,9 @@
             if (display) display.textContent = val;
         }
 
-        // ===== CONFETTI =====
+        // =============================================================
+        // CONFETTI
+        // =============================================================
         (function() {
             const container = document.getElementById('confettiBox');
             const colors = ['#ffd700','#ff8c00','#ff4500','#32cd32','#ff1493','#ffea00'];
@@ -949,20 +1030,33 @@
             }
         })();
 
-        // ===== SERVICE WORKER =====
+        // =============================================================
+        // SERVICE WORKER (PWA)
+        // =============================================================
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/perumpayil-onam/sw.js')
-                    .then(() => console.log('✅ SW registered'))
-                    .catch(() => console.log('❌ SW failed'));
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register(BASE_URL + 'sw.js')
+                    .then(function(reg) {
+                        console.log('✅ Service Worker registered successfully!');
+                    })
+                    .catch(function(err) {
+                        console.log('❌ Service Worker registration failed: ', err);
+                    });
             });
         }
 
-        // ===== SHOW CONTINUE BUTTON AFTER 2s =====
+        // =============================================================
+        // SHOW CONTINUE BUTTON AFTER 2s
+        // =============================================================
         setTimeout(() => {
             const btn = document.querySelector('.splash-continue-btn');
             if (btn) { btn.classList.add('show'); btn.style.opacity = '1'; btn.style.visibility = 'visible'; }
         }, 2000);
+
+        // =============================================================
+        // LOAD ASSETS ON PAGE LOAD
+        // =============================================================
+        window.addEventListener('DOMContentLoaded', loadAssets);
     </script>
 </body>
 </html>
