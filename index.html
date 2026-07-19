@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title><b>PERUMPAYIL</b> · Meat Centre · Onam</title>
+    <title>Perumpayil · Meat Centre · Onam</title>
 
-    <!-- ===== VERSION 5 - CACHE BUSTER ===== -->
-    <link rel="manifest" href="manifest.json?v=5" />
+    <!-- ===== VERSION 7 - CACHE BUSTER ===== -->
+    <link rel="manifest" href="manifest.json?v=7" />
     <meta name="theme-color" content="#8b4e1a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
-    <link rel="apple-touch-icon" href="icon-192.png?v=5" />
+    <link rel="apple-touch-icon" href="icon-192.png?v=7" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
@@ -19,34 +19,30 @@
         /* ============================================================
            FONTS
            ============================================================ */
-        /* 1. TarmilesAction - for Splash */
         @font-face {
             font-family: 'TarmilesAction';
-            src: url('TarmilesAction.otf?v=5') format('opentype');
+            src: url('TarmilesAction.otf?v=7') format('opentype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
-        /* 2. MLU-Anakha - for Malayalam */
         @font-face {
             font-family: 'Anakha';
-            src: url('MLU-Anakha.ttf?v=5') format('truetype');
+            src: url('MLU-Anakha.ttf?v=7') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
-        /* 3. Pacifico - for "Meat Centre" */
         @font-face {
             font-family: 'CelebrateScript';
-            src: url('Pacifico.ttf?v=5') format('truetype');
+            src: url('Pacifico.ttf?v=7') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
-        /* 4. MLU-Ambili Bold - for "Perumpayil" (NEW) */
         @font-face {
             font-family: 'AmbiliBold';
-            src: url('MLU-Ambili Bold.ttf?v=5') format('truetype');
+            src: url('MLU-Ambili Bold.ttf?v=7') format('truetype');
             font-weight: bold;
             font-style: normal;
             font-display: swap;
@@ -273,7 +269,7 @@
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             
-            background-image: url('bg01.webp?v=5');
+            background-image: url('bg01.webp?v=7');
             background-size: cover;
             background-position: center;
             background-color: rgba(255, 248, 235, 0.2);
@@ -281,7 +277,7 @@
         }
 
         /* ============================================================
-           HEADER - PERUMPAYIL with Ambili Bold Font
+           HEADER - PERUMPAYIL (FULL CAPITAL + BOLD)
            ============================================================ */
         .header {
             display: flex;
@@ -307,15 +303,15 @@
             align-items: center;
             text-align: center;
         }
-        /* ===== PERUMPAYIL - AMBILI BOLD FONT ===== */
         .brand {
             font-family: 'AmbiliBold', 'TarmilesAction', 'Baloo 2', cursive, sans-serif;
             font-size: 3rem;
-            font-weight: bold;
-            letter-spacing: 3px;
+            font-weight: 900;
+            letter-spacing: 4px;
             color: #4a2a0e;
             line-height: 1.1;
             text-shadow: 3px 3px 0 rgba(255, 215, 0, 0.4), 0 0 40px rgba(255,215,0,0.1);
+            text-transform: uppercase;
         }
         .brand-sub {
             font-family: 'CelebrateScript', 'Pacifico', 'Dancing Script', cursive;
@@ -340,7 +336,7 @@
         }
 
         /* ============================================================
-           ONAM TAG - No 2026
+           ONAM TAG - DARK RED + WHITE STROKE
            ============================================================ */
         .onam-tag {
             font-family: 'Anakha', 'Baloo 2', 'Segoe UI', cursive, sans-serif;
@@ -354,12 +350,14 @@
             margin: 14px 0 12px;
             border: 2px solid #ffd700;
             box-shadow: 0 0 40px rgba(244, 164, 96, 0.4), 0 4px 0 #b6894e;
-            color: #ffffff;
+            
+            /* ===== DARK RED + WHITE STROKE ===== */
+            color: #8b0000;
             text-shadow: 
-                -1px -1px 0 rgba(0,0,0,0.3),
-                1px -1px 0 rgba(0,0,0,0.3),
-                -1px 1px 0 rgba(0,0,0,0.3),
-                1px 1px 0 rgba(0,0,0,0.3),
+                -2px -2px 0 #ffffff,
+                2px -2px 0 #ffffff,
+                -2px 2px 0 #ffffff,
+                2px 2px 0 #ffffff,
                 0 0 20px rgba(255, 215, 0, 0.2);
             animation: glowPulse 3s ease-in-out infinite;
         }
@@ -723,7 +721,7 @@
         }
 
         @media (max-width:420px) {
-            .brand { font-size: 2.2rem; }
+            .brand { font-size: 2.2rem; letter-spacing: 2px; }
             .brand-sub { font-size: 1rem; }
             .header-logo { width: 80px; height: 80px; }
             .maveli-float-img { width: 60px; }
@@ -769,17 +767,17 @@
     SPLASH SCREEN
     ============================================================ -->
     <div id="splash-screen">
-        <img src="onam26.webp?v=5" alt="Onam 2026" 
-             onerror="this.onerror=null; this.src='onam26.png?v=5';" />
+        <img src="onam26.webp?v=7" alt="Onam 2026" 
+             onerror="this.onerror=null; this.src='onam26.png?v=7';" />
         <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
     <!-- ===== AUDIO ===== -->
-    <audio id="bgAudio" src="onambg.mp3?v=5" loop preload="auto"></audio>
+    <audio id="bgAudio" src="onambg.mp3?v=7" loop preload="auto"></audio>
 
     <!-- ===== WALKING MAVELI ===== -->
     <div class="maveli-container" id="maveliContainer">
-        <img id="maveliImage" src="maveli.png?v=5" alt="Maveli" class="maveli-float-img" 
+        <img id="maveliImage" src="maveli.png?v=7" alt="Maveli" class="maveli-float-img" 
              onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
         <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
     </div>
@@ -801,21 +799,21 @@
     ============================================================ -->
     <div class="onam-card" id="mainCard">
         <div class="header">
-            <img class="header-logo" src="Logo.png?v=5" alt="Perumpayil Logo" onerror="this.style.display='none';">
+            <img class="header-logo" src="Logo.png?v=7" alt="Perumpayil Logo" onerror="this.style.display='none';">
             <div class="title-group">
-                <!-- ===== PERUMPAYIL - AMBILI BOLD FONT ===== -->
-                <div class="brand">Perumpayil</div>
+                <div class="brand">PERUMPAYIL</div>
                 <div class="brand-sub">Meat Centre</div>
                 <div class="subhead"><i class="fas fa-leaf" style="color:#6f8f4b;"></i> Premium Quality</div>
             </div>
         </div>
 
+        <!-- ===== ONAM TAG - DARK RED + WHITE STROKE ===== -->
         <div class="onam-tag">ഹാപ്പി ഓണം</div>
 
         <div class="meat-icons">
             <div><span>🦆</span><span class="label">DUCK</span></div>
             <div><span>🐷</span><span class="label">PORK</span></div>
-            <div><span>🥩</span><span class="label">FRESH</span></div>
+            <div><span>??</span><span class="label">FRESH</span></div>
         </div>
 
         <div style="text-align:center;">
@@ -880,7 +878,7 @@
     <!-- ===== VIDEO POPUP ===== -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
-            <video id="popupVideo" src="onam_wish.mp4?v=5" 
+            <video id="popupVideo" src="onam_wish.mp4?v=7" 
                    autoplay loop playsinline webkit-playsinline
                    preload="none"
                    onclick="closePopup()">
@@ -1030,7 +1028,7 @@
         // ===== SERVICE WORKER (PWA) =====
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=5')
+                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=7')
                     .then(function(reg) {
                         console.log('✅ Service Worker registered successfully!');
                     })

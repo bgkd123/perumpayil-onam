@@ -1,4 +1,4 @@
-const CACHE_NAME = 'perumpayil-v9';
+const CACHE_NAME = 'perumpayil-v7';
 const BASE = '/perumpayil-onam/';
 const urlsToCache = [
   BASE,
@@ -13,6 +13,7 @@ const urlsToCache = [
   BASE + 'Pacifico.ttf',
   BASE + 'TarmilesAction.otf',
   BASE + 'MLU-Anakha.ttf',
+  BASE + 'MLU-Ambili Bold.ttf',
   BASE + 'icon-192.png',
   BASE + 'icon-512.png'
 ];
