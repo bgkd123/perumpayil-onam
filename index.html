@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <base href="/perumpayil-onam/" />
     <title>Perumpayil · Duck & Pork · Onam 2026</title>
 
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="https://bgkd123.github.io/perumpayil-onam/manifest.json" />
     <meta name="theme-color" content="#8b4e1a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
-    <link rel="apple-touch-icon" href="icon-192.png" />
+    <link rel="apple-touch-icon" href="https://bgkd123.github.io/perumpayil-onam/icon-192.png" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
@@ -19,21 +18,21 @@
         /* ===== FONTS ===== */
         @font-face {
             font-family: 'TarmilesAction';
-            src: url('TarmilesAction.otf') format('opentype');
+            src: url('https://bgkd123.github.io/perumpayil-onam/TarmilesAction.otf') format('opentype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Anakha';
-            src: url('MLU-Anakha.ttf') format('truetype');
+            src: url('https://bgkd123.github.io/perumpayil-onam/MLU-Anakha.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'CelebrateScript';
-            src: url('Pacifico.ttf') format('truetype');
+            src: url('https://bgkd123.github.io/perumpayil-onam/Pacifico.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
@@ -221,7 +220,7 @@
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(255, 215, 0, 0.2) inset;
             transition: all 0.3s ease;
             
-            background-image: url('bg01.webp');
+            background-image: url('https://bgkd123.github.io/perumpayil-onam/bg01.webp');
             background-size: cover;
             background-position: center;
             background-blend-mode: overlay;
@@ -539,7 +538,13 @@
             border-radius: 0;
             overflow: hidden;
         }
-        .popup-card video { width: 100%; height: 100%; object-fit: cover; display: block; background: #111; }
+        .popup-card video { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+            background: #111; 
+        }
 
         .popup-close-btn {
             position: fixed;
@@ -700,17 +705,17 @@
 
     <!-- ===== SPLASH SCREEN ===== -->
     <div id="splash-screen">
-        <img src="onam26.webp" alt="Onam 2026" 
-             onerror="this.onerror=null; this.src='onam26.png';" />
+        <img src="https://bgkd123.github.io/perumpayil-onam/onam26.webp" alt="Onam 2026" 
+             onerror="this.onerror=null; this.src='https://bgkd123.github.io/perumpayil-onam/onam26.png';" />
         <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
     <!-- ===== AUDIO ===== -->
-    <audio id="bgAudio" src="onambg.mp3" loop preload="auto"></audio>
+    <audio id="bgAudio" src="https://bgkd123.github.io/perumpayil-onam/onambg.mp3" loop preload="auto"></audio>
 
     <!-- ===== WALKING MAVELI ===== -->
     <div class="maveli-container" id="maveliContainer">
-        <img id="maveliImage" src="maveli.png" alt="Maveli" class="maveli-float-img" 
+        <img id="maveliImage" src="https://bgkd123.github.io/perumpayil-onam/maveli.png" alt="Maveli" class="maveli-float-img" 
              onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
         <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
     </div>
@@ -730,7 +735,7 @@
     <!-- ===== MAIN CARD ===== -->
     <div class="onam-card" id="mainCard">
         <div class="header">
-            <img class="header-logo" src="Logo.png" alt="Perumpayil Logo" onerror="this.style.display='none';">
+            <img class="header-logo" src="https://bgkd123.github.io/perumpayil-onam/Logo.png" alt="Perumpayil Logo" onerror="this.style.display='none';">
             <div class="title-group">
                 <div class="brand">PERUMPAYIL <small>🦆🐷</small></div>
                 <div class="subhead"><i class="fas fa-leaf" style="color:#6f8f4b;"></i> Premium Quality</div>
@@ -807,7 +812,7 @@
     <!-- ===== VIDEO POPUP ===== -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
-            <video id="popupVideo" src="onam_wish.mp4" 
+            <video id="popupVideo" src="https://bgkd123.github.io/perumpayil-onam/onam_wish.mp4" 
                    autoplay loop playsinline webkit-playsinline
                    preload="none"
                    onclick="closePopup()">
@@ -957,7 +962,7 @@
         // ===== SERVICE WORKER (PWA) =====
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/perumpayil-onam/sw.js')
+                navigator.serviceWorker.register('https://bgkd123.github.io/perumpayil-onam/sw.js')
                     .then(function(reg) {
                         console.log('✅ Service Worker registered successfully!');
                     })

@@ -1,19 +1,19 @@
-const CACHE_NAME = 'perumpayil-v5';
+const CACHE_NAME = 'perumpayil-v6';
 const urlsToCache = [
-  '/perumpayil-onam/',
-  '/perumpayil-onam/index.html',
-  '/perumpayil-onam/manifest.json',
-  '/perumpayil-onam/Logo.png',
-  '/perumpayil-onam/maveli.png',
-  '/perumpayil-onam/onambg.mp3',
-  '/perumpayil-onam/onam_wish.mp4',
-  '/perumpayil-onam/bg01.webp',
-  '/perumpayil-onam/onam26.webp',
-  '/perumpayil-onam/Pacifico.ttf',
-  '/perumpayil-onam/TarmilesAction.otf',
-  '/perumpayil-onam/MLU-Anakha.ttf',
-  '/perumpayil-onam/icon-192.png',
-  '/perumpayil-onam/icon-512.png'
+  'https://bgkd123.github.io/perumpayil-onam/',
+  'https://bgkd123.github.io/perumpayil-onam/index.html',
+  'https://bgkd123.github.io/perumpayil-onam/manifest.json',
+  'https://bgkd123.github.io/perumpayil-onam/Logo.png',
+  'https://bgkd123.github.io/perumpayil-onam/maveli.png',
+  'https://bgkd123.github.io/perumpayil-onam/onambg.mp3',
+  'https://bgkd123.github.io/perumpayil-onam/onam_wish.mp4',
+  'https://bgkd123.github.io/perumpayil-onam/bg01.webp',
+  'https://bgkd123.github.io/perumpayil-onam/onam26.webp',
+  'https://bgkd123.github.io/perumpayil-onam/Pacifico.ttf',
+  'https://bgkd123.github.io/perumpayil-onam/TarmilesAction.otf',
+  'https://bgkd123.github.io/perumpayil-onam/MLU-Anakha.ttf',
+  'https://bgkd123.github.io/perumpayil-onam/icon-192.png',
+  'https://bgkd123.github.io/perumpayil-onam/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
