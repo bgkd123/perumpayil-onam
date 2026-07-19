@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>Perumpayil · Meat Centre · Onam</title>
 
-    <!-- ===== VERSION 8 - CACHE BUSTER ===== -->
-    <link rel="manifest" href="manifest.json?v=8" />
+    <link rel="manifest" href="manifest.json?v=9" />
     <meta name="theme-color" content="#8b4e1a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
-    <link rel="apple-touch-icon" href="icon-192.png?v=8" />
+    <link rel="apple-touch-icon" href="icon-192.png?v=9" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
@@ -21,28 +20,28 @@
            ============================================================ */
         @font-face {
             font-family: 'TarmilesAction';
-            src: url('TarmilesAction.otf?v=8') format('opentype');
+            src: url('TarmilesAction.otf?v=9') format('opentype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Anakha';
-            src: url('MLU-Anakha.ttf?v=8') format('truetype');
+            src: url('MLU-Anakha.ttf?v=9') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'CelebrateScript';
-            src: url('Pacifico.ttf?v=8') format('truetype');
+            src: url('Pacifico.ttf?v=9') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'AmbiliBold';
-            src: url('MLU-Ambili Bold.ttf?v=8') format('truetype');
+            src: url('MLU-Ambili Bold.ttf?v=9') format('truetype');
             font-weight: bold;
             font-style: normal;
             font-display: swap;
@@ -269,7 +268,7 @@
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             
-            background-image: url('bg01.webp?v=8');
+            background-image: url('bg01.webp?v=9');
             background-size: cover;
             background-position: center;
             background-color: rgba(255, 248, 235, 0.2);
@@ -277,7 +276,7 @@
         }
 
         /* ============================================================
-           HEADER - PERUMPAYIL (FULL CAPITAL + BOLD)
+           HEADER
            ============================================================ */
         .header {
             display: flex;
@@ -366,7 +365,7 @@
         }
 
         /* ============================================================
-           WALKING MAVELI
+           MAVELI
            ============================================================ */
         .maveli-container {
             position: fixed;
@@ -456,7 +455,7 @@
         }
 
         /* ============================================================
-           MEAT ICONS - FRESH FIXED (Segoe UI for English)
+           MEAT ICONS - FRESH FIXED
            ============================================================ */
         .meat-icons {
             display:flex; 
@@ -480,7 +479,7 @@
             display: block;
             text-align: center;
             letter-spacing: 1px;
-            font-family: 'Segoe UI', Arial, sans-serif;  /* ← FIXED */
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         .premium-badge {
@@ -491,6 +490,38 @@
         }
         .premium-badge i { margin-right:6px; color:#f7c56e; }
 
+        /* ============================================================
+           INSTALL BUTTON
+           ============================================================ */
+        .install-btn {
+            background: linear-gradient(145deg, #2a6b4a, #0f3b2c);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.0rem;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(26, 107, 74, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            max-width: 320px;
+            margin: 8px auto;
+            border: 2px solid #ffd700;
+        }
+        .install-btn:hover { transform: scale(1.02); box-shadow: 0 10px 35px rgba(26, 107, 74, 0.5); }
+        .install-btn:active { transform: translateY(4px) scale(0.98); }
+        .install-btn i { color: #ffd700; font-size: 1.2rem; }
+        .install-btn.hidden { display: none; }
+
+        /* ============================================================
+           BUTTONS
+           ============================================================ */
         .wish-btn-open {
             background: linear-gradient(145deg, #8b4e1a, #5a3010);
             color: #fcf3e2;
@@ -570,7 +601,78 @@
         }
         .toast.show { opacity: 1; }
 
-        /* ===== POPUP ===== */
+        /* ============================================================
+           INFO GRID
+           ============================================================ */
+        .info-grid { display:flex; flex-direction:column; gap:12px; margin:16px 0 22px; }
+        .info-item {
+            background:rgba(255,255,255,0.3); backdrop-filter:blur(4px); padding:12px 16px; border-radius:60px;
+            display:flex; align-items:center; gap:14px; border:1px solid rgba(255,215,0,0.2); 
+            box-shadow:0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .info-item:hover { background:rgba(255,255,255,0.4); transform: translateY(-2px); }
+        .info-item i { width:28px; font-size:1.3rem; color:#4a2a0e; text-align:center; }
+        .info-item .content { flex:1; font-size:0.95rem; font-weight:500; color:#2d1e0e; word-break:break-word; }
+        .info-item .content small { font-weight:400; color:#6b4d2b; display:block; font-size:0.75rem; }
+        .info-item .action-link {
+            background:#1b6b4a; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;
+            font-size:0.8rem; font-weight:600; white-space:nowrap; border:1px solid #ffd700;
+            transition:all 0.3s ease; box-shadow:0 3px 0 #0d412e;
+        }
+        .info-item .action-link:hover { background:#2a8a5a; transform:scale(1.05); }
+        .info-item .action-link i { color:white; font-size:0.9rem; margin-right:4px; }
+        .info-item .action-link.whatsapp { background:#1f8b4c; box-shadow:0 3px 0 #0d5e31; }
+        .info-item .action-link.whatsapp:hover { background:#2aa85c; }
+
+        .order-section {
+            background:rgba(255,215,0,0.15); backdrop-filter:blur(4px); border-radius:48px 48px 28px 28px; padding:18px 16px 22px;
+            margin:16px 0 8px; border:1px solid rgba(255,215,0,0.2); 
+        }
+        .order-section h3 { display:flex; align-items:center; gap:10px; font-size:1.3rem; color:#3f2b13; margin-bottom:12px; justify-content:center; }
+        .order-btn-group { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
+        .order-btn {
+            background:#2a1c0e; color:#fcf3e2; border:none; padding:14px 24px; border-radius:60px;
+            font-weight:700; font-size:1rem; display:inline-flex; align-items:center; gap:12px;
+            box-shadow:0 6px 0 #0f0a06; transition:all 0.3s ease; cursor:pointer; border:1px solid #ffd700;
+            flex:1 1 auto; justify-content:center; text-decoration:none; color:#fcf3e2;
+        }
+        .order-btn:hover { transform:translateY(-2px); box-shadow:0 8px 0 #0f0a06; }
+        .order-btn:active { transform:translateY(4px); box-shadow:0 2px 0 #0f0a06; }
+        .order-btn.green { background:#1b7a44; box-shadow:0 6px 0 #0f4d2a; }
+        .order-btn.green:hover { background:#229a52; }
+        .order-btn.amber { background:#b8701a; box-shadow:0 6px 0 #7a4a0e; }
+        .order-btn.amber:hover { background:#d4882a; }
+
+        .footer-note {
+            margin-top: 24px;
+            text-align: center;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .footer-note .malayalam {
+            font-family: 'Anakha', 'Segoe UI', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #4a2a0e;
+            display: block;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 10px rgba(255,215,0,0.2);
+        }
+        .footer-note .english {
+            font-family: 'CelebrateScript', 'Pacifico', 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            font-weight: normal;
+            color: #6a3d1e;
+            display: block;
+            text-shadow: 0 2px 20px rgba(255,215,0,0.2);
+            letter-spacing: 1px;
+        }
+
+        /* ============================================================
+           POPUP
+           ============================================================ */
         .popup-overlay {
             position: fixed;
             top: 0;
@@ -673,72 +775,6 @@
         }
         .popup-close-hint i { margin-right: 8px; }
 
-        .info-grid { display:flex; flex-direction:column; gap:12px; margin:16px 0 22px; }
-        .info-item {
-            background:rgba(255,255,255,0.3); backdrop-filter:blur(4px); padding:12px 16px; border-radius:60px;
-            display:flex; align-items:center; gap:14px; border:1px solid rgba(255,215,0,0.2); 
-            box-shadow:0 4px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-        .info-item:hover { background:rgba(255,255,255,0.4); transform: translateY(-2px); }
-        .info-item i { width:28px; font-size:1.3rem; color:#4a2a0e; text-align:center; }
-        .info-item .content { flex:1; font-size:0.95rem; font-weight:500; color:#2d1e0e; word-break:break-word; }
-        .info-item .content small { font-weight:400; color:#6b4d2b; display:block; font-size:0.75rem; }
-        .info-item .action-link {
-            background:#1b6b4a; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;
-            font-size:0.8rem; font-weight:600; white-space:nowrap; border:1px solid #ffd700;
-            transition:all 0.3s ease; box-shadow:0 3px 0 #0d412e;
-        }
-        .info-item .action-link:hover { background:#2a8a5a; transform:scale(1.05); }
-        .info-item .action-link i { color:white; font-size:0.9rem; margin-right:4px; }
-        .info-item .action-link.whatsapp { background:#1f8b4c; box-shadow:0 3px 0 #0d5e31; }
-        .info-item .action-link.whatsapp:hover { background:#2aa85c; }
-
-        .order-section {
-            background:rgba(255,215,0,0.15); backdrop-filter:blur(4px); border-radius:48px 48px 28px 28px; padding:18px 16px 22px;
-            margin:16px 0 8px; border:1px solid rgba(255,215,0,0.2); 
-        }
-        .order-section h3 { display:flex; align-items:center; gap:10px; font-size:1.3rem; color:#3f2b13; margin-bottom:12px; justify-content:center; }
-        .order-btn-group { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
-        .order-btn {
-            background:#2a1c0e; color:#fcf3e2; border:none; padding:14px 24px; border-radius:60px;
-            font-weight:700; font-size:1rem; display:inline-flex; align-items:center; gap:12px;
-            box-shadow:0 6px 0 #0f0a06; transition:all 0.3s ease; cursor:pointer; border:1px solid #ffd700;
-            flex:1 1 auto; justify-content:center; text-decoration:none; color:#fcf3e2;
-        }
-        .order-btn:hover { transform:translateY(-2px); box-shadow:0 8px 0 #0f0a06; }
-        .order-btn:active { transform:translateY(4px); box-shadow:0 2px 0 #0f0a06; }
-        .order-btn.green { background:#1b7a44; box-shadow:0 6px 0 #0f4d2a; }
-        .order-btn.green:hover { background:#229a52; }
-        .order-btn.amber { background:#b8701a; box-shadow:0 6px 0 #7a4a0e; }
-        .order-btn.amber:hover { background:#d4882a; }
-
-        .footer-note {
-            margin-top: 24px;
-            text-align: center;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-note .malayalam {
-            font-family: 'Anakha', 'Segoe UI', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #4a2a0e;
-            display: block;
-            margin-bottom: 4px;
-            text-shadow: 0 2px 10px rgba(255,215,0,0.2);
-        }
-        .footer-note .english {
-            font-family: 'CelebrateScript', 'Pacifico', 'Dancing Script', cursive;
-            font-size: 1.5rem;
-            font-weight: normal;
-            color: #6a3d1e;
-            display: block;
-            text-shadow: 0 2px 20px rgba(255,215,0,0.2);
-            letter-spacing: 1px;
-        }
-
         @media (max-width:420px) {
             .brand { font-size: 2.2rem; letter-spacing: 2px; }
             .brand-sub { font-size: 1rem; }
@@ -786,17 +822,17 @@
     SPLASH SCREEN
     ============================================================ -->
     <div id="splash-screen">
-        <img src="onam26.webp?v=8" alt="Onam 2026" 
-             onerror="this.onerror=null; this.src='onam26.png?v=8';" />
+        <img src="onam26.webp?v=9" alt="Onam 2026" 
+             onerror="this.onerror=null; this.src='onam26.png?v=9';" />
         <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
     <!-- ===== AUDIO ===== -->
-    <audio id="bgAudio" src="onambg.mp3?v=8" loop preload="auto"></audio>
+    <audio id="bgAudio" src="onambg.mp3?v=9" loop preload="auto"></audio>
 
-    <!-- ===== WALKING MAVELI ===== -->
+    <!-- ===== MAVELI ===== -->
     <div class="maveli-container" id="maveliContainer">
-        <img id="maveliImage" src="maveli.png?v=8" alt="Maveli" class="maveli-float-img" 
+        <img id="maveliImage" src="maveli.png?v=9" alt="Maveli" class="maveli-float-img" 
              onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
         <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
     </div>
@@ -818,7 +854,7 @@
     ============================================================ -->
     <div class="onam-card" id="mainCard">
         <div class="header">
-            <img class="header-logo" src="Logo.png?v=8" alt="Perumpayil Logo" onerror="this.style.display='none';">
+            <img class="header-logo" src="Logo.png?v=9" alt="Perumpayil Logo" onerror="this.style.display='none';">
             <div class="title-group">
                 <div class="brand">PERUMPAYIL</div>
                 <div class="brand-sub">Meat Centre</div>
@@ -828,7 +864,6 @@
 
         <div class="onam-tag">ഹാപ്പി ഓണം</div>
 
-        <!-- ===== MEAT ICONS - FRESH FIXED ===== -->
         <div class="meat-icons">
             <div><span>🦆</span><span class="label">DUCK</span></div>
             <div><span>🐷</span><span class="label">PORK</span></div>
@@ -839,8 +874,14 @@
             <span class="premium-badge"><i class="fas fa-star"></i> Fresh Always · Farm sourced</span>
         </div>
 
+        <!-- ===== BUTTONS ===== -->
         <button class="wish-btn-open" onclick="openPopupWithBurst()">
             <i class="fas fa-gift"></i> A Gift For You <i class="fas fa-video"></i>
+        </button>
+
+        <!-- ===== INSTALL BUTTON ===== -->
+        <button id="installBtn" class="install-btn hidden" onclick="installApp()">
+            <i class="fas fa-download"></i> Install App
         </button>
 
         <button class="share-btn" onclick="shareApp()">
@@ -894,10 +935,12 @@
         </div>
     </div>
 
-    <!-- ===== VIDEO POPUP ===== -->
+    <!-- ============================================================
+    VIDEO POPUP
+    ============================================================ -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
-            <video id="popupVideo" src="onam_wish.mp4?v=8" 
+            <video id="popupVideo" src="onam_wish.mp4?v=9" 
                    autoplay loop playsinline webkit-playsinline
                    preload="none"
                    onclick="closePopup()">
@@ -914,7 +957,45 @@
     </div>
 
     <script>
-        // ===== BACKGROUND MUSIC =====
+        // =============================================================
+        // PWA INSTALL
+        // =============================================================
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.classList.remove('hidden');
+            console.log('✅ Install prompt available');
+        });
+
+        window.addEventListener('appinstalled', () => {
+            installBtn.classList.add('hidden');
+            deferredPrompt = null;
+            console.log('✅ App installed successfully');
+            showToast('✅ App installed successfully!');
+        });
+
+        function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('✅ User accepted the install prompt');
+                    } else {
+                        console.log('❌ User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            } else {
+                showToast('⚠️ Install not available. Use Chrome menu.');
+            }
+        }
+
+        // =============================================================
+        // BACKGROUND MUSIC
+        // =============================================================
         const bgAudio = document.getElementById('bgAudio');
         let bgIsPlaying = false;
         let audioInitAttempted = false;
@@ -942,7 +1023,9 @@
             document.getElementById('mainCard').style.pointerEvents = 'auto';
         }
 
-        // ===== SHARE =====
+        // =============================================================
+        // SHARE
+        // =============================================================
         function shareApp() {
             const url = window.location.href;
             if (navigator.share) {
@@ -960,7 +1043,9 @@
         }
         function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000); }
 
-        // ===== BURST FLOWERS =====
+        // =============================================================
+        // BURST FLOWERS
+        // =============================================================
         function createBurstFlowers() {
             const emojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
             for (let i = 0; i < 12; i++) {
@@ -1047,7 +1132,7 @@
         // ===== SERVICE WORKER (PWA) =====
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=8')
+                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=9')
                     .then(function(reg) {
                         console.log('✅ Service Worker registered successfully!');
                     })
