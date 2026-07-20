@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>Perumpayil · Meat Centre · Onam</title>
 
-    <link rel="manifest" href="manifest.json?v=11" />
+    <link rel="manifest" href="manifest.json?v=12" />
     <meta name="theme-color" content="#8b4e1a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
-    <link rel="apple-touch-icon" href="icon-192.png?v=11" />
+    <link rel="apple-touch-icon" href="icon-192.png?v=12" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
@@ -20,28 +20,28 @@
            ============================================================ */
         @font-face {
             font-family: 'TarmilesAction';
-            src: url('TarmilesAction.otf?v=11') format('opentype');
+            src: url('TarmilesAction.otf?v=12') format('opentype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Anakha';
-            src: url('MLU-Anakha.ttf?v=11') format('truetype');
+            src: url('MLU-Anakha.ttf?v=12') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'CelebrateScript';
-            src: url('Pacifico.ttf?v=11') format('truetype');
+            src: url('Pacifico.ttf?v=12') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'AmbiliBold';
-            src: url('MLU-Ambili Bold.ttf?v=11') format('truetype');
+            src: url('MLU-Ambili Bold.ttf?v=12') format('truetype');
             font-weight: bold;
             font-style: normal;
             font-display: swap;
@@ -57,12 +57,10 @@
             justify-content:center;
             position:relative;
             overflow-x:hidden;
-            /* Initial background - will be changed by JS */
-            background: url('pattern1.webp?v=11') repeat center center;
+            background: url('pattern1.webp?v=12') repeat center center;
             background-size: 200px 200px;
             transition: background-image 0.8s ease-in-out;
         }
-        /* Gradient overlay on top of pattern */
         body::after {
             content: '';
             position: fixed;
@@ -75,7 +73,7 @@
             pointer-events: none;
         }
 
-        /* ===== BACKGROUND FLOWER PATTERN (Keep for texture) ===== */
+        /* ===== BACKGROUND FLOWER PATTERN ===== */
         body::before {
             content: "🌸🌼🌺🌻🌷🌹💐🌸🌼🌺🌻🌷🌹💐🌸🌼🌺🌻🌷🌹💐";
             position: fixed;
@@ -179,7 +177,7 @@
         }
 
         /* ============================================================
-           SPLASH SCREEN WITH VIGNETTE
+           SPLASH SCREEN
            ============================================================ */
         #splash-screen {
             position: fixed;
@@ -288,7 +286,7 @@
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             
-            background-image: url('bg01.webp?v=11');
+            background-image: url('bg01.webp?v=12');
             background-size: cover;
             background-position: center;
             background-color: rgba(255, 248, 235, 0.2);
@@ -385,7 +383,7 @@
         }
 
         /* ============================================================
-           MAVELI
+           WALKING MAVELI - DEFAULT SIZE 250px
            ============================================================ */
         .maveli-container {
             position: fixed;
@@ -400,13 +398,13 @@
             animation: walkMaveli 4s ease-in-out infinite;
         }
         .maveli-float-img {
-            width: 80px;
+            width: 250px;  /* Default size: 250px */
             height: auto;
             border-radius: 20px;
             display: block;
         }
         .maveli-fallback {
-            font-size: 4rem;
+            font-size: 8rem;
             filter: drop-shadow(0 10px 25px rgba(255, 215, 0, 0.6));
             display: none;
         }
@@ -434,7 +432,9 @@
             100% { transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(720deg); opacity: 0; }
         }
 
-        /* ===== SIZE CONTROLLER ===== */
+        /* ============================================================
+           SIZE CONTROLLER - MAX 400px, DEFAULT 250px
+           ============================================================ */
         .size-controller {
             position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
             z-index:1000;
@@ -511,7 +511,7 @@
         .premium-badge i { margin-right:6px; color:#f7c56e; }
 
         /* ============================================================
-           INSTALL BUTTON
+           BUTTONS
            ============================================================ */
         .install-btn {
             background: linear-gradient(145deg, #2a6b4a, #0f3b2c);
@@ -539,9 +539,6 @@
         .install-btn i { color: #ffd700; font-size: 1.2rem; }
         .install-btn.hidden { display: none; }
 
-        /* ============================================================
-           BUTTONS
-           ============================================================ */
         .wish-btn-open {
             background: linear-gradient(145deg, #8b4e1a, #5a3010);
             color: #fcf3e2;
@@ -799,8 +796,8 @@
             .brand { font-size: 2.2rem; letter-spacing: 2px; }
             .brand-sub { font-size: 1rem; }
             .header-logo { width: 80px; height: 80px; }
-            .maveli-float-img { width: 60px; }
-            .maveli-fallback { font-size: 3rem; }
+            .maveli-float-img { width: 180px; }
+            .maveli-fallback { font-size: 5rem; }
             .maveli-container { right: 10px; bottom: 20%; }
             .size-controller { padding: 10px 16px; gap: 10px; bottom: 16px; }
             .size-controller input[type="range"] { width: 100px; }
@@ -842,28 +839,32 @@
     SPLASH SCREEN
     ============================================================ -->
     <div id="splash-screen">
-        <img src="onam26.webp?v=11" alt="Onam 2026" 
-             onerror="this.onerror=null; this.src='onam26.png?v=11';" />
+        <img src="onam26.webp?v=12" alt="Onam 2026" 
+             onerror="this.onerror=null; this.src='onam26.png?v=12';" />
         <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
     <!-- ===== AUDIO ===== -->
-    <audio id="bgAudio" src="onambg.mp3?v=11" loop preload="auto"></audio>
+    <audio id="bgAudio" src="onambg.mp3?v=12" loop preload="auto"></audio>
 
-    <!-- ===== MAVELI ===== -->
+    <!-- ============================================================
+    MAVELI - DEFAULT SIZE 250px
+    ============================================================ -->
     <div class="maveli-container" id="maveliContainer">
-        <img id="maveliImage" src="maveli.png?v=11" alt="Maveli" class="maveli-float-img" 
+        <img id="maveliImage" src="maveli.png?v=12" alt="Maveli" class="maveli-float-img" 
              onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
         <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
     </div>
 
-    <!-- ===== SIZE CONTROLLER ===== -->
+    <!-- ============================================================
+    SIZE CONTROLLER - MAX 400px, DEFAULT 250px
+    ============================================================ -->
     <div class="size-controller">
         <i class="fas fa-arrows-alt-h" style="color:#ffd700;"></i>
         <span style="font-size:0.8rem;">Size</span>
-        <input type="range" id="sizeSlider" min="30" max="250" value="80" 
+        <input type="range" id="sizeSlider" min="30" max="400" value="250" 
                oninput="updateMaveliSize(this.value)">
-        <span class="size-label" id="sizeDisplay">80</span>
+        <span class="size-label" id="sizeDisplay">250</span>
     </div>
 
     <!-- ===== FALLING FLOWERS ===== -->
@@ -874,7 +875,7 @@
     ============================================================ -->
     <div class="onam-card" id="mainCard">
         <div class="header">
-            <img class="header-logo" src="Logo.png?v=11" alt="Perumpayil Logo" onerror="this.style.display='none';">
+            <img class="header-logo" src="Logo.png?v=12" alt="Perumpayil Logo" onerror="this.style.display='none';">
             <div class="title-group">
                 <div class="brand">PERUMPAYIL</div>
                 <div class="brand-sub">Meat Centre</div>
@@ -960,7 +961,7 @@
     ============================================================ -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
-            <video id="popupVideo" src="onam_wish.mp4?v=11" 
+            <video id="popupVideo" src="onam_wish.mp4?v=12" 
                    autoplay loop playsinline webkit-playsinline
                    preload="none"
                    onclick="closePopup()">
@@ -978,7 +979,7 @@
 
     <script>
         // =============================================================
-        // PATTERN SLIDESHOW (1 sec interval)
+        // PATTERN SLIDESHOW
         // =============================================================
         const patterns = [
             'pattern1.webp',
@@ -992,19 +993,15 @@
         function changePattern() {
             const body = document.body;
             const nextPattern = patterns[patternIndex];
-            body.style.backgroundImage = `url('${nextPattern}?v=11')`;
+            body.style.backgroundImage = `url('${nextPattern}?v=12')`;
             body.style.backgroundSize = '200px 200px';
             body.style.backgroundRepeat = 'repeat';
             body.style.backgroundPosition = 'center center';
-            
             patternIndex = (patternIndex + 1) % patterns.length;
         }
 
-        // Start pattern slideshow after splash screen
         function startPatternSlideshow() {
-            // Set first pattern immediately
             changePattern();
-            // Then change every 1 second
             setInterval(changePattern, 1000);
         }
 
@@ -1072,7 +1069,6 @@
             startBackgroundMusic();
             document.getElementById('splash-screen').classList.add('hidden');
             document.getElementById('mainCard').style.pointerEvents = 'auto';
-            // Start pattern slideshow after splash
             startPatternSlideshow();
         }
 
@@ -1144,13 +1140,22 @@
             if (v) { v.muted = !v.muted; btn.querySelector('i').className = v.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up'; }
         }
 
+        // =============================================================
+        // MAVELI SIZE - MAX 400px, DEFAULT 250px
+        // =============================================================
         function updateMaveliSize(val) {
             const img = document.getElementById('maveliImage');
             const fallback = document.getElementById('maveliFallback');
             const display = document.getElementById('sizeDisplay');
-            if (img && img.style.display !== 'none') img.style.width = val + 'px';
-            if (fallback) fallback.style.fontSize = (val * 0.4) + 'px';
-            if (display) display.textContent = val;
+            if (img && img.style.display !== 'none') {
+                img.style.width = val + 'px';
+            }
+            if (fallback) {
+                fallback.style.fontSize = (val * 0.35) + 'px';
+            }
+            if (display) {
+                display.textContent = val;
+            }
         }
 
         // ===== CONFETTI =====
@@ -1185,7 +1190,7 @@
         // ===== SERVICE WORKER (PWA) =====
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=11')
+                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=12')
                     .then(function(reg) {
                         console.log('✅ Service Worker registered successfully!');
                     })
