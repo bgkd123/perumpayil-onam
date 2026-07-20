@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>Perumpayil · Meat Centre · Onam</title>
 
-    <link rel="manifest" href="manifest.json?v=9" />
+    <link rel="manifest" href="manifest.json?v=10" />
     <meta name="theme-color" content="#8b4e1a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
-    <link rel="apple-touch-icon" href="icon-192.png?v=9" />
+    <link rel="apple-touch-icon" href="icon-192.png?v=10" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
@@ -20,28 +20,28 @@
            ============================================================ */
         @font-face {
             font-family: 'TarmilesAction';
-            src: url('TarmilesAction.otf?v=9') format('opentype');
+            src: url('TarmilesAction.otf?v=10') format('opentype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Anakha';
-            src: url('MLU-Anakha.ttf?v=9') format('truetype');
+            src: url('MLU-Anakha.ttf?v=10') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'CelebrateScript';
-            src: url('Pacifico.ttf?v=9') format('truetype');
+            src: url('Pacifico.ttf?v=10') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'AmbiliBold';
-            src: url('MLU-Ambili Bold.ttf?v=9') format('truetype');
+            src: url('MLU-Ambili Bold.ttf?v=10') format('truetype');
             font-weight: bold;
             font-style: normal;
             font-display: swap;
@@ -49,13 +49,25 @@
 
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Roboto,system-ui,sans-serif; }
         body {
-            min-height:100vh; padding:16px 12px 40px;
-            display:flex; flex-direction:column; align-items:center; justify-content:center;
-            position:relative; overflow-x:hidden;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 40%, #a8e063 100%);
+            min-height:100vh;
+            padding:16px 12px 40px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            position:relative;
+            overflow-x:hidden;
+            /* ===== PATTERN.WEBP + GRADIENT ===== */
+            background: 
+                url('pattern.webp?v=10'),
+                linear-gradient(135deg, #ffecd2 0%, #fcb69f 40%, #a8e063 100%);
+            background-size: 200px 200px, cover;
+            background-blend-mode: overlay;
+            background-repeat: repeat, no-repeat;
+            background-position: center, center;
         }
 
-        /* ===== BACKGROUND FLOWER PATTERN ===== */
+        /* ===== BACKGROUND FLOWER PATTERN (Optional - can keep or remove) ===== */
         body::before {
             content: "🌸🌼🌺🌻🌷🌹💐🌸🌼🌺🌻🌷🌹💐🌸🌼🌺🌻🌷🌹💐";
             position: fixed;
@@ -268,7 +280,7 @@
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             
-            background-image: url('bg01.webp?v=9');
+            background-image: url('bg01.webp?v=10');
             background-size: cover;
             background-position: center;
             background-color: rgba(255, 248, 235, 0.2);
@@ -822,17 +834,17 @@
     SPLASH SCREEN
     ============================================================ -->
     <div id="splash-screen">
-        <img src="onam26.webp?v=9" alt="Onam 2026" 
-             onerror="this.onerror=null; this.src='onam26.png?v=9';" />
+        <img src="onam26.webp?v=10" alt="Onam 2026" 
+             onerror="this.onerror=null; this.src='onam26.png?v=10';" />
         <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
     <!-- ===== AUDIO ===== -->
-    <audio id="bgAudio" src="onambg.mp3?v=9" loop preload="auto"></audio>
+    <audio id="bgAudio" src="onambg.mp3?v=10" loop preload="auto"></audio>
 
     <!-- ===== MAVELI ===== -->
     <div class="maveli-container" id="maveliContainer">
-        <img id="maveliImage" src="maveli.png?v=9" alt="Maveli" class="maveli-float-img" 
+        <img id="maveliImage" src="maveli.png?v=10" alt="Maveli" class="maveli-float-img" 
              onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
         <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
     </div>
@@ -854,7 +866,7 @@
     ============================================================ -->
     <div class="onam-card" id="mainCard">
         <div class="header">
-            <img class="header-logo" src="Logo.png?v=9" alt="Perumpayil Logo" onerror="this.style.display='none';">
+            <img class="header-logo" src="Logo.png?v=10" alt="Perumpayil Logo" onerror="this.style.display='none';">
             <div class="title-group">
                 <div class="brand">PERUMPAYIL</div>
                 <div class="brand-sub">Meat Centre</div>
@@ -940,7 +952,7 @@
     ============================================================ -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
-            <video id="popupVideo" src="onam_wish.mp4?v=9" 
+            <video id="popupVideo" src="onam_wish.mp4?v=10" 
                    autoplay loop playsinline webkit-playsinline
                    preload="none"
                    onclick="closePopup()">
@@ -1132,7 +1144,7 @@
         // ===== SERVICE WORKER (PWA) =====
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=9')
+                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=10')
                     .then(function(reg) {
                         console.log('✅ Service Worker registered successfully!');
                     })
