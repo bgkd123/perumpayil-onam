@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>Perumpayil · Meat Centre · Onam</title>
 
-    <link rel="manifest" href="manifest.json?v=10" />
+    <link rel="manifest" href="manifest.json?v=11" />
     <meta name="theme-color" content="#8b4e1a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
-    <link rel="apple-touch-icon" href="icon-192.png?v=10" />
+    <link rel="apple-touch-icon" href="icon-192.png?v=11" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
@@ -20,28 +20,28 @@
            ============================================================ */
         @font-face {
             font-family: 'TarmilesAction';
-            src: url('TarmilesAction.otf?v=10') format('opentype');
+            src: url('TarmilesAction.otf?v=11') format('opentype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Anakha';
-            src: url('MLU-Anakha.ttf?v=10') format('truetype');
+            src: url('MLU-Anakha.ttf?v=11') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'CelebrateScript';
-            src: url('Pacifico.ttf?v=10') format('truetype');
+            src: url('Pacifico.ttf?v=11') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'AmbiliBold';
-            src: url('MLU-Ambili Bold.ttf?v=10') format('truetype');
+            src: url('MLU-Ambili Bold.ttf?v=11') format('truetype');
             font-weight: bold;
             font-style: normal;
             font-display: swap;
@@ -57,17 +57,25 @@
             justify-content:center;
             position:relative;
             overflow-x:hidden;
-            /* ===== PATTERN.WEBP + GRADIENT ===== */
-            background: 
-                url('pattern.webp?v=10'),
-                linear-gradient(135deg, #ffecd2 0%, #fcb69f 40%, #a8e063 100%);
-            background-size: 200px 200px, cover;
-            background-blend-mode: overlay;
-            background-repeat: repeat, no-repeat;
-            background-position: center, center;
+            /* Initial background - will be changed by JS */
+            background: url('pattern1.webp?v=11') repeat center center;
+            background-size: 200px 200px;
+            transition: background-image 0.8s ease-in-out;
+        }
+        /* Gradient overlay on top of pattern */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 236, 210, 0.4), rgba(252, 182, 159, 0.3), rgba(168, 224, 99, 0.2));
+            z-index: 0;
+            pointer-events: none;
         }
 
-        /* ===== BACKGROUND FLOWER PATTERN (Optional - can keep or remove) ===== */
+        /* ===== BACKGROUND FLOWER PATTERN (Keep for texture) ===== */
         body::before {
             content: "🌸🌼🌺🌻🌷🌹💐🌸🌼🌺🌻🌷🌹💐🌸🌼🌺🌻🌷🌹💐";
             position: fixed;
@@ -77,7 +85,7 @@
             height: 100%;
             font-size: 3.5rem;
             letter-spacing: 40px;
-            opacity: 0.06;
+            opacity: 0.04;
             z-index: 0;
             pointer-events: none;
             display: flex;
@@ -280,7 +288,7 @@
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             
-            background-image: url('bg01.webp?v=10');
+            background-image: url('bg01.webp?v=11');
             background-size: cover;
             background-position: center;
             background-color: rgba(255, 248, 235, 0.2);
@@ -347,7 +355,7 @@
         }
 
         /* ============================================================
-           ONAM TAG - DARK RED + WHITE STROKE
+           ONAM TAG
            ============================================================ */
         .onam-tag {
             font-family: 'Anakha', 'Baloo 2', 'Segoe UI', cursive, sans-serif;
@@ -467,7 +475,7 @@
         }
 
         /* ============================================================
-           MEAT ICONS - FRESH FIXED
+           MEAT ICONS
            ============================================================ */
         .meat-icons {
             display:flex; 
@@ -834,17 +842,17 @@
     SPLASH SCREEN
     ============================================================ -->
     <div id="splash-screen">
-        <img src="onam26.webp?v=10" alt="Onam 2026" 
-             onerror="this.onerror=null; this.src='onam26.png?v=10';" />
+        <img src="onam26.webp?v=11" alt="Onam 2026" 
+             onerror="this.onerror=null; this.src='onam26.png?v=11';" />
         <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
     <!-- ===== AUDIO ===== -->
-    <audio id="bgAudio" src="onambg.mp3?v=10" loop preload="auto"></audio>
+    <audio id="bgAudio" src="onambg.mp3?v=11" loop preload="auto"></audio>
 
     <!-- ===== MAVELI ===== -->
     <div class="maveli-container" id="maveliContainer">
-        <img id="maveliImage" src="maveli.png?v=10" alt="Maveli" class="maveli-float-img" 
+        <img id="maveliImage" src="maveli.png?v=11" alt="Maveli" class="maveli-float-img" 
              onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
         <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
     </div>
@@ -866,7 +874,7 @@
     ============================================================ -->
     <div class="onam-card" id="mainCard">
         <div class="header">
-            <img class="header-logo" src="Logo.png?v=10" alt="Perumpayil Logo" onerror="this.style.display='none';">
+            <img class="header-logo" src="Logo.png?v=11" alt="Perumpayil Logo" onerror="this.style.display='none';">
             <div class="title-group">
                 <div class="brand">PERUMPAYIL</div>
                 <div class="brand-sub">Meat Centre</div>
@@ -952,7 +960,7 @@
     ============================================================ -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
-            <video id="popupVideo" src="onam_wish.mp4?v=10" 
+            <video id="popupVideo" src="onam_wish.mp4?v=11" 
                    autoplay loop playsinline webkit-playsinline
                    preload="none"
                    onclick="closePopup()">
@@ -969,6 +977,37 @@
     </div>
 
     <script>
+        // =============================================================
+        // PATTERN SLIDESHOW (1 sec interval)
+        // =============================================================
+        const patterns = [
+            'pattern1.webp',
+            'pattern2.webp',
+            'pattern3.webp',
+            'pattern4.webp',
+            'pattern5.webp'
+        ];
+        let patternIndex = 0;
+
+        function changePattern() {
+            const body = document.body;
+            const nextPattern = patterns[patternIndex];
+            body.style.backgroundImage = `url('${nextPattern}?v=11')`;
+            body.style.backgroundSize = '200px 200px';
+            body.style.backgroundRepeat = 'repeat';
+            body.style.backgroundPosition = 'center center';
+            
+            patternIndex = (patternIndex + 1) % patterns.length;
+        }
+
+        // Start pattern slideshow after splash screen
+        function startPatternSlideshow() {
+            // Set first pattern immediately
+            changePattern();
+            // Then change every 1 second
+            setInterval(changePattern, 1000);
+        }
+
         // =============================================================
         // PWA INSTALL
         // =============================================================
@@ -1033,6 +1072,8 @@
             startBackgroundMusic();
             document.getElementById('splash-screen').classList.add('hidden');
             document.getElementById('mainCard').style.pointerEvents = 'auto';
+            // Start pattern slideshow after splash
+            startPatternSlideshow();
         }
 
         // =============================================================
@@ -1144,7 +1185,7 @@
         // ===== SERVICE WORKER (PWA) =====
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=10')
+                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=11')
                     .then(function(reg) {
                         console.log('✅ Service Worker registered successfully!');
                     })
