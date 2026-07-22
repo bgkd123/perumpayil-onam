@@ -304,69 +304,6 @@
         }
 
         /* ============================================================
-           FLOATING VIDEO ANIMATION (WebM) - NEW!
-           ============================================================ */
-        .float-anim {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 180px;
-            height: 180px;
-            z-index: 9998;
-            pointer-events: none;
-            opacity: 0;
-            animation: floatUp 0.8s ease-out forwards, bobFloat 3s ease-in-out infinite 1.5s;
-        }
-
-        @keyframes floatUp {
-            0% { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.6); }
-            100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-        }
-
-        @keyframes bobFloat {
-            0%, 100% { transform: translateX(-50%) translateY(0px); }
-            50% { transform: translateX(-50%) translateY(-12px); }
-        }
-
-        .float-anim video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-            background: transparent !important;
-        }
-
-        /* ===== Glow Effect ===== */
-        .float-anim::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50%;
-            height: 15px;
-            background: radial-gradient(ellipse, rgba(255, 215, 0, 0.3), transparent);
-            border-radius: 50%;
-            filter: blur(8px);
-            animation: glowPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { opacity: 0.2; transform: translateX(-50%) scale(1); }
-            50% { opacity: 0.6; transform: translateX(-50%) scale(1.2); }
-        }
-
-        .float-anim.hide {
-            animation: fadeOut 1s ease forwards;
-        }
-
-        @keyframes fadeOut {
-            0% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-            100% { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.6); }
-        }
-
-        /* ============================================================
            MAIN CARD
            ============================================================ */
         .onam-card {
@@ -883,9 +820,6 @@
         }
         .popup-close-hint i { margin-right: 8px; }
 
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
         @media (max-width:420px) {
             .brand { font-size: 2.2rem; letter-spacing: 2px; }
             .brand-sub { font-size: 1rem; }
@@ -905,7 +839,6 @@
             .butterfly { font-size: 1.6rem; }
             .footer-note .malayalam { font-size: 1rem; }
             .footer-note .english { font-size: 1.2rem; }
-            .float-anim { width: 140px; height: 140px; bottom: 15px; }
         }
     </style>
 </head>
@@ -958,16 +891,6 @@
         <img id="maveliImage" src="maveli.png?v=21" alt="Maveli" class="maveli-float-img" 
              onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
         <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
-    </div>
-
-    <!-- ============================================================
-    FLOATING VIDEO ANIMATION (WebM) - NEW!
-    ============================================================ -->
-    <div class="float-anim" id="floatAnim">
-        <video id="onamVideo" autoplay muted loop playsinline>
-            <source src="video_no_bg.webm" type="video/webm">
-            <source src="video_no_bg.mp4" type="video/mp4">
-        </video>
     </div>
 
     <!-- ============================================================
@@ -1309,55 +1232,6 @@
                 display.textContent = val;
             }
         }
-
-        // =============================================================
-        // FLOATING VIDEO ANIMATION (WebM) - NEW!
-        // =============================================================
-        const floatVideo = document.getElementById('onamVideo');
-        const floatContainer = document.getElementById('floatAnim');
-        let loopCount = 0;
-
-        // Video loaded
-        floatVideo.addEventListener('loadeddata', function() {
-            console.log('✅ WebM video loaded! Duration:', floatVideo.duration, 's');
-        });
-
-        // Video error - try MP4 fallback
-        floatVideo.addEventListener('error', function(e) {
-            console.log('❌ WebM error, trying MP4...');
-            const sources = floatVideo.querySelectorAll('source');
-            for (let src of sources) {
-                if (src.type === 'video/mp4') {
-                    floatVideo.src = src.src;
-                    floatVideo.load();
-                    break;
-                }
-            }
-        });
-
-        // Loop counter (hide after 3 loops)
-        floatVideo.addEventListener('timeupdate', function() {
-            if (floatVideo.currentTime === 0 && loopCount < 3) {
-                loopCount++;
-                console.log('🔄 Loop', loopCount);
-                
-                if (loopCount >= 3) {
-                    floatContainer.classList.add('hide');
-                    setTimeout(() => {
-                        floatContainer.style.display = 'none';
-                    }, 1000);
-                }
-            }
-        });
-
-        // Click to play if autoplay blocked
-        document.addEventListener('click', function playVideo() {
-            if (floatVideo.paused) {
-                floatVideo.play().then(() => {
-                    console.log('▶️ Video played on click');
-                }).catch(() => {});
-            }
-        });
 
         // ===== CONFETTI =====
         (function() {
