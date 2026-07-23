@@ -311,34 +311,32 @@
             margin: 0 10px;
         }
         
+        /* ===== NOTIFY ===== */
         .notify {
             margin: 25px 0 10px;
-        }
-        
-        .notify input {
-            padding: 12px 20px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.04);
-            color: #fff;
-            font-size: 0.9rem;
-            width: 240px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-        
-        .notify input::placeholder {
-            color: rgba(255, 255, 255, 0.25);
-        }
-        
-        .notify input:focus {
-            border-color: rgba(255, 215, 0, 0.3);
-            background: rgba(255, 255, 255, 0.06);
         }
         
         .notify .btn {
             border-radius: 50px;
             padding: 12px 28px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .notify .btn i {
+            font-size: 1rem;
+        }
+        
+        .notify .count {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.7rem;
+            margin-top: 10px;
+            display: block;
+        }
+        
+        .notify .count span {
+            color: #ffd700;
+            font-weight: 600;
         }
         
         @media (max-width: 480px) {
@@ -348,7 +346,6 @@
             .message { font-size: 1.1rem; }
             .logo-icon { font-size: 3.5rem; }
             .btn { padding: 10px 20px; font-size: 0.8rem; }
-            .notify input { width: 100%; margin-bottom: 10px; }
             .notify .btn { width: 100%; justify-content: center; }
             .progress-label { gap: 15px; font-size: 0.6rem; }
             .status-badge { font-size: 0.7rem; padding: 8px 18px; }
@@ -356,7 +353,6 @@
         
         @media (min-width: 481px) and (max-width: 768px) {
             .brand { font-size: 2.8rem; }
-            .notify input { width: 200px; }
         }
     </style>
 </head>
@@ -411,12 +407,12 @@
             <span>✦ Launching</span>
         </div>
         
-        <!-- Notify -->
+        <!-- ===== NOTIFY ME BUTTON - FORM LINK ADDED ===== -->
         <div class="notify">
-            <input type="email" placeholder="Enter email for updates" />
-            <button class="btn btn-primary" onclick="notifyMe()">
+            <a href="https://forms.gle/wXbUU6qpQSJKTg687" target="_blank" class="btn btn-primary">
                 <i class="fas fa-bell"></i> Notify Me
-            </button>
+            </a>
+            <span class="count">📊 <span id="subCount">0</span> people subscribed</span>
         </div>
         
         <!-- Contact Buttons -->
@@ -446,15 +442,27 @@
     </div>
     
     <script>
-        function notifyMe() {
-            const email = document.querySelector('.notify input').value;
-            if (email) {
-                alert('✅ Thank you! We\'ll notify you at ' + email);
-                document.querySelector('.notify input').value = '';
-            } else {
-                alert('⚠️ Please enter your email address');
-            }
+        // ===== Google Forms Response Count (Optional) =====
+        // Note: Google Forms doesn't provide public API for count.
+        // You can manually update the count or use Google Sheets API.
+        
+        // For now, we'll show a static count or you can update manually
+        let count = 0;
+        
+        // You can manually update this number when you check Google Forms
+        // Example: If 5 people subscribed, change to 5
+        function updateCount() {
+            // Replace 0 with actual count from Google Forms Responses
+            document.getElementById('subCount').textContent = 0;
         }
+        
+        updateCount();
+        
+        // ===== Open Notify Link with tracking =====
+        document.querySelector('.notify .btn-primary').addEventListener('click', function(e) {
+            // You can add analytics tracking here if needed
+            console.log('🔔 Notify button clicked - opening form');
+        });
     </script>
 </body>
 </html>
