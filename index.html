@@ -251,7 +251,9 @@
             object-fit: contain;
             display: none;
             background: #000;
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
             z-index: 0;
         }
         
@@ -968,13 +970,13 @@
     <div class="butterfly butterfly-6">🦋</div>
 
     <!-- ============================================================
-    SPLASH SCREEN
+    SPLASH SCREEN - LOOP + STOP ON CONTINUE
     ============================================================ -->
     <div id="splash-screen">
-        <!-- Video with both MP4 and WebM support -->
         <video id="splashVideo" 
                autoplay 
                muted 
+               loop
                playsinline 
                webkit-playsinline
                preload="auto"
@@ -985,9 +987,9 @@
             Your browser does not support video.
         </video>
         
-        <img id="splashFallback" src="onam26.webp?v=21" alt="Onam 2026" style="display:none; width:100%; height:100%; object-fit:contain; background:#000; position:absolute; top:0; left:0; z-index:0;" />
+        <img id="splashFallback" src="onam26.webp?v=21" alt="Onam 2026" 
+             style="display:none; width:100%; height:100%; object-fit:contain; background:#000; position:absolute; top:0; left:0; z-index:0;" />
         
-        <!-- Loading Indicator -->
         <div class="splash-loader" id="splashLoader">
             <i class="fas fa-spinner"></i> Loading...
         </div>
@@ -1133,14 +1135,17 @@
 
     <script>
         // =============================================================
-        // SPLASH VIDEO HANDLING
+        // SPLASH VIDEO - LOOP + STOP ON CONTINUE
         // =============================================================
+
         const splashVideo = document.getElementById('splashVideo');
         const splashLoader = document.getElementById('splashLoader');
         const splashFallback = document.getElementById('splashFallback');
 
-        // Video loaded successfully
+        // ✅ Enable loop
         if (splashVideo) {
+            splashVideo.loop = true;
+            
             splashVideo.addEventListener('loadeddata', function() {
                 console.log('✅ Splash video loaded');
                 if (splashLoader) splashLoader.style.display = 'none';
@@ -1195,14 +1200,26 @@
         }
 
         // =============================================================
-        // CONTINUE APP
+        // CONTINUE APP - STOP SPLASH VIDEO PERMANENTLY
         // =============================================================
         function continueApp() {
-            if (splashVideo) splashVideo.pause();
-            startBackgroundMusic();
+            // ✅ Stop splash video completely
+            if (splashVideo) {
+                splashVideo.pause();
+                splashVideo.currentTime = 0;
+                splashVideo.loop = false;
+                splashVideo.style.display = 'none';
+                splashVideo.muted = true;
+            }
+            
+            // Hide splash screen
             document.getElementById('splash-screen').classList.add('hidden');
             document.getElementById('mainCard').style.pointerEvents = 'auto';
             
+            // Start background music
+            startBackgroundMusic();
+            
+            // Start background video
             const bgVideo = document.getElementById('bgVideo');
             if (bgVideo) {
                 bgVideo.play().catch(function() {});
