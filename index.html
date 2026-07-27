@@ -6,7 +6,7 @@
     <title>Perumpayil · Meat Centre · Onam</title>
 
     <link rel="manifest" href="manifest.json?v=21" />
-    <meta name="theme-color" content="#8b4e1a" />
+    <meta name="theme-color" content="#1a0e06" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
@@ -63,58 +63,90 @@
         }
         
         /* ============================================================
-           BACKGROUND VIDEO
+           BACKGROUND VIDEO - SCREEN BLEND
            ============================================================ */
         #bgVideoContainer {
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
             pointer-events: none;
-            background: transparent;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
+            background: #0a0604;
             overflow: hidden;
         }
         #bgVideoContainer video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
+            mix-blend-mode: screen;
+            -webkit-mix-blend-mode: screen;
+            opacity: 0.5;
             background: transparent;
-            opacity: 0.15;
         }
 
-        /* Gradient Overlay */
-        body::after {
+        /* Animated Gradient Overlay */
+        #bgVideoContainer::after {
             content: '';
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at center, rgba(10,6,4,0.2) 0%, rgba(10,6,4,0.8) 100%);
-            z-index: 0;
+            background: radial-gradient(ellipse at 50% 70%, 
+                rgba(255,215,0,0.12) 0%, 
+                rgba(255,165,0,0.06) 30%,
+                rgba(255,69,0,0.04) 50%,
+                rgba(10,6,4,0.8) 100%
+            );
+            z-index: 1;
             pointer-events: none;
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
         }
 
         /* ============================================================
-           FIRE CRACKERS EFFECT
+           FLOATING PARTICLES
+           ============================================================ */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,215,0,0.3), transparent);
+            animation: floatParticle 15s ease-in-out infinite;
+        }
+        .particle-1 { width: 300px; height: 300px; top: -100px; left: -100px; animation-delay: 0s; }
+        .particle-2 { width: 400px; height: 400px; bottom: -150px; right: -150px; animation-delay: 5s; }
+        .particle-3 { width: 200px; height: 200px; top: 50%; left: 50%; animation-delay: 10s; }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            25% { transform: translate(30px, -30px) scale(1.2); opacity: 0.5; }
+            50% { transform: translate(-20px, 20px) scale(0.8); opacity: 0.2; }
+            75% { transform: translate(15px, -15px) scale(1.1); opacity: 0.4; }
+        }
+
+        /* ============================================================
+           FIRE CRACKERS
            ============================================================ */
         .firecracker {
             position: fixed;
             pointer-events: none;
             z-index: 5;
-            font-size: 1.4rem;
-            animation: firecrackerBurst 1.8s ease-out forwards;
-            filter: drop-shadow(0 0 20px rgba(255,215,0,0.3));
+            font-size: 1.6rem;
+            animation: firecrackerBurst 2s ease-out forwards;
+            filter: drop-shadow(0 0 40px rgba(255,215,0,0.4));
         }
         @keyframes firecrackerBurst {
-            0% { transform: scale(0.3) rotate(0deg) translateY(20px); opacity: 1; }
-            50% { transform: scale(1.5) rotate(180deg) translateY(-40px); opacity: 1; }
-            100% { transform: scale(0.5) rotate(360deg) translateY(-80px); opacity: 0; }
+            0% { transform: scale(0.2) rotate(0deg) translateY(30px); opacity: 1; }
+            40% { transform: scale(1.8) rotate(180deg) translateY(-20px); opacity: 1; }
+            100% { transform: scale(0.3) rotate(360deg) translateY(-80px); opacity: 0; }
         }
 
         .sparkle {
@@ -123,11 +155,11 @@
             z-index: 4;
             border-radius: 50%;
             animation: sparkleFade 1.2s ease-out forwards;
-            box-shadow: 0 0 20px currentColor;
+            box-shadow: 0 0 30px currentColor;
         }
         @keyframes sparkleFade {
             0% { transform: scale(0); opacity: 1; }
-            50% { transform: scale(2); opacity: 0.8; }
+            50% { transform: scale(3); opacity: 0.8; }
             100% { transform: scale(0); opacity: 0; }
         }
 
@@ -138,10 +170,10 @@
             position: fixed;
             z-index: 10;
             pointer-events: none;
-            font-size: 2rem;
-            opacity: 0.4;
+            font-size: 2.2rem;
+            opacity: 0.5;
             animation: flyFlower 8s ease-in-out infinite;
-            filter: drop-shadow(0 0 10px rgba(255,215,0,0.1));
+            filter: drop-shadow(0 0 20px rgba(255,215,0,0.15));
         }
         .flying-flower-1 { left: 3%; top: 10%; animation-delay: 0s; }
         .flying-flower-2 { right: 3%; top: 20%; animation-delay: 1.5s; }
@@ -152,9 +184,9 @@
 
         @keyframes flyFlower {
             0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-            25% { transform: translate(30px, -25px) rotate(10deg) scale(1.05); }
-            50% { transform: translate(-15px, -40px) rotate(-8deg) scale(0.95); }
-            75% { transform: translate(20px, -15px) rotate(6deg) scale(1.02); }
+            25% { transform: translate(40px, -30px) rotate(15deg) scale(1.1); }
+            50% { transform: translate(-20px, -50px) rotate(-10deg) scale(0.9); }
+            75% { transform: translate(25px, -20px) rotate(8deg) scale(1.05); }
             100% { transform: translate(0, 0) rotate(0deg) scale(1); }
         }
 
@@ -165,9 +197,10 @@
             position: fixed;
             z-index: 10;
             pointer-events: none;
-            font-size: 1.8rem;
-            opacity: 0.4;
+            font-size: 2rem;
+            opacity: 0.5;
             animation: flyButterfly 10s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(255,215,0,0.1));
         }
         .butterfly-1 { left: 2%; top: 30%; animation-delay: 0s; }
         .butterfly-2 { right: 2%; top: 40%; animation-delay: 2.5s; }
@@ -178,14 +211,14 @@
 
         @keyframes flyButterfly {
             0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-            25% { transform: translate(50px, -30px) rotate(15deg) scale(1.1); }
-            50% { transform: translate(-20px, -50px) rotate(-12deg) scale(0.9); }
-            75% { transform: translate(35px, -25px) rotate(8deg) scale(1.05); }
+            25% { transform: translate(60px, -35px) rotate(20deg) scale(1.15); }
+            50% { transform: translate(-25px, -55px) rotate(-15deg) scale(0.85); }
+            75% { transform: translate(40px, -30px) rotate(12deg) scale(1.08); }
             100% { transform: translate(0, 0) rotate(0deg) scale(1); }
         }
 
         /* ============================================================
-           SPLASH SCREEN - MODERN
+           SPLASH SCREEN - PREMIUM (FIXED ALIGN)
            ============================================================ */
         #splash-screen {
             position: fixed;
@@ -230,14 +263,14 @@
             left: 0;
             z-index: 0;
         }
-        
+
         .splash-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at center, transparent 30%, rgba(10,6,4,0.6) 100%);
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(10,6,4,0.7) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -248,11 +281,12 @@
             left: 50%;
             transform: translateX(-50%);
             color: rgba(255,215,0,0.6);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             z-index: 2;
             font-weight: 500;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            text-align: center;
         }
         .splash-loader i {
             animation: spin 1s linear infinite;
@@ -269,11 +303,11 @@
             left: 24px;
             width: 44px;
             height: 44px;
-            background: rgba(255,255,255,0.06);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            color: rgba(255,255,255,0.6);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            color: rgba(255,215,0,0.4);
+            border: 1px solid rgba(255,215,0,0.06);
             border-radius: 50%;
             font-size: 1.2rem;
             display: flex;
@@ -283,45 +317,69 @@
             z-index: 100000;
             transition: all 0.3s ease;
         }
-        .splash-sound-btn:hover { background: rgba(255,255,255,0.12); transform: scale(1.05); }
+        .splash-sound-btn:hover { 
+            background: rgba(255,215,0,0.08); 
+            transform: scale(1.05);
+            color: rgba(255,215,0,0.6);
+        }
 
         .splash-continue-btn {
             position: absolute;
             bottom: 70px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, #ffd700, #f5a623);
+            background: linear-gradient(135deg, #FFD700, #FF8C00, #FF6B00);
             color: #1a0e06;
             border: none;
-            padding: 16px 48px;
+            padding: 18px 52px;
             border-radius: 60px;
             font-size: 1rem;
             font-weight: 700;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             cursor: pointer;
             z-index: 100000;
             opacity: 0;
             visibility: hidden;
-            animation: fadeInUp 0.6s ease forwards, pulseGlow 2.5s ease-in-out infinite;
+            animation: fadeInUp 0.6s ease forwards, pulseGlowBtn 2.5s ease-in-out infinite;
             animation-delay: 2s, 2.8s;
-            box-shadow: 0 0 40px rgba(255,215,0,0.15);
+            box-shadow: 0 0 60px rgba(255,215,0,0.2);
             transition: all 0.3s ease;
             text-transform: uppercase;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: center;
+            display: inline-block;
+            min-width: 200px;
         }
-        @keyframes pulseGlow {
-            0%, 100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 40px rgba(255,215,0,0.15); }
-            50% { transform: translateX(-50%) scale(1.03); box-shadow: 0 0 60px rgba(255,215,0,0.3), 0 0 80px rgba(255,215,0,0.1); }
+        .splash-continue-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+            animation: shimmer 3s ease-in-out infinite;
+            transform: rotate(25deg);
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(25deg); }
+            100% { transform: translateX(100%) rotate(25deg); }
+        }
+        @keyframes pulseGlowBtn {
+            0%, 100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 60px rgba(255,215,0,0.2); }
+            50% { transform: translateX(-50%) scale(1.05); box-shadow: 0 0 80px rgba(255,215,0,0.4), 0 0 120px rgba(255,215,0,0.15); }
         }
         .splash-continue-btn.show { opacity: 1; visibility: visible; }
-        .splash-continue-btn:hover { transform: translateX(-50%) scale(1.05); box-shadow: 0 0 60px rgba(255,215,0,0.3); }
+        .splash-continue-btn:hover { transform: translateX(-50%) scale(1.05); box-shadow: 0 0 80px rgba(255,215,0,0.4); }
         .splash-continue-btn:active { transform: translateX(-50%) scale(0.95); }
         @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateX(-50%) translateY(30px); }
+            0% { opacity: 0; transform: translateX(-50%) translateY(40px); }
             100% { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
 
         /* ============================================================
-           MAIN CARD - MODERN GLASS
+           MAIN CARD - PREMIUM GLASS
            ============================================================ */
         .onam-card {
             max-width:440px; 
@@ -330,139 +388,174 @@
             z-index:20;
             border-radius: 32px;
             padding: 28px 24px 32px;
-            background: rgba(255, 255, 255, 0.04) !important;
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+            background: rgba(10,6,4,0.5) !important;
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255,215,0,0.06);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,215,0,0.05);
+            animation: cardFloat 4s ease-in-out infinite;
+        }
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
         }
 
         /* ============================================================
-           HEADER - MODERN
+           HEADER - PREMIUM
            ============================================================ */
         .header {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 6px;
+            gap: 6px;
+            margin-bottom: 4px;
         }
         .header-logo {
             width: 88px;
             height: 88px;
             border-radius: 50%;
-            border: 2px solid rgba(255,215,0,0.2);
-            box-shadow: 0 0 40px rgba(255,215,0,0.05), inset 0 0 40px rgba(255,215,0,0.02);
+            border: 2px solid rgba(255,215,0,0.15);
+            box-shadow: 0 0 60px rgba(255,215,0,0.08), inset 0 0 60px rgba(255,215,0,0.02);
             object-fit: cover;
-            background: rgba(255,248,235,0.05);
+            background: rgba(255,248,235,0.03);
             flex-shrink: 0;
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+        @keyframes logoPulse {
+            0%, 100% { box-shadow: 0 0 60px rgba(255,215,0,0.08); }
+            50% { box-shadow: 0 0 80px rgba(255,215,0,0.15), 0 0 120px rgba(255,215,0,0.05); }
         }
         .brand {
             font-family: 'AmbiliBold', 'TarmilesAction', sans-serif;
             font-size: 2.8rem;
             font-weight: 900;
             letter-spacing: 2px;
-            color: #fff;
             line-height: 1.1;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
             text-transform: uppercase;
-            background: linear-gradient(135deg, #ffffff, #ffd700);
+            background: linear-gradient(135deg, #FFD700, #FF8C00, #FF6B00, #FFD700);
+            background-size: 300% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: goldShine 3s ease-in-out infinite;
+            text-shadow: 0 0 40px rgba(255,215,0,0.1);
+        }
+        @keyframes goldShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         .brand-sub {
             font-family: 'CelebrateScript', 'Pacifico', cursive;
-            font-size: 1.1rem;
-            color: rgba(255,215,0,0.6);
+            font-size: 1.2rem;
+            color: rgba(255,215,0,0.4);
             margin-top: -2px;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
         .subhead {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.4);
-            background: rgba(255,255,255,0.04);
+            font-size: 0.65rem;
+            color: rgba(255,215,0,0.25);
+            background: rgba(255,215,0,0.04);
             padding: 4px 16px;
             border-radius: 40px;
-            border: 1px solid rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,215,0,0.04);
             backdrop-filter: blur(2px);
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
-        .subhead i { margin-right: 6px; color: rgba(255,215,0,0.3); }
+        .subhead i { margin-right: 6px; color: rgba(255,215,0,0.2); }
 
         /* ============================================================
-           ONAM TAG - MODERN
+           ONAM TAG - PREMIUM
            ============================================================ */
         .onam-tag {
             font-family: 'Anakha', 'Inter', sans-serif;
-            background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,215,0,0.02));
-            padding: 14px 12px 12px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,165,0,0.02));
+            padding: 16px 12px 14px;
             border-radius: 20px;
             text-align: center;
             font-weight: 600;
             font-size: 1.1rem;
             line-height: 1.6;
             margin: 12px 0 14px;
-            border: 1px solid rgba(255,215,0,0.06);
-            color: rgba(255,255,255,0.8);
+            border: 1px solid rgba(255,215,0,0.04);
+            color: rgba(255,215,0,0.7);
             backdrop-filter: blur(4px);
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        .onam-tag::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(255,215,0,0.03), transparent 70%);
+            animation: tagGlow 4s ease-in-out infinite;
+        }
+        @keyframes tagGlow {
+            0%, 100% { transform: translate(-20%, -20%); }
+            50% { transform: translate(20%, 20%); }
         }
 
         /* ============================================================
-           MEAT ICONS - MODERN
+           MEAT ICONS - PREMIUM
            ============================================================ */
         .meat-icons {
             display:flex; 
             justify-content:center; 
-            gap:20px; 
-            background: rgba(255,255,255,0.02);
+            gap:24px; 
+            background: rgba(255,215,0,0.02);
             backdrop-filter:blur(4px);
             border-radius:20px;
-            padding:12px 8px;
+            padding:14px 8px;
             margin:6px 0 14px;
-            border:1px solid rgba(255,215,0,0.04);
+            border:1px solid rgba(255,215,0,0.03);
         }
         .meat-icons .icon-group {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 2px;
+            transition: all 0.3s ease;
+        }
+        .meat-icons .icon-group:hover {
+            transform: scale(1.1);
         }
         .meat-icons span { 
-            font-size: 1.8rem;
-            filter: drop-shadow(0 2px 10px rgba(0,0,0,0.2));
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 15px rgba(0,0,0,0.2));
         }
         .meat-icons .label {
             font-size: 0.6rem;
             font-weight: 600;
-            color: rgba(255,255,255,0.3);
-            letter-spacing: 0.5px;
+            color: rgba(255,215,0,0.2);
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         .premium-badge {
-            background: linear-gradient(135deg, rgba(15,59,44,0.6), rgba(31,110,74,0.4));
-            color: rgba(255,215,0,0.7);
-            padding: 6px 14px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,165,0,0.03));
+            color: rgba(255,215,0,0.4);
+            padding: 6px 16px;
             border-radius: 40px;
             display: inline-block;
             font-weight: 500;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.5px;
-            border: 1px solid rgba(255,215,0,0.06);
+            border: 1px solid rgba(255,215,0,0.03);
             backdrop-filter: blur(4px);
         }
-        .premium-badge i { margin-right: 6px; color: rgba(255,215,0,0.3); }
+        .premium-badge i { margin-right: 6px; color: rgba(255,215,0,0.2); }
 
         /* ============================================================
-           BUTTONS - MODERN
+           BUTTONS - PREMIUM
            ============================================================ */
         .wish-btn-open {
-            background: linear-gradient(135deg, rgba(139,78,26,0.3), rgba(90,48,16,0.2));
+            background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,165,0,0.04));
             color: #fff;
-            border: 1px solid rgba(255,215,0,0.1);
+            border: 1px solid rgba(255,215,0,0.08);
             padding: 16px 28px;
             border-radius: 16px;
             font-weight: 600;
@@ -479,22 +572,39 @@
             max-width: 320px;
             margin: 10px auto 6px;
             backdrop-filter: blur(4px);
+            position: relative;
+            overflow: hidden;
         }
-        .wish-btn-open:hover { background: linear-gradient(135deg, rgba(139,78,26,0.5), rgba(90,48,16,0.3)); transform: scale(1.01); }
+        .wish-btn-open::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,215,0,0.05) 50%, transparent 60%);
+            animation: shimmer 3s ease-in-out infinite;
+            transform: rotate(25deg);
+        }
+        .wish-btn-open:hover { 
+            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,165,0,0.08)); 
+            transform: scale(1.02);
+            box-shadow: 0 8px 40px rgba(255,215,0,0.1);
+        }
         .wish-btn-open:active { transform: scale(0.97); }
-        .wish-btn-open i.fa-gift { color: #ffd700; animation: giftShake 2s ease-in-out infinite; }
+        .wish-btn-open i.fa-gift { color: #FFD700; animation: giftShake 2s ease-in-out infinite; }
         @keyframes giftShake {
             0%, 100% { transform: rotate(0deg); }
-            10% { transform: rotate(10deg); }
-            20% { transform: rotate(-8deg); }
-            30% { transform: rotate(5deg); }
+            10% { transform: rotate(12deg); }
+            20% { transform: rotate(-10deg); }
+            30% { transform: rotate(6deg); }
             40%, 100% { transform: rotate(0deg); }
         }
 
         .install-btn {
-            background: rgba(255,255,255,0.04);
-            color: rgba(255,255,255,0.6);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,215,0,0.02);
+            color: rgba(255,215,0,0.3);
+            border: 1px solid rgba(255,215,0,0.04);
             padding: 12px 24px;
             border-radius: 16px;
             font-weight: 500;
@@ -509,14 +619,14 @@
             max-width: 320px;
             margin: 6px auto;
         }
-        .install-btn:hover { background: rgba(255,255,255,0.08); }
+        .install-btn:hover { background: rgba(255,215,0,0.05); color: rgba(255,215,0,0.5); }
         .install-btn.hidden { display: none; }
-        .install-btn i { color: rgba(255,215,0,0.4); }
+        .install-btn i { color: rgba(255,215,0,0.2); }
 
         .share-btn {
-            background: rgba(255,255,255,0.04);
-            color: rgba(255,255,255,0.6);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,215,0,0.02);
+            color: rgba(255,215,0,0.3);
+            border: 1px solid rgba(255,215,0,0.04);
             padding: 12px 24px;
             border-radius: 16px;
             font-weight: 500;
@@ -531,59 +641,102 @@
             max-width: 320px;
             margin: 6px auto;
         }
-        .share-btn:hover { background: rgba(255,255,255,0.08); }
-        .share-btn i { color: rgba(255,215,0,0.4); }
+        .share-btn:hover { background: rgba(255,215,0,0.05); color: rgba(255,215,0,0.5); }
+        .share-btn i { color: rgba(255,215,0,0.2); }
 
         /* ============================================================
-           INFO GRID - MODERN GLASS
+           INFO GRID - PREMIUM
            ============================================================ */
-        .info-grid { display:flex; flex-direction:column; gap:10px; margin:14px 0 18px; }
+        .info-grid { display:flex; flex-direction:column; gap:10px; margin:16px 0 20px; }
         .info-item {
-            background: rgba(255,255,255,0.02);
+            background: rgba(255,215,0,0.02);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            padding: 12px 16px;
+            padding: 14px 18px;
             border-radius: 16px;
             display:flex;
             align-items:center;
             gap:14px;
-            border:1px solid rgba(255,255,255,0.04);
+            border:1px solid rgba(255,215,0,0.03);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .info-item:hover { 
+            background: rgba(255,215,0,0.04); 
+            transform: translateX(4px);
+            border-color: rgba(255,215,0,0.06);
+        }
+        .info-item i { 
+            width:32px; 
+            font-size:1.2rem; 
+            color: rgba(255,215,0,0.25); 
+            text-align:center;
             transition: all 0.3s ease;
         }
-        .info-item:hover { background: rgba(255,255,255,0.04); }
-        .info-item i { width:28px; font-size:1.1rem; color: rgba(255,215,0,0.4); text-align:center; }
-        .info-item .content { flex:1; font-size:0.85rem; font-weight:500; color: rgba(255,255,255,0.7); }
-        .info-item .content small { font-weight:400; color: rgba(255,255,255,0.3); display:block; font-size:0.65rem; margin-top:1px; }
+        .info-item:hover i { color: rgba(255,215,0,0.5); }
+        .info-item .content { 
+            flex:1; 
+            font-size:0.85rem; 
+            font-weight:500; 
+            color: rgba(255,255,255,0.5); 
+        }
+        .info-item .content small { 
+            font-weight:400; 
+            color: rgba(255,255,255,0.2); 
+            display:block; 
+            font-size:0.65rem; 
+            margin-top:1px; 
+        }
         .info-item .action-link {
-            background: rgba(255,255,255,0.04);
-            color: rgba(255,255,255,0.5);
+            background: rgba(255,215,0,0.03);
+            color: rgba(255,215,0,0.3);
             padding: 6px 14px;
             border-radius: 40px;
             text-decoration:none;
             font-size:0.7rem;
             font-weight:500;
             white-space:nowrap;
-            border:1px solid rgba(255,255,255,0.04);
+            border:1px solid rgba(255,215,0,0.03);
             transition:all 0.3s ease;
         }
-        .info-item .action-link:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
+        .info-item .action-link:hover { 
+            background: rgba(255,215,0,0.06); 
+            color: rgba(255,215,0,0.5);
+            border-color: rgba(255,215,0,0.06);
+        }
         .info-item .action-link i { color: inherit; font-size:0.7rem; margin-right:4px; }
 
         /* ============================================================
-           ORDER SECTION - MODERN GLASS
+           ORDER SECTION - PREMIUM GLASS
            ============================================================ */
         .order-section-glass {
-            background: rgba(255,255,255,0.02);
+            background: rgba(255,215,0,0.02);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,215,0,0.03);
             border-radius: 20px;
-            padding: 18px 16px 20px;
+            padding: 20px 16px 22px;
             margin: 14px 0 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        .order-section-glass::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 70% 30%, rgba(255,215,0,0.02), transparent 60%);
+            animation: orderGlow 6s ease-in-out infinite;
+        }
+        @keyframes orderGlow {
+            0%, 100% { transform: translate(-10%, -10%); }
+            50% { transform: translate(10%, 10%); }
         }
 
         .order-section-glass h3 {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,215,0,0.5);
             font-size: 1rem;
             font-weight: 600;
             display: flex;
@@ -592,19 +745,23 @@
             gap: 10px;
             margin-bottom: 14px;
             letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
         }
-        .order-section-glass h3 i { color: rgba(255,215,0,0.3); font-size: 1rem; }
+        .order-section-glass h3 i { color: rgba(255,215,0,0.15); font-size: 1rem; }
 
         .order-btn-group {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
+            position: relative;
+            z-index: 1;
         }
         .order-btn {
-            background: rgba(255,255,255,0.03);
-            color: rgba(255,255,255,0.7);
-            border: 1px solid rgba(255,255,255,0.04);
+            background: rgba(255,215,0,0.02);
+            color: rgba(255,215,0,0.4);
+            border: 1px solid rgba(255,215,0,0.03);
             padding: 12px 20px;
             border-radius: 14px;
             font-weight: 500;
@@ -620,23 +777,42 @@
             min-width: 80px;
         }
         .order-btn:hover {
-            background: rgba(255,255,255,0.06);
-            transform: translateY(-1px);
+            background: rgba(255,215,0,0.06);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         .order-btn:active { transform: scale(0.97); }
-        .order-btn.green { background: rgba(37,211,102,0.08); border-color: rgba(37,211,102,0.1); color: rgba(37,211,102,0.8); }
-        .order-btn.green:hover { background: rgba(37,211,102,0.15); }
-        .order-btn.amber { background: rgba(255,165,0,0.08); border-color: rgba(255,165,0,0.1); color: rgba(255,165,0,0.8); }
-        .order-btn.amber:hover { background: rgba(255,165,0,0.15); }
+        .order-btn.green { 
+            background: rgba(37,211,102,0.06); 
+            border-color: rgba(37,211,102,0.06); 
+            color: rgba(37,211,102,0.5); 
+        }
+        .order-btn.green:hover { 
+            background: rgba(37,211,102,0.12); 
+            color: rgba(37,211,102,0.7);
+            box-shadow: 0 4px 20px rgba(37,211,102,0.05);
+        }
+        .order-btn.amber { 
+            background: rgba(255,165,0,0.06); 
+            border-color: rgba(255,165,0,0.06); 
+            color: rgba(255,165,0,0.5); 
+        }
+        .order-btn.amber:hover { 
+            background: rgba(255,165,0,0.12); 
+            color: rgba(255,165,0,0.7);
+            box-shadow: 0 4px 20px rgba(255,165,0,0.05);
+        }
 
         .order-section-glass p {
             margin-top: 14px;
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.2);
+            font-size: 0.65rem;
+            color: rgba(255,215,0,0.15);
             text-align: center;
             letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
         }
-        .order-section-glass p i { margin-right: 6px; color: rgba(255,215,0,0.2); }
+        .order-section-glass p i { margin-right: 6px; color: rgba(255,215,0,0.1); }
 
         /* ============================================================
            FOOTER
@@ -649,19 +825,19 @@
             font-family: 'Anakha', 'Inter', sans-serif;
             font-size: 1rem;
             font-weight: 600;
-            color: rgba(255,255,255,0.3);
+            color: rgba(255,215,0,0.2);
             display: block;
             margin-bottom: 2px;
         }
         .footer-note .english {
             font-family: 'CelebrateScript', 'Pacifico', cursive;
             font-size: 1.2rem;
-            color: rgba(255,215,0,0.2);
+            color: rgba(255,215,0,0.15);
             display: block;
         }
 
         /* ============================================================
-           MAVELI - MODERN
+           MAVELI
            ============================================================ */
         .maveli-container {
             position: fixed;
@@ -689,7 +865,7 @@
         }
 
         /* ============================================================
-           SIZE CONTROLLER - MODERN
+           SIZE CONTROLLER
            ============================================================ */
         .size-controller {
             position:fixed; 
@@ -705,8 +881,8 @@
             display:flex;
             align-items:center;
             gap:12px;
-            border:1px solid rgba(255,255,255,0.04);
-            color: rgba(255,255,255,0.4);
+            border:1px solid rgba(255,215,0,0.03);
+            color: rgba(255,215,0,0.3);
             font-weight:400;
             font-size:0.7rem;
         }
@@ -715,7 +891,7 @@
             height:2px;
             -webkit-appearance:none;
             appearance:none;
-            background: rgba(255,215,0,0.1);
+            background: rgba(255,215,0,0.08);
             border-radius:4px;
             outline:none;
             cursor:pointer;
@@ -725,36 +901,36 @@
             appearance:none;
             width:14px;
             height:14px;
-            background: rgba(255,215,0,0.3);
+            background: rgba(255,215,0,0.2);
             border-radius:50%;
-            border:1px solid rgba(255,215,0,0.1);
+            border:1px solid rgba(255,215,0,0.08);
             cursor:pointer;
         }
         .size-controller .size-label {
             min-width:30px;
             text-align:center;
-            background:rgba(255,255,255,0.02);
+            background:rgba(255,215,0,0.02);
             padding:2px 8px;
             border-radius:20px;
             font-size:0.7rem;
         }
 
         /* ============================================================
-           TOAST - MODERN
+           TOAST
            ============================================================ */
         .toast {
             position: fixed;
             bottom: 80px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0,0,0,0.7);
+            background: rgba(10,6,4,0.8);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,215,0,0.6);
             padding: 12px 24px;
             border-radius: 16px;
             font-size: 0.85rem;
-            border: 1px solid rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,215,0,0.03);
             z-index: 99999;
             opacity: 0;
             transition: opacity 0.4s ease;
@@ -764,7 +940,7 @@
         .toast.show { opacity: 1; }
 
         /* ============================================================
-           POPUP - MODERN
+           POPUP - PREMIUM (with sequential video)
            ============================================================ */
         .popup-overlay {
             position: fixed;
@@ -809,10 +985,10 @@
             right: 20px;
             width: 44px;
             height: 44px;
-            background: rgba(255,255,255,0.04);
+            background: rgba(255,215,0,0.02);
             backdrop-filter: blur(8px);
-            color: rgba(255,255,255,0.4);
-            border: 1px solid rgba(255,255,255,0.04);
+            color: rgba(255,215,0,0.3);
+            border: 1px solid rgba(255,215,0,0.03);
             border-radius: 50%;
             font-size: 1.4rem;
             font-weight: 300;
@@ -823,7 +999,7 @@
             z-index: 100000;
             transition: all 0.3s ease;
         }
-        .popup-close-btn:hover { background: rgba(255,255,255,0.08); transform: scale(1.05); }
+        .popup-close-btn:hover { background: rgba(255,215,0,0.05); transform: scale(1.05); }
 
         .popup-sound-btn {
             position: fixed;
@@ -831,10 +1007,10 @@
             left: 20px;
             width: 44px;
             height: 44px;
-            background: rgba(255,255,255,0.04);
+            background: rgba(255,215,0,0.02);
             backdrop-filter: blur(8px);
-            color: rgba(255,255,255,0.4);
-            border: 1px solid rgba(255,255,255,0.04);
+            color: rgba(255,215,0,0.3);
+            border: 1px solid rgba(255,215,0,0.03);
             border-radius: 50%;
             font-size: 1.2rem;
             display: flex;
@@ -844,16 +1020,16 @@
             z-index: 100000;
             transition: all 0.3s ease;
         }
-        .popup-sound-btn:hover { background: rgba(255,255,255,0.08); transform: scale(1.05); }
+        .popup-sound-btn:hover { background: rgba(255,215,0,0.05); transform: scale(1.05); }
 
         .popup-close-hint {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255,255,255,0.02);
+            background: rgba(255,215,0,0.02);
             backdrop-filter: blur(8px);
-            color: rgba(255,255,255,0.2);
+            color: rgba(255,215,0,0.15);
             padding: 8px 20px;
             border-radius: 40px;
             font-size: 0.7rem;
@@ -861,12 +1037,12 @@
             pointer-events: none;
             white-space: nowrap;
             z-index: 100000;
-            border: 1px solid rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,215,0,0.02);
         }
         .popup-close-hint i { margin-right: 8px; }
 
         /* ============================================================
-           ORDER POPUP - MODERN
+           ORDER POPUP
            ============================================================ */
         .order-popup {
             position: fixed;
@@ -898,8 +1074,8 @@
         }
 
         .order-popup .icon { font-size: 2.8rem; margin-bottom: 4px; }
-        .order-popup h3 { color: #ffd700; font-size: 1.2rem; font-weight: 600; margin-bottom: 4px; }
-        .order-popup p { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-bottom: 20px; }
+        .order-popup h3 { color: #FFD700; font-size: 1.2rem; font-weight: 600; margin-bottom: 4px; }
+        .order-popup p { color: rgba(255,215,0,0.2); font-size: 0.8rem; margin-bottom: 20px; }
         .order-popup .btn-group { display: flex; flex-direction: column; gap: 10px; }
         .order-popup .btn-group a {
             padding: 14px;
@@ -915,9 +1091,9 @@
         }
         .order-popup .btn-group a:hover { transform: scale(1.02); }
         .order-popup .btn-close {
-            background: rgba(255,255,255,0.02);
-            color: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.04);
+            background: rgba(255,215,0,0.02);
+            color: rgba(255,215,0,0.15);
+            border: 1px solid rgba(255,215,0,0.03);
             padding: 12px;
             border-radius: 14px;
             cursor: pointer;
@@ -925,7 +1101,7 @@
             transition: all 0.2s ease;
             margin-top: 4px;
         }
-        .order-popup .btn-close:hover { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.4); }
+        .order-popup .btn-close:hover { background: rgba(255,215,0,0.04); color: rgba(255,215,0,0.25); }
 
         /* ============================================================
            BURST FLOWERS
@@ -943,7 +1119,7 @@
         }
 
         /* ============================================================
-           CONFETTI - MODERN
+           CONFETTI
            ============================================================ */
         .confetti-container {
             position: fixed;
@@ -982,7 +1158,23 @@
             .size-controller { padding: 8px 14px; gap: 8px; bottom: 14px; }
             .size-controller input[type="range"] { width: 80px; }
             .onam-tag { font-size: 0.95rem; padding: 12px 8px; }
-            .splash-continue-btn { bottom: 40px; padding: 14px 32px; font-size: 0.85rem; }
+            .splash-continue-btn { 
+                bottom: 40px; 
+                padding: 14px 32px; 
+                font-size: 0.85rem;
+                min-width: 160px;
+            }
+            .splash-sound-btn {
+                top: 12px;
+                left: 12px;
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+            .splash-loader {
+                bottom: 100px;
+                font-size: 0.7rem;
+            }
             .order-btn { font-size: 0.8rem; padding: 10px 16px; }
             .meat-icons span { font-size: 1.5rem; }
             .meat-icons { gap: 14px; }
@@ -992,7 +1184,14 @@
 <body>
 
     <!-- ============================================================
-    BACKGROUND VIDEO
+    FLOATING PARTICLES
+    ============================================================ -->
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+
+    <!-- ============================================================
+    BACKGROUND VIDEO - SCREEN BLEND
     ============================================================ -->
     <div id="bgVideoContainer">
         <video id="bgVideo" src="webvideo.webm" autoplay loop muted playsinline webkit-playsinline
@@ -1021,7 +1220,7 @@
     <div class="butterfly butterfly-6">🦋</div>
 
     <!-- ============================================================
-    SPLASH SCREEN - MODERN
+    SPLASH SCREEN - PREMIUM (FIXED ALIGN)
     ============================================================ -->
     <div id="splash-screen">
         <div class="splash-overlay"></div>
@@ -1045,10 +1244,12 @@
             <i class="fas fa-spinner"></i> Loading
         </div>
         
+        <!-- Sound Button - Top Left -->
         <button class="splash-sound-btn" id="splashSoundBtn" onclick="toggleSplashSound()">
             <i class="fas fa-volume-up"></i>
         </button>
         
+        <!-- Continue Button - Bottom Center (Perfectly Aligned) -->
         <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
@@ -1068,7 +1269,7 @@
     SIZE CONTROLLER
     ============================================================ -->
     <div class="size-controller">
-        <i class="fas fa-arrows-alt-h" style="color:rgba(255,215,0,0.2);"></i>
+        <i class="fas fa-arrows-alt-h" style="color:rgba(255,215,0,0.15);"></i>
         <input type="range" id="sizeSlider" min="30" max="400" value="200" 
                oninput="updateMaveliSize(this.value)">
         <span class="size-label" id="sizeDisplay">200</span>
@@ -1078,7 +1279,7 @@
     <div class="confetti-container" id="confettiBox"></div>
 
     <!-- ============================================================
-    MAIN CARD - MODERN
+    MAIN CARD
     ============================================================ -->
     <div class="onam-card" id="mainCard">
         <div class="header">
@@ -1102,7 +1303,7 @@
 
         <!-- ===== BUTTONS ===== -->
         <button class="wish-btn-open" onclick="openPopupWithBurst()">
-            <i class="fas fa-gift"></i> A Gift For You <i class="fas fa-video" style="font-size:0.8rem; opacity:0.5;"></i>
+            <i class="fas fa-gift"></i> A Gift For You <i class="fas fa-video" style="font-size:0.8rem; opacity:0.3;"></i>
         </button>
 
         <button id="installBtn" class="install-btn hidden" onclick="installApp()">
@@ -1116,7 +1317,7 @@
         <div id="toast" class="toast">✅ Link copied!</div>
 
         <!-- ============================================================
-        INFO GRID - MODERN
+        INFO GRID
         ============================================================ -->
         <div class="info-grid">
             <div class="info-item">
@@ -1128,7 +1329,7 @@
                 <a href="https://share.google/DgEPDOg0qYXSBWtg6" target="_blank" class="action-link"><i class="fas fa-directions"></i> Map</a>
             </div>
             <div class="info-item">
-                <i class="fab fa-whatsapp" style="color:rgba(37,211,102,0.4);"></i>
+                <i class="fab fa-whatsapp" style="color:rgba(37,211,102,0.3);"></i>
                 <div class="content">
                     +91 6282116735
                     <small>WhatsApp for orders</small>
@@ -1146,7 +1347,7 @@
         </div>
 
         <!-- ============================================================
-        ORDER SECTION - MODERN GLASS
+        ORDER SECTION
         ============================================================ -->
         <div class="order-section-glass">
             <h3><i class="fas fa-mobile-alt"></i> Order via Mobile</h3>
@@ -1178,14 +1379,18 @@
     </div>
 
     <!-- ============================================================
-    VIDEO POPUP
+    VIDEO POPUP - SEQUENTIAL PLAY (onam_wish1 → onam_wish2 → loop)
     ============================================================ -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
-            <video id="popupVideo" src="onam_wish.mp4?v=21" 
-                   autoplay loop playsinline webkit-playsinline
-                   preload="none"
-                   onclick="closePopup()">
+            <video id="popupVideo" 
+                   autoplay
+                   playsinline 
+                   webkit-playsinline
+                   preload="auto"
+                   onclick="closePopup()"
+                   style="width:100%; height:100%; object-fit:cover; display:block; background:#0a0604;">
+                <source src="onam_wish1.mp4" type="video/mp4">
             </video>
         </div>
         <button class="popup-close-btn" onclick="closePopup(); event.stopPropagation();">✕</button>
@@ -1254,7 +1459,7 @@
         }
 
         function createSparkles(x, y) {
-            const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#ff9ff3', '#feca57', '#ff4757', '#2ed573'];
+            const colors = ['#FFD700', '#FF8C00', '#FF6B35', '#FFA500', '#FF4500', '#FFD700'];
             for (let i = 0; i < 10; i++) {
                 const el = document.createElement('div');
                 el.className = 'sparkle';
@@ -1343,6 +1548,70 @@
         }
 
         // =============================================================
+        // POPUP VIDEO - SEQUENTIAL PLAY (onam_wish1 → onam_wish2 → loop)
+        // =============================================================
+        
+        const popupVideo = document.getElementById('popupVideo');
+        const videoSources = ['onam_wish1.mp4', 'onam_wish2.mp4'];
+        let videoIndex = 0;
+
+        function playNextWishVideo() {
+            if (!popupVideo) return;
+            
+            videoIndex = (videoIndex + 1) % videoSources.length;
+            popupVideo.src = videoSources[videoIndex] + '?v=' + Date.now();
+            popupVideo.load();
+            
+            if (!popupVideo.muted) {
+                popupVideo.play().catch(() => {});
+            } else {
+                popupVideo.play().catch(() => {});
+            }
+            
+            console.log('▶️ Playing:', videoSources[videoIndex]);
+        }
+
+        popupVideo.addEventListener('ended', playNextWishVideo);
+        popupVideo.addEventListener('loadeddata', function() {
+            if (this.paused) this.play().catch(() => {});
+        });
+
+        function openPopup() {
+            document.getElementById('popupOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            videoIndex = 0;
+            popupVideo.src = videoSources[0] + '?v=' + Date.now();
+            popupVideo.load();
+            popupVideo.play().catch(() => {});
+            
+            popupVideo.muted = false;
+            const btn = document.getElementById('soundToggleBtn');
+            if (btn) {
+                btn.querySelector('i').className = 'fas fa-volume-up';
+            }
+        }
+
+        function closePopup() {
+            document.getElementById('popupOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+            if (popupVideo) {
+                popupVideo.pause();
+                popupVideo.currentTime = 0;
+            }
+            resumeBackgroundMusic();
+        }
+
+        function toggleSound() {
+            if (!popupVideo) return;
+            const btn = document.getElementById('soundToggleBtn');
+            popupVideo.muted = !popupVideo.muted;
+            btn.querySelector('i').className = popupVideo.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+        // =============================================================
         // ORDER POPUP
         // =============================================================
         function openOrderPopup(event) {
@@ -1367,7 +1636,7 @@
                         <i class="fab fa-whatsapp"></i> WhatsApp Order
                     </a>
                     <a href="tel:+919388151050" 
-                       style="background:#ff6b35; color:#fff;">
+                       style="background:#FF6B35; color:#fff;">
                         <i class="fas fa-phone"></i> Call Now
                     </a>
                     <button class="btn-close" onclick="document.getElementById('orderPopup').remove()">
@@ -1381,6 +1650,32 @@
             popup.addEventListener('click', function(e) {
                 if (e.target === this) this.remove();
             });
+        }
+
+        // =============================================================
+        // BURST FLOWERS
+        // =============================================================
+        function createBurstFlowers() {
+            const emojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
+            for (let i = 0; i < 12; i++) {
+                const f = document.createElement('div');
+                f.className = 'burst-flower';
+                f.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                const a = Math.random() * 2 * Math.PI, d = 60 + Math.random() * 120;
+                f.style.setProperty('--tx', Math.cos(a) * d + 'px');
+                f.style.setProperty('--ty', Math.sin(a) * d - 80 + 'px');
+                f.style.left = (window.innerWidth / 2 + Math.random() * 30 - 15) + 'px';
+                f.style.top = (window.innerHeight / 2 + Math.random() * 30 - 15) + 'px';
+                f.style.fontSize = (1 + Math.random() * 1) + 'rem';
+                document.body.appendChild(f);
+                setTimeout(() => f.remove(), 1400);
+            }
+        }
+
+        function openPopupWithBurst() {
+            pauseBackgroundMusic();
+            createBurstFlowers();
+            setTimeout(() => openPopup(), 150);
         }
 
         // =============================================================
@@ -1444,58 +1739,6 @@
         }
 
         // =============================================================
-        // BURST FLOWERS
-        // =============================================================
-        function createBurstFlowers() {
-            const emojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
-            for (let i = 0; i < 12; i++) {
-                const f = document.createElement('div');
-                f.className = 'burst-flower';
-                f.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                const a = Math.random() * 2 * Math.PI, d = 60 + Math.random() * 120;
-                f.style.setProperty('--tx', Math.cos(a) * d + 'px');
-                f.style.setProperty('--ty', Math.sin(a) * d - 80 + 'px');
-                f.style.left = (window.innerWidth / 2 + Math.random() * 30 - 15) + 'px';
-                f.style.top = (window.innerHeight / 2 + Math.random() * 30 - 15) + 'px';
-                f.style.fontSize = (1 + Math.random() * 1) + 'rem';
-                document.body.appendChild(f);
-                setTimeout(() => f.remove(), 1400);
-            }
-        }
-
-        function openPopupWithBurst() {
-            pauseBackgroundMusic();
-            createBurstFlowers();
-            setTimeout(() => openPopup(), 150);
-        }
-
-        function openPopup() {
-            document.getElementById('popupOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            const v = document.getElementById('popupVideo');
-            if (v) { v.muted = false; v.play().catch(() => {}); }
-        }
-
-        function closePopup() {
-            document.getElementById('popupOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-            const v = document.getElementById('popupVideo');
-            if (v) v.pause();
-            resumeBackgroundMusic();
-        }
-
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
-
-        function toggleSound() {
-            const v = document.getElementById('popupVideo');
-            const btn = document.getElementById('soundToggleBtn');
-            if (v) { 
-                v.muted = !v.muted; 
-                btn.querySelector('i').className = v.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up'; 
-            }
-        }
-
-        // =============================================================
         // MAVELI SIZE
         // =============================================================
         function updateMaveliSize(val) {
@@ -1512,7 +1755,7 @@
         // =============================================================
         (function() {
             const container = document.getElementById('confettiBox');
-            const colors = ['rgba(255,215,0,0.3)', 'rgba(255,107,107,0.2)', 'rgba(78,205,196,0.2)', 'rgba(255,159,243,0.2)'];
+            const colors = ['rgba(255,215,0,0.2)', 'rgba(255,165,0,0.15)', 'rgba(255,107,107,0.1)', 'rgba(255,215,0,0.1)'];
             const flowerEmojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
             for (let i = 0; i < 25; i++) {
                 const isFlower = Math.random() > 0.4;
