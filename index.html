@@ -940,7 +940,7 @@
         .toast.show { opacity: 1; }
 
         /* ============================================================
-           POPUP - PREMIUM (with sequential video)
+           POPUP - PREMIUM (with sequential video - WebM Support)
            ============================================================ */
         .popup-overlay {
             position: fixed;
@@ -1220,7 +1220,7 @@
     <div class="butterfly butterfly-6">🦋</div>
 
     <!-- ============================================================
-    SPLASH SCREEN - PREMIUM (FIXED ALIGN)
+    SPLASH SCREEN
     ============================================================ -->
     <div id="splash-screen">
         <div class="splash-overlay"></div>
@@ -1249,7 +1249,7 @@
             <i class="fas fa-volume-up"></i>
         </button>
         
-        <!-- Continue Button - Bottom Center (Perfectly Aligned) -->
+        <!-- Continue Button - Bottom Center -->
         <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
@@ -1380,6 +1380,7 @@
 
     <!-- ============================================================
     VIDEO POPUP - SEQUENTIAL PLAY (onam_wish1 → onam_wish2 → loop)
+    WebM + MP4 Support
     ============================================================ -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
@@ -1390,7 +1391,12 @@
                    preload="auto"
                    onclick="closePopup()"
                    style="width:100%; height:100%; object-fit:cover; display:block; background:#0a0604;">
+                <!-- WebM first (smaller) -->
+                <source src="onam_wish1.webm" type="video/webm">
+                <source src="onam_wish2.webm" type="video/webm">
+                <!-- MP4 fallback -->
                 <source src="onam_wish1.mp4" type="video/mp4">
+                <source src="onam_wish2.mp4" type="video/mp4">
             </video>
         </div>
         <button class="popup-close-btn" onclick="closePopup(); event.stopPropagation();">✕</button>
@@ -1548,43 +1554,71 @@
         }
 
         // =============================================================
-        // POPUP VIDEO - SEQUENTIAL PLAY (onam_wish1 → onam_wish2 → loop)
+        // POPUP VIDEO - SEQUENTIAL PLAY (WebM + MP4 Support)
         // =============================================================
         
         const popupVideo = document.getElementById('popupVideo');
-        const videoSources = ['onam_wish1.mp4', 'onam_wish2.mp4'];
+        // WebM first, fallback to MP4
+        const videoSources = ['onam_wish1.webm', 'onam_wish2.webm'];
+        const videoSourcesFallback = ['onam_wish1.mp4', 'onam_wish2.mp4'];
         let videoIndex = 0;
+        let isWebMSupported = true;
 
         function playNextWishVideo() {
             if (!popupVideo) return;
             
             videoIndex = (videoIndex + 1) % videoSources.length;
-            popupVideo.src = videoSources[videoIndex] + '?v=' + Date.now();
-            popupVideo.load();
             
-            if (!popupVideo.muted) {
-                popupVideo.play().catch(() => {});
+            // Try WebM first
+            if (isWebMSupported) {
+                popupVideo.src = videoSources[videoIndex] + '?v=' + Date.now();
             } else {
-                popupVideo.play().catch(() => {});
+                popupVideo.src = videoSourcesFallback[videoIndex] + '?v=' + Date.now();
             }
             
-            console.log('▶️ Playing:', videoSources[videoIndex]);
+            popupVideo.load();
+            popupVideo.play().catch(function(e) {
+                // If WebM fails, switch to MP4
+                if (isWebMSupported) {
+                    console.log('⚠️ WebM failed, switching to MP4...');
+                    isWebMSupported = false;
+                    popupVideo.src = videoSourcesFallback[videoIndex] + '?v=' + Date.now();
+                    popupVideo.load();
+                    popupVideo.play().catch(() => {});
+                }
+            });
+            
+            console.log('▶️ Playing:', popupVideo.src);
         }
 
+        // Event listeners
         popupVideo.addEventListener('ended', playNextWishVideo);
         popupVideo.addEventListener('loadeddata', function() {
             if (this.paused) this.play().catch(() => {});
         });
 
+        // Open popup - reset to first video
         function openPopup() {
             document.getElementById('popupOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
             
+            // Reset to first video
             videoIndex = 0;
+            isWebMSupported = true;
             popupVideo.src = videoSources[0] + '?v=' + Date.now();
             popupVideo.load();
-            popupVideo.play().catch(() => {});
+            popupVideo.play().catch(function(e) {
+                // If WebM fails, try MP4
+                if (isWebMSupported) {
+                    console.log('⚠️ WebM failed, switching to MP4...');
+                    isWebMSupported = false;
+                    popupVideo.src = videoSourcesFallback[0] + '?v=' + Date.now();
+                    popupVideo.load();
+                    popupVideo.play().catch(() => {});
+                }
+            });
             
+            // Unmute
             popupVideo.muted = false;
             const btn = document.getElementById('soundToggleBtn');
             if (btn) {
@@ -1592,6 +1626,7 @@
             }
         }
 
+        // Close popup
         function closePopup() {
             document.getElementById('popupOverlay').classList.remove('active');
             document.body.style.overflow = '';
@@ -1602,6 +1637,7 @@
             resumeBackgroundMusic();
         }
 
+        // Toggle sound
         function toggleSound() {
             if (!popupVideo) return;
             const btn = document.getElementById('soundToggleBtn');
@@ -1609,7 +1645,34 @@
             btn.querySelector('i').className = popupVideo.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
         }
 
+        // Close on Escape key
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+        // =============================================================
+        // BURST FLOWERS
+        // =============================================================
+        function createBurstFlowers() {
+            const emojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
+            for (let i = 0; i < 12; i++) {
+                const f = document.createElement('div');
+                f.className = 'burst-flower';
+                f.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                const a = Math.random() * 2 * Math.PI, d = 60 + Math.random() * 120;
+                f.style.setProperty('--tx', Math.cos(a) * d + 'px');
+                f.style.setProperty('--ty', Math.sin(a) * d - 80 + 'px');
+                f.style.left = (window.innerWidth / 2 + Math.random() * 30 - 15) + 'px';
+                f.style.top = (window.innerHeight / 2 + Math.random() * 30 - 15) + 'px';
+                f.style.fontSize = (1 + Math.random() * 1) + 'rem';
+                document.body.appendChild(f);
+                setTimeout(() => f.remove(), 1400);
+            }
+        }
+
+        function openPopupWithBurst() {
+            pauseBackgroundMusic();
+            createBurstFlowers();
+            setTimeout(() => openPopup(), 150);
+        }
 
         // =============================================================
         // ORDER POPUP
@@ -1650,32 +1713,6 @@
             popup.addEventListener('click', function(e) {
                 if (e.target === this) this.remove();
             });
-        }
-
-        // =============================================================
-        // BURST FLOWERS
-        // =============================================================
-        function createBurstFlowers() {
-            const emojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
-            for (let i = 0; i < 12; i++) {
-                const f = document.createElement('div');
-                f.className = 'burst-flower';
-                f.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                const a = Math.random() * 2 * Math.PI, d = 60 + Math.random() * 120;
-                f.style.setProperty('--tx', Math.cos(a) * d + 'px');
-                f.style.setProperty('--ty', Math.sin(a) * d - 80 + 'px');
-                f.style.left = (window.innerWidth / 2 + Math.random() * 30 - 15) + 'px';
-                f.style.top = (window.innerHeight / 2 + Math.random() * 30 - 15) + 'px';
-                f.style.fontSize = (1 + Math.random() * 1) + 'rem';
-                document.body.appendChild(f);
-                setTimeout(() => f.remove(), 1400);
-            }
-        }
-
-        function openPopupWithBurst() {
-            pauseBackgroundMusic();
-            createBurstFlowers();
-            setTimeout(() => openPopup(), 150);
         }
 
         // =============================================================
