@@ -87,7 +87,6 @@
             background: transparent;
         }
 
-        /* Animated Gradient Overlay */
         #bgVideoContainer::after {
             content: '';
             position: absolute;
@@ -218,7 +217,7 @@
         }
 
         /* ============================================================
-           SPLASH SCREEN - PREMIUM (FIXED ALIGN)
+           SPLASH SCREEN
            ============================================================ */
         #splash-screen {
             position: fixed;
@@ -379,7 +378,7 @@
         }
 
         /* ============================================================
-           MAIN CARD - PREMIUM GLASS
+           MAIN CARD
            ============================================================ */
         .onam-card {
             max-width:440px; 
@@ -401,7 +400,7 @@
         }
 
         /* ============================================================
-           HEADER - PREMIUM
+           HEADER
            ============================================================ */
         .header {
             display: flex;
@@ -465,7 +464,7 @@
         .subhead i { margin-right: 6px; color: rgba(255,215,0,0.2); }
 
         /* ============================================================
-           ONAM TAG - PREMIUM
+           ONAM TAG - FIXED OPACITY
            ============================================================ */
         .onam-tag {
             font-family: 'Anakha', 'Inter', sans-serif;
@@ -478,7 +477,7 @@
             line-height: 1.6;
             margin: 12px 0 14px;
             border: 1px solid rgba(255,215,0,0.04);
-            color: rgba(255,215,0,0.7);
+            color: rgba(255,215,0,0.85) !important;
             backdrop-filter: blur(4px);
             letter-spacing: 0.5px;
             position: relative;
@@ -500,7 +499,7 @@
         }
 
         /* ============================================================
-           MEAT ICONS - PREMIUM
+           MEAT ICONS
            ============================================================ */
         .meat-icons {
             display:flex; 
@@ -530,14 +529,14 @@
         .meat-icons .label {
             font-size: 0.6rem;
             font-weight: 600;
-            color: rgba(255,215,0,0.2);
+            color: rgba(255,215,0,0.3) !important;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         .premium-badge {
             background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,165,0,0.03));
-            color: rgba(255,215,0,0.4);
+            color: rgba(255,215,0,0.5) !important;
             padding: 6px 16px;
             border-radius: 40px;
             display: inline-block;
@@ -550,7 +549,7 @@
         .premium-badge i { margin-right: 6px; color: rgba(255,215,0,0.2); }
 
         /* ============================================================
-           BUTTONS - PREMIUM
+           BUTTONS
            ============================================================ */
         .wish-btn-open {
             background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,165,0,0.04));
@@ -645,7 +644,7 @@
         .share-btn i { color: rgba(255,215,0,0.2); }
 
         /* ============================================================
-           INFO GRID - PREMIUM
+           INFO GRID - FIXED OPACITY
            ============================================================ */
         .info-grid { display:flex; flex-direction:column; gap:10px; margin:16px 0 20px; }
         .info-item {
@@ -669,27 +668,27 @@
         .info-item i { 
             width:32px; 
             font-size:1.2rem; 
-            color: rgba(255,215,0,0.25); 
+            color: rgba(255,215,0,0.35) !important; 
             text-align:center;
             transition: all 0.3s ease;
         }
-        .info-item:hover i { color: rgba(255,215,0,0.5); }
+        .info-item:hover i { color: rgba(255,215,0,0.6) !important; }
         .info-item .content { 
             flex:1; 
             font-size:0.85rem; 
             font-weight:500; 
-            color: rgba(255,255,255,0.5); 
+            color: rgba(255,255,255,0.75) !important; 
         }
         .info-item .content small { 
             font-weight:400; 
-            color: rgba(255,255,255,0.2); 
+            color: rgba(255,255,255,0.35) !important; 
             display:block; 
             font-size:0.65rem; 
             margin-top:1px; 
         }
         .info-item .action-link {
             background: rgba(255,215,0,0.03);
-            color: rgba(255,215,0,0.3);
+            color: rgba(255,215,0,0.4) !important;
             padding: 6px 14px;
             border-radius: 40px;
             text-decoration:none;
@@ -701,13 +700,13 @@
         }
         .info-item .action-link:hover { 
             background: rgba(255,215,0,0.06); 
-            color: rgba(255,215,0,0.5);
+            color: rgba(255,215,0,0.6) !important;
             border-color: rgba(255,215,0,0.06);
         }
         .info-item .action-link i { color: inherit; font-size:0.7rem; margin-right:4px; }
 
         /* ============================================================
-           ORDER SECTION - PREMIUM GLASS
+           ORDER SECTION
            ============================================================ */
         .order-section-glass {
             background: rgba(255,215,0,0.02);
@@ -736,7 +735,7 @@
         }
 
         .order-section-glass h3 {
-            color: rgba(255,215,0,0.5);
+            color: rgba(255,215,0,0.7) !important;
             font-size: 1rem;
             font-weight: 600;
             display: flex;
@@ -748,7 +747,7 @@
             position: relative;
             z-index: 1;
         }
-        .order-section-glass h3 i { color: rgba(255,215,0,0.15); font-size: 1rem; }
+        .order-section-glass h3 i { color: rgba(255,215,0,0.2); font-size: 1rem; }
 
         .order-btn-group {
             display: flex;
@@ -760,7 +759,7 @@
         }
         .order-btn {
             background: rgba(255,215,0,0.02);
-            color: rgba(255,215,0,0.4);
+            color: rgba(255,215,0,0.5) !important;
             border: 1px solid rgba(255,215,0,0.03);
             padding: 12px 20px;
             border-radius: 14px;
@@ -785,54 +784,56 @@
         .order-btn.green { 
             background: rgba(37,211,102,0.06); 
             border-color: rgba(37,211,102,0.06); 
-            color: rgba(37,211,102,0.5); 
+            color: rgba(37,211,102,0.6) !important; 
         }
         .order-btn.green:hover { 
             background: rgba(37,211,102,0.12); 
-            color: rgba(37,211,102,0.7);
+            color: rgba(37,211,102,0.8) !important;
             box-shadow: 0 4px 20px rgba(37,211,102,0.05);
         }
         .order-btn.amber { 
             background: rgba(255,165,0,0.06); 
             border-color: rgba(255,165,0,0.06); 
-            color: rgba(255,165,0,0.5); 
+            color: rgba(255,165,0,0.6) !important; 
         }
         .order-btn.amber:hover { 
             background: rgba(255,165,0,0.12); 
-            color: rgba(255,165,0,0.7);
+            color: rgba(255,165,0,0.8) !important;
             box-shadow: 0 4px 20px rgba(255,165,0,0.05);
         }
 
         .order-section-glass p {
             margin-top: 14px;
             font-size: 0.65rem;
-            color: rgba(255,215,0,0.15);
+            color: rgba(255,215,0,0.3) !important;
             text-align: center;
             letter-spacing: 0.5px;
             position: relative;
             z-index: 1;
         }
-        .order-section-glass p i { margin-right: 6px; color: rgba(255,215,0,0.1); }
+        .order-section-glass p i { margin-right: 6px; color: rgba(255,215,0,0.15); }
 
         /* ============================================================
-           FOOTER
+           FOOTER - FIXED OPACITY + FRONT
            ============================================================ */
         .footer-note {
             margin-top: 20px;
             text-align: center;
+            position: relative;
+            z-index: 25 !important;
         }
         .footer-note .malayalam {
             font-family: 'Anakha', 'Inter', sans-serif;
             font-size: 1rem;
             font-weight: 600;
-            color: rgba(255,215,0,0.2);
+            color: rgba(255,215,0,0.6) !important;
             display: block;
             margin-bottom: 2px;
         }
         .footer-note .english {
             font-family: 'CelebrateScript', 'Pacifico', cursive;
             font-size: 1.2rem;
-            color: rgba(255,215,0,0.15);
+            color: rgba(255,215,0,0.5) !important;
             display: block;
         }
 
@@ -940,7 +941,7 @@
         .toast.show { opacity: 1; }
 
         /* ============================================================
-           POPUP - PREMIUM (with sequential video - WebM Support)
+           POPUP
            ============================================================ */
         .popup-overlay {
             position: fixed;
@@ -1042,9 +1043,9 @@
         .popup-close-hint i { margin-right: 8px; }
 
         /* ============================================================
-           ORDER POPUP
+           QUICK ORDER POPUP - WITH VIDEO
            ============================================================ */
-        .order-popup {
+        .quick-order-popup {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -1052,19 +1053,19 @@
             background: rgba(10,6,4,0.95);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            padding: 32px 24px 28px;
+            padding: 20px 20px 24px;
             border-radius: 24px;
             border: 1px solid rgba(255,215,0,0.06);
             z-index: 999999;
-            max-width: 340px;
-            width: 90%;
+            max-width: 380px;
+            width: 92%;
             text-align: center;
             color: #fff;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.9);
             animation: popIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             opacity: 0;
         }
-        .order-popup.active {
+        .quick-order-popup.active {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
         }
@@ -1073,11 +1074,41 @@
             100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         }
 
-        .order-popup .icon { font-size: 2.8rem; margin-bottom: 4px; }
-        .order-popup h3 { color: #FFD700; font-size: 1.2rem; font-weight: 600; margin-bottom: 4px; }
-        .order-popup p { color: rgba(255,215,0,0.2); font-size: 0.8rem; margin-bottom: 20px; }
-        .order-popup .btn-group { display: flex; flex-direction: column; gap: 10px; }
-        .order-popup .btn-group a {
+        .quick-order-popup .video-container {
+            position: relative;
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #0a0604;
+            margin-bottom: 16px;
+            aspect-ratio: 16/9;
+        }
+        .quick-order-popup .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #0a0604;
+        }
+
+        .quick-order-popup .popup-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: rgba(255,215,0,0.8) !important;
+            margin-bottom: 4px;
+        }
+        .quick-order-popup .popup-subtitle {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4) !important;
+            margin-bottom: 14px;
+        }
+
+        .quick-order-popup .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .quick-order-popup .btn-group a {
             padding: 14px;
             border-radius: 14px;
             text-decoration: none;
@@ -1089,19 +1120,23 @@
             gap: 10px;
             transition: all 0.2s ease;
         }
-        .order-popup .btn-group a:hover { transform: scale(1.02); }
-        .order-popup .btn-close {
-            background: rgba(255,215,0,0.02);
-            color: rgba(255,215,0,0.15);
-            border: 1px solid rgba(255,215,0,0.03);
-            padding: 12px;
+        .quick-order-popup .btn-group a:hover { transform: scale(1.02); }
+        .quick-order-popup .btn-group .whatsapp-btn { background: #25D366; color: #fff; }
+        .quick-order-popup .btn-group .call-btn { background: #FF6B35; color: #fff; }
+
+        .quick-order-popup .btn-close {
+            background: rgba(255,255,255,0.02);
+            color: rgba(255,255,255,0.25) !important;
+            border: 1px solid rgba(255,255,255,0.04);
+            padding: 10px;
             border-radius: 14px;
             cursor: pointer;
             font-size: 0.8rem;
             transition: all 0.2s ease;
             margin-top: 4px;
+            width: 100%;
         }
-        .order-popup .btn-close:hover { background: rgba(255,215,0,0.04); color: rgba(255,215,0,0.25); }
+        .quick-order-popup .btn-close:hover { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.4) !important; }
 
         /* ============================================================
            BURST FLOWERS
@@ -1178,6 +1213,7 @@
             .order-btn { font-size: 0.8rem; padding: 10px 16px; }
             .meat-icons span { font-size: 1.5rem; }
             .meat-icons { gap: 14px; }
+            .quick-order-popup { max-width: 340px; padding: 16px; }
         }
     </style>
 </head>
@@ -1191,7 +1227,7 @@
     <div class="particle particle-3"></div>
 
     <!-- ============================================================
-    BACKGROUND VIDEO - SCREEN BLEND
+    BACKGROUND VIDEO
     ============================================================ -->
     <div id="bgVideoContainer">
         <video id="bgVideo" src="webvideo.webm" autoplay loop muted playsinline webkit-playsinline
@@ -1244,12 +1280,10 @@
             <i class="fas fa-spinner"></i> Loading
         </div>
         
-        <!-- Sound Button - Top Left -->
         <button class="splash-sound-btn" id="splashSoundBtn" onclick="toggleSplashSound()">
             <i class="fas fa-volume-up"></i>
         </button>
         
-        <!-- Continue Button - Bottom Center -->
         <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
@@ -1347,7 +1381,7 @@
         </div>
 
         <!-- ============================================================
-        ORDER SECTION
+        ORDER SECTION - WITH QUICK ORDER POPUP
         ============================================================ -->
         <div class="order-section-glass">
             <h3><i class="fas fa-mobile-alt"></i> Order via Mobile</h3>
@@ -1363,7 +1397,7 @@
                 </a>
                 <a href="#" 
                    class="order-btn" 
-                   onclick="openOrderPopup(event);">
+                   onclick="openQuickOrderPopup(event);">
                     <i class="fas fa-shopping-cart"></i> Quick Order
                 </a>
             </div>
@@ -1372,6 +1406,9 @@
             </p>
         </div>
 
+        <!-- ============================================================
+        FOOTER - FIXED OPACITY + FRONT
+        ============================================================ -->
         <div class="footer-note">
             <span class="malayalam">🌾 ഓണാശംസകൾ</span>
             <span class="english">Celebrate Onam with Perumpayil</span>
@@ -1379,8 +1416,7 @@
     </div>
 
     <!-- ============================================================
-    VIDEO POPUP - SEQUENTIAL PLAY (onam_wish1 → onam_wish2 → loop)
-    WebM + MP4 Support
+    VIDEO POPUP - SEQUENTIAL PLAY
     ============================================================ -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
@@ -1391,10 +1427,8 @@
                    preload="auto"
                    onclick="closePopup()"
                    style="width:100%; height:100%; object-fit:cover; display:block; background:#0a0604;">
-                <!-- WebM first (smaller) -->
                 <source src="onam_wish1.webm" type="video/webm">
                 <source src="onam_wish2.webm" type="video/webm">
-                <!-- MP4 fallback -->
                 <source src="onam_wish1.mp4" type="video/mp4">
                 <source src="onam_wish2.mp4" type="video/mp4">
             </video>
@@ -1554,11 +1588,10 @@
         }
 
         // =============================================================
-        // POPUP VIDEO - SEQUENTIAL PLAY (WebM + MP4 Support)
+        // POPUP VIDEO - SEQUENTIAL PLAY
         // =============================================================
         
         const popupVideo = document.getElementById('popupVideo');
-        // WebM first, fallback to MP4
         const videoSources = ['onam_wish1.webm', 'onam_wish2.webm'];
         const videoSourcesFallback = ['onam_wish1.mp4', 'onam_wish2.mp4'];
         let videoIndex = 0;
@@ -1569,7 +1602,6 @@
             
             videoIndex = (videoIndex + 1) % videoSources.length;
             
-            // Try WebM first
             if (isWebMSupported) {
                 popupVideo.src = videoSources[videoIndex] + '?v=' + Date.now();
             } else {
@@ -1578,7 +1610,6 @@
             
             popupVideo.load();
             popupVideo.play().catch(function(e) {
-                // If WebM fails, switch to MP4
                 if (isWebMSupported) {
                     console.log('⚠️ WebM failed, switching to MP4...');
                     isWebMSupported = false;
@@ -1587,30 +1618,23 @@
                     popupVideo.play().catch(() => {});
                 }
             });
-            
-            console.log('▶️ Playing:', popupVideo.src);
         }
 
-        // Event listeners
         popupVideo.addEventListener('ended', playNextWishVideo);
         popupVideo.addEventListener('loadeddata', function() {
             if (this.paused) this.play().catch(() => {});
         });
 
-        // Open popup - reset to first video
         function openPopup() {
             document.getElementById('popupOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
             
-            // Reset to first video
             videoIndex = 0;
             isWebMSupported = true;
             popupVideo.src = videoSources[0] + '?v=' + Date.now();
             popupVideo.load();
             popupVideo.play().catch(function(e) {
-                // If WebM fails, try MP4
                 if (isWebMSupported) {
-                    console.log('⚠️ WebM failed, switching to MP4...');
                     isWebMSupported = false;
                     popupVideo.src = videoSourcesFallback[0] + '?v=' + Date.now();
                     popupVideo.load();
@@ -1618,7 +1642,6 @@
                 }
             });
             
-            // Unmute
             popupVideo.muted = false;
             const btn = document.getElementById('soundToggleBtn');
             if (btn) {
@@ -1626,7 +1649,6 @@
             }
         }
 
-        // Close popup
         function closePopup() {
             document.getElementById('popupOverlay').classList.remove('active');
             document.body.style.overflow = '';
@@ -1637,7 +1659,6 @@
             resumeBackgroundMusic();
         }
 
-        // Toggle sound
         function toggleSound() {
             if (!popupVideo) return;
             const btn = document.getElementById('soundToggleBtn');
@@ -1645,8 +1666,73 @@
             btn.querySelector('i').className = popupVideo.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
         }
 
-        // Close on Escape key
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+        // =============================================================
+        // QUICK ORDER POPUP - WITH VIDEO LOOP
+        // =============================================================
+
+        function openQuickOrderPopup(event) {
+            if (event) event.preventDefault();
+            
+            const existing = document.getElementById('quickOrderPopup');
+            if (existing) {
+                existing.remove();
+                return;
+            }
+            
+            const popup = document.createElement('div');
+            popup.id = 'quickOrderPopup';
+            popup.className = 'quick-order-popup active';
+            popup.innerHTML = `
+                <div class="video-container">
+                    <video id="quickOrderVideo" 
+                           autoplay 
+                           loop 
+                           muted 
+                           playsinline 
+                           webkit-playsinline
+                           preload="auto">
+                        <source src="quickorder.webm" type="video/webm">
+                        <source src="quickorder.mp4" type="video/mp4">
+                    </video>
+                </div>
+                
+                <div class="popup-title">🛒 Quick Order</div>
+                <div class="popup-subtitle">Choose your preferred method</div>
+                
+                <div class="btn-group">
+                    <a href="https://wa.me/916282116735?text=Hi%20Perumpayil%2C%20I%20want%20to%20order%20for%20Onam" 
+                       target="_blank" 
+                       class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                    </a>
+                    <a href="tel:+919388151050" 
+                       class="call-btn">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                </div>
+                
+                <button class="btn-close" onclick="document.getElementById('quickOrderPopup').remove(); document.getElementById('quickOrderVideo')?.pause();">
+                    ✕ Close
+                </button>
+            `;
+            
+            document.body.appendChild(popup);
+            
+            const video = document.getElementById('quickOrderVideo');
+            if (video) {
+                video.play().catch(() => {});
+            }
+            
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.remove();
+                    const v = document.getElementById('quickOrderVideo');
+                    if (v) v.pause();
+                }
+            });
+        }
 
         // =============================================================
         // BURST FLOWERS
@@ -1672,47 +1758,6 @@
             pauseBackgroundMusic();
             createBurstFlowers();
             setTimeout(() => openPopup(), 150);
-        }
-
-        // =============================================================
-        // ORDER POPUP
-        // =============================================================
-        function openOrderPopup(event) {
-            if (event) event.preventDefault();
-            
-            if (document.getElementById('orderPopup')) {
-                document.getElementById('orderPopup').remove();
-                return;
-            }
-            
-            const popup = document.createElement('div');
-            popup.id = 'orderPopup';
-            popup.className = 'order-popup active';
-            popup.innerHTML = `
-                <div class="icon">🛒</div>
-                <h3>Quick Order</h3>
-                <p>Choose your preferred method</p>
-                <div class="btn-group">
-                    <a href="https://wa.me/916282116735?text=Hi%20Perumpayil%2C%20I%20want%20to%20order%20for%20Onam" 
-                       target="_blank" 
-                       style="background:#25D366; color:#fff;">
-                        <i class="fab fa-whatsapp"></i> WhatsApp Order
-                    </a>
-                    <a href="tel:+919388151050" 
-                       style="background:#FF6B35; color:#fff;">
-                        <i class="fas fa-phone"></i> Call Now
-                    </a>
-                    <button class="btn-close" onclick="document.getElementById('orderPopup').remove()">
-                        ✕ Close
-                    </button>
-                </div>
-            `;
-            
-            document.body.appendChild(popup);
-            
-            popup.addEventListener('click', function(e) {
-                if (e.target === this) this.remove();
-            });
         }
 
         // =============================================================
