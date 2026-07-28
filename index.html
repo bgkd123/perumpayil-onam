@@ -1573,7 +1573,7 @@
         }
 
         // =============================================================
-        // BACKGROUND MUSIC
+        // BACKGROUND MUSIC CONTROL
         // =============================================================
         const bgAudio = document.getElementById('bgAudio');
         let bgIsPlaying = false;
@@ -1583,16 +1583,31 @@
             if (audioInitAttempted) return;
             audioInitAttempted = true;
             bgAudio.volume = 0.5;
-            bgAudio.play().then(() => { bgIsPlaying = true; }).catch(() => {});
+            bgAudio.play().then(() => { 
+                bgIsPlaying = true; 
+                console.log('▶️ Background music started');
+            }).catch(() => { 
+                bgIsPlaying = false; 
+                console.log('⚠️ Background music autoplay blocked');
+            });
         }
 
         function pauseBackgroundMusic() {
-            if (bgIsPlaying) { bgAudio.pause(); bgIsPlaying = false; }
+            if (bgIsPlaying) { 
+                bgAudio.pause(); 
+                bgIsPlaying = false; 
+                console.log('⏸️ Background music paused');
+            }
         }
 
         function resumeBackgroundMusic() {
             if (!bgIsPlaying && audioInitAttempted) {
-                bgAudio.play().then(() => { bgIsPlaying = true; }).catch(() => {});
+                bgAudio.play().then(() => { 
+                    bgIsPlaying = true; 
+                    console.log('▶️ Background music resumed');
+                }).catch(() => { 
+                    console.log('⚠️ Failed to resume background music');
+                });
             }
         }
 
@@ -1678,7 +1693,7 @@
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
 
         // =============================================================
-        // QUICK ORDER POPUP - PORTRAIT VIDEO LOOP
+        // QUICK ORDER POPUP - PORTRAIT VIDEO LOOP + AUDIO CONTROL
         // =============================================================
 
         function openQuickOrderPopup(event) {
@@ -1686,9 +1701,12 @@
             
             const existing = document.getElementById('quickOrderPopup');
             if (existing) {
-                existing.remove();
+                closeQuickOrderPopup();
                 return;
             }
+            
+            // Pause background music
+            pauseBackgroundMusic();
             
             const popup = document.createElement('div');
             popup.id = 'quickOrderPopup';
@@ -1722,7 +1740,7 @@
                     </a>
                 </div>
                 
-                <button class="btn-close" onclick="document.getElementById('quickOrderPopup').remove(); document.getElementById('quickOrderVideo')?.pause();">
+                <button class="btn-close" onclick="closeQuickOrderPopup();">
                     ✕ Close
                 </button>
             `;
@@ -1734,13 +1752,30 @@
                 video.play().catch(() => {});
             }
             
+            // Close on outside click
             popup.addEventListener('click', function(e) {
                 if (e.target === this) {
-                    this.remove();
-                    const v = document.getElementById('quickOrderVideo');
-                    if (v) v.pause();
+                    closeQuickOrderPopup();
                 }
             });
+        }
+
+        // =============================================================
+        // CLOSE QUICK ORDER POPUP - RESUME MUSIC
+        // =============================================================
+
+        function closeQuickOrderPopup() {
+            const popup = document.getElementById('quickOrderPopup');
+            if (popup) {
+                popup.remove();
+                // Resume background music
+                resumeBackgroundMusic();
+                console.log('▶️ Quick Order closed, music resumed');
+            }
+            const video = document.getElementById('quickOrderVideo');
+            if (video) {
+                video.pause();
+            }
         }
 
         // =============================================================
