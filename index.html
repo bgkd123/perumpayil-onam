@@ -6,7 +6,7 @@
     <title>Perumpayil · Meat Centre · Onam</title>
 
     <link rel="manifest" href="manifest.json?v=21" />
-    <meta name="theme-color" content="#1a0e06" />
+    <meta name="theme-color" content="#2C1810" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
@@ -48,6 +48,44 @@
             font-display: swap;
         }
 
+        /* ============================================================
+           ONAM FESTIVAL COLORS
+           ============================================================ */
+        :root {
+            --onam-gold: #FFD700;
+            --onam-orange: #FF8C00;
+            --onam-red: #E53935;
+            --onam-green: #4CAF50;
+            --onam-yellow: #FFC107;
+            --onam-terracotta: #D2691E;
+            --onam-cream: #FFF8E1;
+            --onam-dark: #2C1810;
+            --onam-warm: #F57C00;
+            --onam-bright: #FFEB3B;
+        }
+
+        /* ============================================================
+           OPTIMIZED RUNNING LIGHT - FAST VERSION
+           ============================================================ */
+
+        @keyframes runningLight {
+            0% { border-color: #FFD700; }
+            20% { border-color: #FF8C00; }
+            40% { border-color: #E53935; }
+            60% { border-color: #FFC107; }
+            80% { border-color: #FF8C00; }
+            100% { border-color: #FFD700; }
+        }
+
+        @keyframes runningLightFast {
+            0% { border-color: #FFD700; }
+            20% { border-color: #FF8C00; }
+            40% { border-color: #E53935; }
+            60% { border-color: #FFC107; }
+            80% { border-color: #FF8C00; }
+            100% { border-color: #FFD700; }
+        }
+
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
             min-height:100vh;
@@ -58,7 +96,11 @@
             justify-content:center;
             position:relative;
             overflow-x:hidden;
-            background: #0a0604;
+            background: radial-gradient(ellipse at 50% 30%, 
+                rgba(255,215,0,0.06) 0%, 
+                rgba(255,140,0,0.04) 30%,
+                rgba(10,6,4,1) 100%
+            );
             font-family: 'Inter', 'Segoe UI', sans-serif;
         }
         
@@ -83,7 +125,7 @@
             display: block;
             mix-blend-mode: screen;
             -webkit-mix-blend-mode: screen;
-            opacity: 0.5;
+            opacity: 0.4;
             background: transparent;
         }
 
@@ -95,10 +137,10 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(ellipse at 50% 70%, 
-                rgba(255,215,0,0.12) 0%, 
-                rgba(255,165,0,0.06) 30%,
-                rgba(255,69,0,0.04) 50%,
-                rgba(10,6,4,0.8) 100%
+                rgba(255,215,0,0.15) 0%, 
+                rgba(255,165,0,0.08) 30%,
+                rgba(255,69,0,0.05) 50%,
+                rgba(10,6,4,0.85) 100%
             );
             z-index: 1;
             pointer-events: none;
@@ -117,7 +159,7 @@
             pointer-events: none;
             z-index: 1;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,215,0,0.3), transparent);
+            background: radial-gradient(circle, rgba(255,215,0,0.2), transparent);
             animation: floatParticle 15s ease-in-out infinite;
         }
         .particle-1 { width: 300px; height: 300px; top: -100px; left: -100px; animation-delay: 0s; }
@@ -172,7 +214,7 @@
             font-size: 2.2rem;
             opacity: 0.5;
             animation: flyFlower 8s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(255,215,0,0.15));
+            filter: drop-shadow(0 0 20px rgba(255,215,0,0.1));
         }
         .flying-flower-1 { left: 3%; top: 10%; animation-delay: 0s; }
         .flying-flower-2 { right: 3%; top: 20%; animation-delay: 1.5s; }
@@ -197,9 +239,9 @@
             z-index: 10;
             pointer-events: none;
             font-size: 2rem;
-            opacity: 0.5;
+            opacity: 0.4;
             animation: flyButterfly 10s ease-in-out infinite;
-            filter: drop-shadow(0 0 15px rgba(255,215,0,0.1));
+            filter: drop-shadow(0 0 15px rgba(255,215,0,0.05));
         }
         .butterfly-1 { left: 2%; top: 30%; animation-delay: 0s; }
         .butterfly-2 { right: 2%; top: 40%; animation-delay: 2.5s; }
@@ -302,7 +344,7 @@
             left: 24px;
             width: 44px;
             height: 44px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,215,0,0.05);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             color: rgba(255,215,0,0.4);
@@ -327,13 +369,13 @@
             bottom: 70px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, #FFD700, #FF8C00, #FF6B00);
-            color: #1a0e06;
+            background: linear-gradient(135deg, #FFD700, #FF8C00, #E53935);
+            color: #2C1810;
             border: none;
             padding: 18px 52px;
             border-radius: 60px;
             font-size: 1rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 2px;
             cursor: pointer;
             z-index: 100000;
@@ -378,7 +420,7 @@
         }
 
         /* ============================================================
-           MAIN CARD
+           MAIN CARD - OPTIMIZED RUNNING LIGHT
            ============================================================ */
         .onam-card {
             max-width:440px; 
@@ -387,16 +429,13 @@
             z-index:20;
             border-radius: 32px;
             padding: 28px 24px 32px;
-            background: rgba(10,6,4,0.5) !important;
+            background: rgba(10,6,4,0.55) !important;
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255,215,0,0.06);
-            box-shadow: 0 40px 100px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,215,0,0.05);
-            animation: cardFloat 4s ease-in-out infinite;
-        }
-        @keyframes cardFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
+            border: 2px solid #FFD700;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+            animation: runningLight 3s ease-in-out infinite;
+            will-change: border-color;
         }
 
         /* ============================================================
@@ -431,15 +470,15 @@
             letter-spacing: 2px;
             line-height: 1.1;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #FFD700, #FF8C00, #FF6B00, #FFD700);
+            background: linear-gradient(135deg, #FFD700, #FF8C00, #E53935, #FFD700);
             background-size: 300% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: goldShine 3s ease-in-out infinite;
+            animation: festivalShine 4s ease-in-out infinite;
             text-shadow: 0 0 40px rgba(255,215,0,0.1);
         }
-        @keyframes goldShine {
+        @keyframes festivalShine {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
@@ -464,24 +503,26 @@
         .subhead i { margin-right: 6px; color: rgba(255,215,0,0.2); }
 
         /* ============================================================
-           ONAM TAG - FIXED OPACITY
+           ONAM TAG - OPTIMIZED RUNNING LIGHT
            ============================================================ */
         .onam-tag {
             font-family: 'Anakha', 'Inter', sans-serif;
-            background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,165,0,0.02));
+            background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,140,0,0.06));
             padding: 16px 12px 14px;
             border-radius: 20px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1.1rem;
             line-height: 1.6;
             margin: 12px 0 14px;
-            border: 1px solid rgba(255,215,0,0.04);
-            color: rgba(255,215,0,0.85) !important;
+            border: 2px solid #FFD700;
+            color: #FFD700 !important;
             backdrop-filter: blur(4px);
             letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
+            animation: runningLight 3s ease-in-out infinite 0.5s;
+            will-change: border-color;
         }
         .onam-tag::before {
             content: '';
@@ -499,7 +540,7 @@
         }
 
         /* ============================================================
-           MEAT ICONS
+           MEAT ICONS - OPTIMIZED RUNNING LIGHT
            ============================================================ */
         .meat-icons {
             display:flex; 
@@ -510,7 +551,9 @@
             border-radius:20px;
             padding:14px 8px;
             margin:6px 0 14px;
-            border:1px solid rgba(255,215,0,0.03);
+            border: 1px solid rgba(255,215,0,0.1);
+            animation: runningLight 4s ease-in-out infinite 0.8s;
+            will-change: border-color;
         }
         .meat-icons .icon-group {
             display: flex;
@@ -535,26 +578,26 @@
         }
 
         .premium-badge {
-            background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,165,0,0.03));
-            color: rgba(255,215,0,0.5) !important;
+            background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,140,0,0.03));
+            color: #FFD700 !important;
             padding: 6px 16px;
             border-radius: 40px;
             display: inline-block;
             font-weight: 500;
             font-size: 0.65rem;
             letter-spacing: 0.5px;
-            border: 1px solid rgba(255,215,0,0.03);
+            border: 1px solid rgba(255,215,0,0.1);
             backdrop-filter: blur(4px);
         }
         .premium-badge i { margin-right: 6px; color: rgba(255,215,0,0.2); }
 
         /* ============================================================
-           BUTTONS
+           BUTTONS - OPTIMIZED RUNNING LIGHT
            ============================================================ */
         .wish-btn-open {
-            background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,165,0,0.04));
-            color: #fff;
-            border: 1px solid rgba(255,215,0,0.08);
+            background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,140,0,0.06));
+            color: #FFD700;
+            border: 2px solid #FFD700;
             padding: 16px 28px;
             border-radius: 16px;
             font-weight: 600;
@@ -573,6 +616,8 @@
             backdrop-filter: blur(4px);
             position: relative;
             overflow: hidden;
+            animation: runningLightFast 2.5s ease-in-out infinite 0.3s;
+            will-change: border-color;
         }
         .wish-btn-open::before {
             content: '';
@@ -586,7 +631,7 @@
             transform: rotate(25deg);
         }
         .wish-btn-open:hover { 
-            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,165,0,0.08)); 
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,140,0,0.1)); 
             transform: scale(1.02);
             box-shadow: 0 8px 40px rgba(255,215,0,0.1);
         }
@@ -644,7 +689,7 @@
         .share-btn i { color: rgba(255,215,0,0.2); }
 
         /* ============================================================
-           INFO GRID - FIXED OPACITY
+           INFO GRID - OPTIMIZED RUNNING LIGHT
            ============================================================ */
         .info-grid { display:flex; flex-direction:column; gap:10px; margin:16px 0 20px; }
         .info-item {
@@ -656,28 +701,29 @@
             display:flex;
             align-items:center;
             gap:14px;
-            border:1px solid rgba(255,215,0,0.03);
+            border: 2px solid rgba(255,215,0,0.2);
             transition: all 0.3s ease;
             cursor: pointer;
+            animation: runningLight 4s ease-in-out infinite 1s;
+            will-change: border-color;
         }
         .info-item:hover { 
             background: rgba(255,215,0,0.04); 
             transform: translateX(4px);
-            border-color: rgba(255,215,0,0.06);
         }
         .info-item i { 
             width:32px; 
             font-size:1.2rem; 
-            color: rgba(255,215,0,0.35) !important; 
+            color: #FFD700 !important; 
             text-align:center;
             transition: all 0.3s ease;
         }
-        .info-item:hover i { color: rgba(255,215,0,0.6) !important; }
+        .info-item:hover i { color: rgba(255,215,0,0.7) !important; }
         .info-item .content { 
             flex:1; 
             font-size:0.85rem; 
             font-weight:500; 
-            color: rgba(255,255,255,0.75) !important; 
+            color: rgba(255,255,255,0.7) !important; 
         }
         .info-item .content small { 
             font-weight:400; 
@@ -688,36 +734,38 @@
         }
         .info-item .action-link {
             background: rgba(255,215,0,0.03);
-            color: rgba(255,215,0,0.4) !important;
+            color: #FFD700 !important;
             padding: 6px 14px;
             border-radius: 40px;
             text-decoration:none;
             font-size:0.7rem;
             font-weight:500;
             white-space:nowrap;
-            border:1px solid rgba(255,215,0,0.03);
+            border:1px solid rgba(255,215,0,0.1);
             transition:all 0.3s ease;
         }
         .info-item .action-link:hover { 
             background: rgba(255,215,0,0.06); 
-            color: rgba(255,215,0,0.6) !important;
-            border-color: rgba(255,215,0,0.06);
+            color: rgba(255,215,0,0.7) !important;
+            border-color: rgba(255,215,0,0.2);
         }
         .info-item .action-link i { color: inherit; font-size:0.7rem; margin-right:4px; }
 
         /* ============================================================
-           ORDER SECTION
+           ORDER SECTION - OPTIMIZED RUNNING LIGHT
            ============================================================ */
         .order-section-glass {
-            background: rgba(255,215,0,0.02);
+            background: rgba(255,215,0,0.04);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,215,0,0.03);
+            border: 2px solid #FFD700;
             border-radius: 20px;
             padding: 20px 16px 22px;
             margin: 14px 0 8px;
             position: relative;
             overflow: hidden;
+            animation: runningLight 3.5s ease-in-out infinite 0.8s;
+            will-change: border-color;
         }
         .order-section-glass::before {
             content: '';
@@ -735,7 +783,7 @@
         }
 
         .order-section-glass h3 {
-            color: rgba(255,215,0,0.7) !important;
+            color: #FFD700 !important;
             font-size: 1rem;
             font-weight: 600;
             display: flex;
@@ -747,7 +795,7 @@
             position: relative;
             z-index: 1;
         }
-        .order-section-glass h3 i { color: rgba(255,215,0,0.2); font-size: 1rem; }
+        .order-section-glass h3 i { color: #FF8C00 !important; font-size: 1rem; }
 
         .order-btn-group {
             display: flex;
@@ -759,8 +807,8 @@
         }
         .order-btn {
             background: rgba(255,215,0,0.02);
-            color: rgba(255,215,0,0.5) !important;
-            border: 1px solid rgba(255,215,0,0.03);
+            color: rgba(255,255,255,0.5) !important;
+            border: 1px solid rgba(255,215,0,0.08);
             padding: 12px 20px;
             border-radius: 14px;
             font-weight: 500;
@@ -782,24 +830,24 @@
         }
         .order-btn:active { transform: scale(0.97); }
         .order-btn.green { 
-            background: rgba(37,211,102,0.06); 
-            border-color: rgba(37,211,102,0.06); 
-            color: rgba(37,211,102,0.6) !important; 
+            background: rgba(76, 175, 80, 0.08); 
+            border-color: rgba(76, 175, 80, 0.1); 
+            color: #4CAF50 !important; 
         }
         .order-btn.green:hover { 
-            background: rgba(37,211,102,0.12); 
-            color: rgba(37,211,102,0.8) !important;
-            box-shadow: 0 4px 20px rgba(37,211,102,0.05);
+            background: rgba(76, 175, 80, 0.15); 
+            color: rgba(76, 175, 80, 0.8) !important;
+            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.05);
         }
         .order-btn.amber { 
-            background: rgba(255,165,0,0.06); 
-            border-color: rgba(255,165,0,0.06); 
-            color: rgba(255,165,0,0.6) !important; 
+            background: rgba(255, 140, 0, 0.08); 
+            border-color: rgba(255, 140, 0, 0.1); 
+            color: #FF8C00 !important; 
         }
         .order-btn.amber:hover { 
-            background: rgba(255,165,0,0.12); 
-            color: rgba(255,165,0,0.8) !important;
-            box-shadow: 0 4px 20px rgba(255,165,0,0.05);
+            background: rgba(255, 140, 0, 0.15); 
+            color: rgba(255, 140, 0, 0.8) !important;
+            box-shadow: 0 4px 20px rgba(255, 140, 0, 0.05);
         }
 
         .order-section-glass p {
@@ -814,7 +862,7 @@
         .order-section-glass p i { margin-right: 6px; color: rgba(255,215,0,0.15); }
 
         /* ============================================================
-           FOOTER - FIXED OPACITY + FRONT
+           FOOTER - OPTIMIZED RUNNING LIGHT
            ============================================================ */
         .footer-note {
             margin-top: 20px;
@@ -826,15 +874,27 @@
             font-family: 'Anakha', 'Inter', sans-serif;
             font-size: 1rem;
             font-weight: 600;
-            color: rgba(255,215,0,0.6) !important;
+            color: #FFD700 !important;
             display: block;
             margin-bottom: 2px;
+            text-shadow: 0 0 30px rgba(255,215,0,0.1);
+            border: 2px solid #FFD700;
+            padding: 4px 12px;
+            border-radius: 40px;
+            animation: runningLight 3s ease-in-out infinite 0.5s;
+            will-change: border-color;
         }
         .footer-note .english {
             font-family: 'CelebrateScript', 'Pacifico', cursive;
             font-size: 1.2rem;
-            color: rgba(255,215,0,0.5) !important;
+            color: #FF8C00 !important;
             display: block;
+            text-shadow: 0 0 30px rgba(255,140,0,0.05);
+            border: 2px solid #FFD700;
+            padding: 4px 12px;
+            border-radius: 40px;
+            animation: runningLight 3s ease-in-out infinite 0.7s;
+            will-change: border-color;
         }
 
         /* ============================================================
@@ -1043,7 +1103,7 @@
         .popup-close-hint i { margin-right: 8px; }
 
         /* ============================================================
-           QUICK ORDER POPUP - PORTRAIT VIDEO FIT (WITH AUDIO)
+           QUICK ORDER POPUP - OPTIMIZED RUNNING LIGHT
            ============================================================ */
         .quick-order-popup {
             position: fixed;
@@ -1055,15 +1115,16 @@
             -webkit-backdrop-filter: blur(24px);
             padding: 20px 20px 24px;
             border-radius: 24px;
-            border: 1px solid rgba(255,215,0,0.06);
+            border: 2px solid #FFD700;
             z-index: 999999;
             max-width: 400px;
             width: 92%;
             text-align: center;
             color: #fff;
             box-shadow: 0 40px 80px rgba(0,0,0,0.9);
-            animation: popIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: popIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards, runningLightFast 2.5s ease-in-out infinite 0.2s;
             opacity: 0;
+            will-change: border-color;
         }
         .quick-order-popup.active {
             opacity: 1;
@@ -1074,7 +1135,6 @@
             100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         }
 
-        /* Video Container - Portrait Mode */
         .quick-order-popup .video-container {
             position: relative;
             width: 100%;
@@ -1096,12 +1156,12 @@
         .quick-order-popup .popup-title {
             font-size: 1.1rem;
             font-weight: 600;
-            color: rgba(255,215,0,0.8) !important;
+            color: #FFD700 !important;
             margin-bottom: 4px;
         }
         .quick-order-popup .popup-subtitle {
             font-size: 0.75rem;
-            color: rgba(255,255,255,0.4) !important;
+            color: rgba(255,215,0,0.4) !important;
             margin-bottom: 14px;
         }
 
@@ -1127,9 +1187,9 @@
         .quick-order-popup .btn-group .call-btn { background: #FF6B35; color: #fff; }
 
         .quick-order-popup .btn-close {
-            background: rgba(255,255,255,0.02);
-            color: rgba(255,255,255,0.25) !important;
-            border: 1px solid rgba(255,255,255,0.04);
+            background: rgba(255,215,0,0.02);
+            color: rgba(255,215,0,0.25) !important;
+            border: 1px solid rgba(255,215,0,0.04);
             padding: 10px;
             border-radius: 14px;
             cursor: pointer;
@@ -1138,7 +1198,26 @@
             margin-top: 4px;
             width: 100%;
         }
-        .quick-order-popup .btn-close:hover { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.4) !important; }
+        .quick-order-popup .btn-close:hover { background: rgba(255,215,0,0.04); color: rgba(255,215,0,0.4) !important; }
+
+        /* ============================================================
+           VIDEO/AUDIO DOWNLOAD BLOCK
+           ============================================================ */
+        video::-webkit-media-controls-download-button {
+            display: none !important;
+        }
+        video::-webkit-media-controls-enclosure {
+            overflow: hidden !important;
+        }
+        video::-internal-media-controls-download-button {
+            display: none !important;
+        }
+        audio::-webkit-media-controls-download-button {
+            display: none !important;
+        }
+        video::-webkit-media-controls-panel {
+            width: calc(100% + 30px) !important;
+        }
 
         /* ============================================================
            BURST FLOWERS
@@ -1240,6 +1319,8 @@
     ============================================================ -->
     <div id="bgVideoContainer">
         <video id="bgVideo" src="webvideo.webm" autoplay loop muted playsinline webkit-playsinline
+               controlsList="nodownload noremoteplayback"
+               disablePictureInPicture="true"
                style="width:100%; height:100%; object-fit:cover; background:transparent;">
         </video>
     </div>
@@ -1277,6 +1358,8 @@
                webkit-playsinline
                preload="auto"
                poster="onam26.webp?v=21"
+               controlsList="nodownload noremoteplayback"
+               disablePictureInPicture="true"
                style="width:100%; height:100%; object-fit:cover; background:#0a0604;">
             <source src="splash_video.webm?v=21" type="video/webm">
             <source src="splash_video.mp4?v=21" type="video/mp4">
@@ -1297,7 +1380,7 @@
     </div>
 
     <!-- ===== AUDIO ===== -->
-    <audio id="bgAudio" src="onambg.mp3?v=21" loop preload="auto"></audio>
+    <audio id="bgAudio" src="onambg.mp3?v=21" loop preload="auto" controlsList="nodownload noremoteplayback"></audio>
 
     <!-- ============================================================
     MAVELI
@@ -1322,7 +1405,7 @@
     <div class="confetti-container" id="confettiBox"></div>
 
     <!-- ============================================================
-    MAIN CARD
+    MAIN CARD - FESTIVAL
     ============================================================ -->
     <div class="onam-card" id="mainCard">
         <div class="header">
@@ -1360,7 +1443,7 @@
         <div id="toast" class="toast">✅ Link copied!</div>
 
         <!-- ============================================================
-        INFO GRID
+        INFO GRID - FESTIVAL
         ============================================================ -->
         <div class="info-grid">
             <div class="info-item">
@@ -1390,7 +1473,7 @@
         </div>
 
         <!-- ============================================================
-        ORDER SECTION - WITH QUICK ORDER POPUP
+        ORDER SECTION - FESTIVAL
         ============================================================ -->
         <div class="order-section-glass">
             <h3><i class="fas fa-mobile-alt"></i> Order via Mobile</h3>
@@ -1416,7 +1499,7 @@
         </div>
 
         <!-- ============================================================
-        FOOTER - FIXED OPACITY + FRONT
+        FOOTER - FESTIVAL
         ============================================================ -->
         <div class="footer-note">
             <span class="malayalam">🌾 ഓണാശംസകൾ</span>
@@ -1435,6 +1518,8 @@
                    webkit-playsinline
                    preload="auto"
                    onclick="closePopup()"
+                   controlsList="nodownload noremoteplayback"
+                   disablePictureInPicture="true"
                    style="width:100%; height:100%; object-fit:cover; display:block; background:#0a0604;">
                 <source src="onam_wish1.webm" type="video/webm">
                 <source src="onam_wish2.webm" type="video/webm">
@@ -1508,7 +1593,7 @@
         }
 
         function createSparkles(x, y) {
-            const colors = ['#FFD700', '#FF8C00', '#FF6B35', '#FFA500', '#FF4500', '#FFD700'];
+            const colors = ['#FFD700', '#FF8C00', '#E53935', '#FFC107', '#FF6B35', '#FFD700'];
             for (let i = 0; i < 10; i++) {
                 const el = document.createElement('div');
                 el.className = 'sparkle';
@@ -1705,7 +1790,6 @@
                 return;
             }
             
-            // Pause background music
             pauseBackgroundMusic();
             
             const popup = document.createElement('div');
@@ -1719,6 +1803,8 @@
                            playsinline 
                            webkit-playsinline
                            preload="auto"
+                           controlsList="nodownload noremoteplayback"
+                           disablePictureInPicture="true"
                            style="width:100%; height:100%; object-fit:contain; display:block; background:#0a0604;">
                         <source src="quickorder.webm" type="video/webm">
                         <source src="quickorder.mp4" type="video/mp4">
@@ -1749,12 +1835,10 @@
             
             const video = document.getElementById('quickOrderVideo');
             if (video) {
-                // Ensure audio is not muted
                 video.muted = false;
                 video.play().catch(() => {});
             }
             
-            // Close on outside click
             popup.addEventListener('click', function(e) {
                 if (e.target === this) {
                     closeQuickOrderPopup();
@@ -1762,15 +1846,10 @@
             });
         }
 
-        // =============================================================
-        // CLOSE QUICK ORDER POPUP - RESUME MUSIC
-        // =============================================================
-
         function closeQuickOrderPopup() {
             const popup = document.getElementById('quickOrderPopup');
             if (popup) {
                 popup.remove();
-                // Resume background music
                 resumeBackgroundMusic();
                 console.log('▶️ Quick Order closed, music resumed');
             }
@@ -1805,6 +1884,53 @@
             createBurstFlowers();
             setTimeout(() => openPopup(), 150);
         }
+
+        // =============================================================
+        // BLOCK SAVE / DOWNLOAD - VIDEOS & AUDIOS
+        // =============================================================
+
+        // Block right-click on videos and audios
+        document.addEventListener('contextmenu', function(e) {
+            const target = e.target;
+            if (target.tagName === 'VIDEO' || target.tagName === 'AUDIO') {
+                e.preventDefault();
+                showToast('⛔ Download disabled');
+                return false;
+            }
+        });
+
+        // Block keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                showToast('⛔ Save disabled');
+                return false;
+            }
+            if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+                showToast('⛔ View source disabled');
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                e.preventDefault();
+                showToast('⛔ DevTools disabled');
+                return false;
+            }
+            if (e.key === 'F12') {
+                e.preventDefault();
+                showToast('⛔ DevTools disabled');
+                return false;
+            }
+        });
+
+        // Block drag on videos
+        document.querySelectorAll('video, audio').forEach(el => {
+            el.addEventListener('dragstart', function(e) {
+                e.preventDefault();
+                showToast('⛔ Download disabled');
+                return false;
+            });
+        });
 
         // =============================================================
         // PWA INSTALL
@@ -1883,7 +2009,7 @@
         // =============================================================
         (function() {
             const container = document.getElementById('confettiBox');
-            const colors = ['rgba(255,215,0,0.2)', 'rgba(255,165,0,0.15)', 'rgba(255,107,107,0.1)', 'rgba(255,215,0,0.1)'];
+            const colors = ['rgba(255,215,0,0.2)', 'rgba(255,140,0,0.15)', 'rgba(229,57,53,0.1)', 'rgba(255,215,0,0.1)'];
             const flowerEmojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
             for (let i = 0; i < 25; i++) {
                 const isFlower = Math.random() > 0.4;
