@@ -65,9 +65,8 @@
         }
 
         /* ============================================================
-           OPTIMIZED RUNNING LIGHT - FAST VERSION
+           OPTIMIZED RUNNING LIGHT
            ============================================================ */
-
         @keyframes runningLight {
             0% { border-color: #FFD700; }
             20% { border-color: #FF8C00; }
@@ -86,6 +85,102 @@
             100% { border-color: #FFD700; }
         }
 
+        /* ============================================================
+           POOKALAM ANIMATION (NEW FEATURE)
+           ============================================================ */
+        @keyframes pookalamRotate {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .pookalam {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            font-size: 2rem;
+            opacity: 0.08;
+            animation: pookalamRotate 20s linear infinite;
+        }
+        .pookalam-1 { top: 10%; left: 10%; font-size: 3rem; animation-duration: 25s; }
+        .pookalam-2 { bottom: 15%; right: 10%; font-size: 2.5rem; animation-duration: 30s; animation-direction: reverse; }
+        .pookalam-3 { top: 50%; left: 5%; font-size: 2rem; animation-duration: 20s; }
+        .pookalam-4 { top: 30%; right: 5%; font-size: 2.8rem; animation-duration: 35s; animation-direction: reverse; }
+
+        /* ============================================================
+           COUNTDOWN TIMER (NEW FEATURE)
+           ============================================================ */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 10px 0 14px;
+            padding: 10px;
+            background: rgba(255,215,0,0.04);
+            border-radius: 16px;
+            border: 1px solid rgba(255,215,0,0.06);
+        }
+        .countdown-item {
+            text-align: center;
+            min-width: 50px;
+        }
+        .countdown-item .number {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #FFD700;
+            display: block;
+            line-height: 1.2;
+            font-family: 'Inter', sans-serif;
+        }
+        .countdown-item .label {
+            font-size: 0.5rem;
+            color: rgba(255,215,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================================
+           MUSIC TOGGLE BUTTON (NEW FEATURE)
+           ============================================================ */
+        .music-toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 44px;
+            height: 44px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,215,0,0.1);
+            border-radius: 50%;
+            color: rgba(255,215,0,0.4);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .music-toggle-btn:hover {
+            background: rgba(255,215,0,0.05);
+            color: rgba(255,215,0,0.7);
+            transform: scale(1.05);
+        }
+
+        /* ============================================================
+           PAGE TRANSITIONS (NEW FEATURE)
+           ============================================================ */
+        @keyframes fadeInPage {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .onam-card {
+            animation: fadeInPage 0.8s ease-out forwards;
+        }
+
+        /* ============================================================
+           GENERAL STYLES
+           ============================================================ */
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
             min-height:100vh;
@@ -105,7 +200,7 @@
         }
         
         /* ============================================================
-           BACKGROUND VIDEO - SCREEN BLEND
+           BACKGROUND VIDEO
            ============================================================ */
         #bgVideoContainer {
             position: fixed;
@@ -434,7 +529,7 @@
             -webkit-backdrop-filter: blur(30px);
             border: 2px solid #FFD700;
             box-shadow: 0 40px 100px rgba(0,0,0,0.6);
-            animation: runningLight 3s ease-in-out infinite;
+            animation: runningLight 3s ease-in-out infinite, fadeInPage 0.8s ease-out forwards;
             will-change: border-color;
         }
 
@@ -503,7 +598,7 @@
         .subhead i { margin-right: 6px; color: rgba(255,215,0,0.2); }
 
         /* ============================================================
-           ONAM TAG - OPTIMIZED RUNNING LIGHT
+           ONAM TAG
            ============================================================ */
         .onam-tag {
             font-family: 'Anakha', 'Inter', sans-serif;
@@ -540,7 +635,39 @@
         }
 
         /* ============================================================
-           MEAT ICONS - OPTIMIZED RUNNING LIGHT
+           COUNTDOWN (NEW FEATURE)
+           ============================================================ */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 10px 0 14px;
+            padding: 10px;
+            background: rgba(255,215,0,0.04);
+            border-radius: 16px;
+            border: 1px solid rgba(255,215,0,0.06);
+        }
+        .countdown-item {
+            text-align: center;
+            min-width: 50px;
+        }
+        .countdown-item .number {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #FFD700;
+            display: block;
+            line-height: 1.2;
+            font-family: 'Inter', sans-serif;
+        }
+        .countdown-item .label {
+            font-size: 0.5rem;
+            color: rgba(255,215,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================================
+           MEAT ICONS
            ============================================================ */
         .meat-icons {
             display:flex; 
@@ -592,7 +719,7 @@
         .premium-badge i { margin-right: 6px; color: rgba(255,215,0,0.2); }
 
         /* ============================================================
-           BUTTONS - OPTIMIZED RUNNING LIGHT
+           BUTTONS
            ============================================================ */
         .wish-btn-open {
             background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,140,0,0.06));
@@ -689,7 +816,7 @@
         .share-btn i { color: rgba(255,215,0,0.2); }
 
         /* ============================================================
-           INFO GRID - OPTIMIZED RUNNING LIGHT
+           INFO GRID
            ============================================================ */
         .info-grid { display:flex; flex-direction:column; gap:10px; margin:16px 0 20px; }
         .info-item {
@@ -752,7 +879,7 @@
         .info-item .action-link i { color: inherit; font-size:0.7rem; margin-right:4px; }
 
         /* ============================================================
-           ORDER SECTION - OPTIMIZED RUNNING LIGHT
+           ORDER SECTION
            ============================================================ */
         .order-section-glass {
             background: rgba(255,215,0,0.04);
@@ -862,7 +989,7 @@
         .order-section-glass p i { margin-right: 6px; color: rgba(255,215,0,0.15); }
 
         /* ============================================================
-           FOOTER - OPTIMIZED RUNNING LIGHT
+           FOOTER
            ============================================================ */
         .footer-note {
             margin-top: 20px;
@@ -1103,7 +1230,7 @@
         .popup-close-hint i { margin-right: 8px; }
 
         /* ============================================================
-           QUICK ORDER POPUP - OPTIMIZED RUNNING LIGHT
+           QUICK ORDER POPUP
            ============================================================ */
         .quick-order-popup {
             position: fixed;
@@ -1302,10 +1429,20 @@
                 aspect-ratio: 9/16;
                 max-height: 50vh;
             }
+            .countdown-item { min-width: 35px; }
+            .countdown-item .number { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
+
+    <!-- ============================================================
+    POOKALAM (NEW FEATURE - Background Flowers)
+    ============================================================ -->
+    <div class="pookalam pookalam-1">🌺🌸🌼🌻🌷</div>
+    <div class="pookalam pookalam-2">🌻🌷🌺🌸🌼</div>
+    <div class="pookalam pookalam-3">🌸🌼🌻🌷🌺</div>
+    <div class="pookalam pookalam-4">🌷🌺🌸🌼🌻</div>
 
     <!-- ============================================================
     FLOATING PARTICLES
@@ -1313,6 +1450,13 @@
     <div class="particle particle-1"></div>
     <div class="particle particle-2"></div>
     <div class="particle particle-3"></div>
+
+    <!-- ============================================================
+    MUSIC TOGGLE BUTTON (NEW FEATURE)
+    ============================================================ -->
+    <button class="music-toggle-btn" id="musicToggleBtn" onclick="toggleMusic()" title="Toggle Music">
+        <i class="fas fa-music"></i>
+    </button>
 
     <!-- ============================================================
     BACKGROUND VIDEO
@@ -1405,7 +1549,7 @@
     <div class="confetti-container" id="confettiBox"></div>
 
     <!-- ============================================================
-    MAIN CARD - FESTIVAL
+    MAIN CARD
     ============================================================ -->
     <div class="onam-card" id="mainCard">
         <div class="header">
@@ -1416,6 +1560,28 @@
         </div>
 
         <div class="onam-tag">ഐശ്വര്യത്തിന്റെയും സമൃദ്ധിയുടെയും<br>ഒരു നല്ല ഓണം ആശംസിക്കുന്നു!</div>
+
+        <!-- ============================================================
+        COUNTDOWN TIMER (NEW FEATURE)
+        ============================================================ -->
+        <div class="countdown-container" id="countdownContainer">
+            <div class="countdown-item">
+                <span class="number" id="countdownDays">00</span>
+                <span class="label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number" id="countdownHours">00</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number" id="countdownMinutes">00</span>
+                <span class="label">Mins</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number" id="countdownSeconds">00</span>
+                <span class="label">Secs</span>
+            </div>
+        </div>
 
         <div class="meat-icons">
             <div class="icon-group"><span>🦆</span><span class="label">DUCK</span></div>
@@ -1443,7 +1609,7 @@
         <div id="toast" class="toast">✅ Link copied!</div>
 
         <!-- ============================================================
-        INFO GRID - FESTIVAL
+        INFO GRID
         ============================================================ -->
         <div class="info-grid">
             <div class="info-item">
@@ -1473,7 +1639,7 @@
         </div>
 
         <!-- ============================================================
-        ORDER SECTION - FESTIVAL
+        ORDER SECTION
         ============================================================ -->
         <div class="order-section-glass">
             <h3><i class="fas fa-mobile-alt"></i> Order via Mobile</h3>
@@ -1499,7 +1665,7 @@
         </div>
 
         <!-- ============================================================
-        FOOTER - FESTIVAL
+        FOOTER
         ============================================================ -->
         <div class="footer-note">
             <span class="malayalam">🌾 ഓണാശംസകൾ</span>
@@ -1508,7 +1674,7 @@
     </div>
 
     <!-- ============================================================
-    VIDEO POPUP - SEQUENTIAL PLAY
+    VIDEO POPUP
     ============================================================ -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
@@ -1537,6 +1703,58 @@
     </div>
 
     <script>
+        // =============================================================
+        // COUNTDOWN TIMER (NEW FEATURE)
+        // =============================================================
+        function updateCountdown() {
+            const onamDate = new Date('August 24, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = onamDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('countdownDays').textContent = String(days).padStart(2, '0');
+                document.getElementById('countdownHours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('countdownMinutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('countdownSeconds').textContent = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('countdownDays').textContent = '🎉';
+                document.getElementById('countdownHours').textContent = '🎉';
+                document.getElementById('countdownMinutes').textContent = '🎉';
+                document.getElementById('countdownSeconds').textContent = '🎉';
+            }
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // =============================================================
+        // MUSIC TOGGLE (NEW FEATURE)
+        // =============================================================
+        let isMusicMuted = false;
+
+        function toggleMusic() {
+            const audio = document.getElementById('bgAudio');
+            const btn = document.getElementById('musicToggleBtn');
+            
+            if (audio) {
+                if (audio.paused) {
+                    audio.play().catch(() => {});
+                    btn.querySelector('i').className = 'fas fa-music';
+                    isMusicMuted = false;
+                } else {
+                    audio.pause();
+                    btn.querySelector('i').className = 'fas fa-volume-mute';
+                    isMusicMuted = true;
+                }
+            }
+        }
+
         // =============================================================
         // SPLASH VIDEO
         // =============================================================
@@ -1778,7 +1996,7 @@
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
 
         // =============================================================
-        // QUICK ORDER POPUP - PORTRAIT VIDEO LOOP + AUDIO
+        // QUICK ORDER POPUP
         // =============================================================
 
         function openQuickOrderPopup(event) {
@@ -1886,10 +2104,9 @@
         }
 
         // =============================================================
-        // BLOCK SAVE / DOWNLOAD - VIDEOS & AUDIOS
+        // BLOCK SAVE / DOWNLOAD
         // =============================================================
 
-        // Block right-click on videos and audios
         document.addEventListener('contextmenu', function(e) {
             const target = e.target;
             if (target.tagName === 'VIDEO' || target.tagName === 'AUDIO') {
@@ -1899,7 +2116,6 @@
             }
         });
 
-        // Block keyboard shortcuts
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 's') {
                 e.preventDefault();
@@ -1923,7 +2139,6 @@
             }
         });
 
-        // Block drag on videos
         document.querySelectorAll('video, audio').forEach(el => {
             el.addEventListener('dragstart', function(e) {
                 e.preventDefault();
