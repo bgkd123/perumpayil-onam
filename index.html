@@ -6,7 +6,7 @@
     <title>Perumpayil · Meat Centre · Onam</title>
 
     <link rel="manifest" href="manifest.json?v=21" />
-    <meta name="theme-color" content="#2C1810" />
+    <meta name="theme-color" content="#1a0e06" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
@@ -59,9 +59,84 @@
             --onam-yellow: #FFC107;
             --onam-terracotta: #D2691E;
             --onam-cream: #FFF8E1;
-            --onam-dark: #2C1810;
+            --onam-dark: #1a0e06;
             --onam-warm: #F57C00;
             --onam-bright: #FFEB3B;
+            --onam-saffron: #FF9933;
+            --onam-maroon: #800020;
+        }
+
+        /* ============================================================
+           ONAM VIBE BACKGROUND - FESTIVAL COLORS
+           ============================================================ */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            background: radial-gradient(ellipse at 50% 30%, 
+                rgba(255,215,0,0.15) 0%, 
+                rgba(255,165,0,0.10) 20%,
+                rgba(229,57,53,0.08) 40%,
+                rgba(255,193,7,0.06) 60%,
+                rgba(76,175,80,0.04) 80%,
+                rgba(10,6,4,0.95) 100%
+            );
+            min-height:100vh;
+            padding:16px 12px 40px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            position:relative;
+            overflow-x:hidden;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        /* Animated Gradient Background Layer 1 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse at 30% 20%, 
+                rgba(255,215,0,0.06) 0%, 
+                rgba(255,165,0,0.04) 30%,
+                rgba(229,57,53,0.03) 50%,
+                transparent 80%
+            );
+            animation: onamBgGlow 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes onamBgGlow {
+            0% { opacity: 0.6; transform: scale(1) translate(0, 0); }
+            50% { opacity: 1; transform: scale(1.1) translate(20px, -20px); }
+            100% { opacity: 0.6; transform: scale(1) translate(-10px, 10px); }
+        }
+
+        /* Animated Gradient Background Layer 2 */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse at 70% 80%, 
+                rgba(255,165,0,0.05) 0%, 
+                rgba(255,107,53,0.03) 40%,
+                transparent 70%
+            );
+            animation: onamBgGlow2 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes onamBgGlow2 {
+            0% { opacity: 0.4; transform: scale(1) translate(0, 0); }
+            50% { opacity: 0.8; transform: scale(1.15) translate(-20px, 20px); }
+            100% { opacity: 0.4; transform: scale(1) translate(10px, -10px); }
         }
 
         /* ============================================================
@@ -86,7 +161,7 @@
         }
 
         /* ============================================================
-           POOKALAM ANIMATION (NEW FEATURE)
+           POOKALAM ANIMATION
            ============================================================ */
         @keyframes pookalamRotate {
             0% { transform: rotate(0deg) scale(1); }
@@ -108,7 +183,7 @@
         .pookalam-4 { top: 30%; right: 5%; font-size: 2.8rem; animation-duration: 35s; animation-direction: reverse; }
 
         /* ============================================================
-           COUNTDOWN TIMER (NEW FEATURE)
+           COUNTDOWN TIMER
            ============================================================ */
         .countdown-container {
             display: flex;
@@ -140,7 +215,7 @@
         }
 
         /* ============================================================
-           MUSIC TOGGLE BUTTON (NEW FEATURE)
+           MUSIC TOGGLE BUTTON
            ============================================================ */
         .music-toggle-btn {
             position: fixed;
@@ -168,7 +243,7 @@
         }
 
         /* ============================================================
-           PAGE TRANSITIONS (NEW FEATURE)
+           PAGE TRANSITIONS
            ============================================================ */
         @keyframes fadeInPage {
             0% { opacity: 0; transform: translateY(20px); }
@@ -179,28 +254,7 @@
         }
 
         /* ============================================================
-           GENERAL STYLES
-           ============================================================ */
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            min-height:100vh;
-            padding:16px 12px 40px;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-            position:relative;
-            overflow-x:hidden;
-            background: radial-gradient(ellipse at 50% 30%, 
-                rgba(255,215,0,0.06) 0%, 
-                rgba(255,140,0,0.04) 30%,
-                rgba(10,6,4,1) 100%
-            );
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-        }
-        
-        /* ============================================================
-           BACKGROUND VIDEO
+           BACKGROUND VIDEO - SCREEN BLEND
            ============================================================ */
         #bgVideoContainer {
             position: fixed;
@@ -210,7 +264,7 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
-            background: #0a0604;
+            background: transparent;
             overflow: hidden;
         }
         #bgVideoContainer video {
@@ -220,30 +274,8 @@
             display: block;
             mix-blend-mode: screen;
             -webkit-mix-blend-mode: screen;
-            opacity: 0.4;
+            opacity: 0.2;
             background: transparent;
-        }
-
-        #bgVideoContainer::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at 50% 70%, 
-                rgba(255,215,0,0.15) 0%, 
-                rgba(255,165,0,0.08) 30%,
-                rgba(255,69,0,0.05) 50%,
-                rgba(10,6,4,0.85) 100%
-            );
-            z-index: 1;
-            pointer-events: none;
-            animation: pulseGlow 4s ease-in-out infinite;
-        }
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
         }
 
         /* ============================================================
@@ -635,7 +667,7 @@
         }
 
         /* ============================================================
-           COUNTDOWN (NEW FEATURE)
+           COUNTDOWN
            ============================================================ */
         .countdown-container {
             display: flex;
@@ -1437,7 +1469,7 @@
 <body>
 
     <!-- ============================================================
-    POOKALAM (NEW FEATURE - Background Flowers)
+    POOKALAM
     ============================================================ -->
     <div class="pookalam pookalam-1">🌺🌸🌼🌻🌷</div>
     <div class="pookalam pookalam-2">🌻🌷🌺🌸🌼</div>
@@ -1452,7 +1484,7 @@
     <div class="particle particle-3"></div>
 
     <!-- ============================================================
-    MUSIC TOGGLE BUTTON (NEW FEATURE)
+    MUSIC TOGGLE BUTTON
     ============================================================ -->
     <button class="music-toggle-btn" id="musicToggleBtn" onclick="toggleMusic()" title="Toggle Music">
         <i class="fas fa-music"></i>
@@ -1562,7 +1594,7 @@
         <div class="onam-tag">ഐശ്വര്യത്തിന്റെയും സമൃദ്ധിയുടെയും<br>ഒരു നല്ല ഓണം ആശംസിക്കുന്നു!</div>
 
         <!-- ============================================================
-        COUNTDOWN TIMER (NEW FEATURE)
+        COUNTDOWN TIMER
         ============================================================ -->
         <div class="countdown-container" id="countdownContainer">
             <div class="countdown-item">
@@ -1704,7 +1736,7 @@
 
     <script>
         // =============================================================
-        // COUNTDOWN TIMER (NEW FEATURE)
+        // COUNTDOWN TIMER
         // =============================================================
         function updateCountdown() {
             const onamDate = new Date('August 24, 2026 00:00:00').getTime();
@@ -1729,12 +1761,11 @@
             }
         }
 
-        // Update countdown every second
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
         // =============================================================
-        // MUSIC TOGGLE (NEW FEATURE)
+        // MUSIC TOGGLE
         // =============================================================
         let isMusicMuted = false;
 
