@@ -6,7 +6,7 @@
     <title>Perumpayil · Meat Centre · Onam</title>
 
     <link rel="manifest" href="manifest.json?v=21" />
-    <meta name="theme-color" content="#1a0e06" />
+    <meta name="theme-color" content="#0a0604" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
@@ -59,7 +59,7 @@
             --onam-yellow: #FFC107;
             --onam-terracotta: #D2691E;
             --onam-cream: #FFF8E1;
-            --onam-dark: #1a0e06;
+            --onam-dark: #0a0604;
             --onam-warm: #F57C00;
             --onam-bright: #FFEB3B;
             --onam-saffron: #FF9933;
@@ -67,18 +67,10 @@
         }
 
         /* ============================================================
-           ONAM VIBE BACKGROUND - FESTIVAL COLORS
+           DARK BACKGROUND (Previous)
            ============================================================ */
         * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            background: radial-gradient(ellipse at 50% 30%, 
-                rgba(255,215,0,0.15) 0%, 
-                rgba(255,165,0,0.10) 20%,
-                rgba(229,57,53,0.08) 40%,
-                rgba(255,193,7,0.06) 60%,
-                rgba(76,175,80,0.04) 80%,
-                rgba(10,6,4,0.95) 100%
-            );
             min-height:100vh;
             padding:16px 12px 40px;
             display:flex;
@@ -87,10 +79,11 @@
             justify-content:center;
             position:relative;
             overflow-x:hidden;
+            background: #0a0604;
             font-family: 'Inter', 'Segoe UI', sans-serif;
         }
 
-        /* Animated Gradient Background Layer 1 */
+        /* Subtle warm glow */
         body::before {
             content: '';
             position: fixed;
@@ -101,42 +94,9 @@
             z-index: 0;
             pointer-events: none;
             background: radial-gradient(ellipse at 30% 20%, 
-                rgba(255,215,0,0.06) 0%, 
-                rgba(255,165,0,0.04) 30%,
-                rgba(229,57,53,0.03) 50%,
-                transparent 80%
-            );
-            animation: onamBgGlow 6s ease-in-out infinite alternate;
-        }
-
-        @keyframes onamBgGlow {
-            0% { opacity: 0.6; transform: scale(1) translate(0, 0); }
-            50% { opacity: 1; transform: scale(1.1) translate(20px, -20px); }
-            100% { opacity: 0.6; transform: scale(1) translate(-10px, 10px); }
-        }
-
-        /* Animated Gradient Background Layer 2 */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            background: radial-gradient(ellipse at 70% 80%, 
-                rgba(255,165,0,0.05) 0%, 
-                rgba(255,107,53,0.03) 40%,
+                rgba(255,215,0,0.02) 0%, 
                 transparent 70%
             );
-            animation: onamBgGlow2 8s ease-in-out infinite alternate;
-        }
-
-        @keyframes onamBgGlow2 {
-            0% { opacity: 0.4; transform: scale(1) translate(0, 0); }
-            50% { opacity: 0.8; transform: scale(1.15) translate(-20px, 20px); }
-            100% { opacity: 0.4; transform: scale(1) translate(10px, -10px); }
         }
 
         /* ============================================================
@@ -174,7 +134,7 @@
             pointer-events: none;
             z-index: 1;
             font-size: 2rem;
-            opacity: 0.08;
+            opacity: 0.05;
             animation: pookalamRotate 20s linear infinite;
         }
         .pookalam-1 { top: 10%; left: 10%; font-size: 3rem; animation-duration: 25s; }
@@ -254,31 +214,6 @@
         }
 
         /* ============================================================
-           BACKGROUND VIDEO - SCREEN BLEND
-           ============================================================ */
-        #bgVideoContainer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            background: transparent;
-            overflow: hidden;
-        }
-        #bgVideoContainer video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            mix-blend-mode: screen;
-            -webkit-mix-blend-mode: screen;
-            opacity: 0.2;
-            background: transparent;
-        }
-
-        /* ============================================================
            FLOATING PARTICLES
            ============================================================ */
         .particle {
@@ -286,7 +221,7 @@
             pointer-events: none;
             z-index: 1;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,215,0,0.2), transparent);
+            background: radial-gradient(circle, rgba(255,215,0,0.15), transparent);
             animation: floatParticle 15s ease-in-out infinite;
         }
         .particle-1 { width: 300px; height: 300px; top: -100px; left: -100px; animation-delay: 0s; }
@@ -339,7 +274,7 @@
             z-index: 10;
             pointer-events: none;
             font-size: 2.2rem;
-            opacity: 0.5;
+            opacity: 0.4;
             animation: flyFlower 8s ease-in-out infinite;
             filter: drop-shadow(0 0 20px rgba(255,215,0,0.1));
         }
@@ -366,7 +301,7 @@
             z-index: 10;
             pointer-events: none;
             font-size: 2rem;
-            opacity: 0.4;
+            opacity: 0.3;
             animation: flyButterfly 10s ease-in-out infinite;
             filter: drop-shadow(0 0 15px rgba(255,215,0,0.05));
         }
@@ -1491,17 +1426,6 @@
     </button>
 
     <!-- ============================================================
-    BACKGROUND VIDEO
-    ============================================================ -->
-    <div id="bgVideoContainer">
-        <video id="bgVideo" src="webvideo.webm" autoplay loop muted playsinline webkit-playsinline
-               controlsList="nodownload noremoteplayback"
-               disablePictureInPicture="true"
-               style="width:100%; height:100%; object-fit:cover; background:transparent;">
-        </video>
-    </div>
-
-    <!-- ============================================================
     FLYING FLOWERS
     ============================================================ -->
     <div class="flying-flower flying-flower-1">🌸</div>
@@ -1706,7 +1630,7 @@
     </div>
 
     <!-- ============================================================
-    VIDEO POPUP
+    VIDEO POPUP - SEQUENTIAL PLAY
     ============================================================ -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
@@ -1899,9 +1823,6 @@
             document.getElementById('mainCard').style.pointerEvents = 'auto';
             
             startBackgroundMusic();
-            
-            const bgVideo = document.getElementById('bgVideo');
-            if (bgVideo) bgVideo.play().catch(() => {});
             
             setTimeout(startFireCrackers, 1000);
         }
