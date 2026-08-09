@@ -324,7 +324,7 @@
         }
 
         /* ============================================================
-           SPLASH LOGO FIRST SCREEN
+           SPLASH LOGO FIRST SCREEN - FIX CENTER
            ============================================================ */
         .splash-logo-screen {
             position: absolute;
@@ -350,6 +350,12 @@
             text-align: center;
             padding: 40px;
             animation: logoFloat 3s ease-in-out infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 400px;
         }
 
         .splash-logo-img {
@@ -381,6 +387,35 @@
             color: rgba(255,215,0,0.4);
             margin-top: -4px;
             letter-spacing: 2px;
+        }
+
+        .splash-logo-screen .splash-continue-btn {
+            background: linear-gradient(135deg, #FFD700, #FF8C00, #E53935);
+            color: #2C1810;
+            border: none;
+            padding: 18px 52px;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: center;
+            display: inline-block;
+            min-width: 200px;
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 60px rgba(255,215,0,0.15);
+            position: relative;
+            animation: pulseGlowBtn 2.5s ease-in-out infinite;
+        }
+        .splash-logo-screen .splash-continue-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 80px rgba(255,215,0,0.3);
         }
 
         @keyframes logoFadeIn {
@@ -524,36 +559,6 @@
         @keyframes audioFadeIn {
             0% { opacity: 0; transform: translateX(-50%) scale(0.9); }
             100% { opacity: 1; transform: translateX(-50%) scale(1); }
-        }
-
-        /* ============================================================
-           SPLASH CONTINUE BUTTON - FOR LOGO SCREEN
-           ============================================================ */
-        .splash-logo-screen .splash-continue-btn {
-            background: linear-gradient(135deg, #FFD700, #FF8C00, #E53935);
-            color: #2C1810;
-            border: none;
-            padding: 18px 52px;
-            border-radius: 60px;
-            font-size: 1rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            overflow: hidden;
-            white-space: nowrap;
-            text-align: center;
-            display: inline-block;
-            min-width: 200px;
-            margin-top: 30px;
-            box-shadow: 0 0 60px rgba(255,215,0,0.15);
-            position: relative;
-            animation: pulseGlowBtn 2.5s ease-in-out infinite;
-        }
-        .splash-logo-screen .splash-continue-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 80px rgba(255,215,0,0.3);
         }
 
         /* ============================================================
@@ -1037,7 +1042,7 @@
         .order-section-glass p i { margin-right: 6px; color: rgba(255,215,0,0.15); }
 
         /* ============================================================
-           FOOTER - SOLID BORDER (NO ANIMATION)
+           FOOTER - SOLID BORDER (NO ANIMATION) + CREATOR CREDIT
            ============================================================ */
         .footer-note {
             margin-top: 20px;
@@ -1066,6 +1071,30 @@
             border: 2px solid #FFD700;
             padding: 4px 12px;
             border-radius: 40px;
+        }
+
+        /* 👇 CREATOR CREDIT - SANIL (KEPT) */
+        .creator-credit {
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,215,0,0.06);
+            font-size: 0.7rem;
+            color: rgba(255,215,0,0.2);
+            letter-spacing: 0.5px;
+            font-family: 'Inter', sans-serif;
+        }
+        .creator-credit strong {
+            color: rgba(255,215,0,0.45);
+            font-weight: 600;
+        }
+        .creator-credit .heart {
+            color: rgba(229,57,53,0.5);
+            display: inline-block;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
 
         /* ============================================================
@@ -1481,6 +1510,7 @@
             }
             .countdown-item { min-width: 35px; }
             .countdown-item .number { font-size: 1rem; }
+            .creator-credit { font-size: 0.6rem; }
         }
     </style>
 </head>
@@ -1538,6 +1568,7 @@
                 <img src="Logo.png" alt="Perumpayil" class="splash-logo-img" onerror="this.style.display='none';" />
                 <div class="splash-logo-text">PERUMPAYIL</div>
                 <div class="splash-logo-sub">Meat Centre</div>
+                <!-- 👇 NO CREATOR CREDIT HERE -->
                 <button class="splash-continue-btn" onclick="showAudioVideo()">▶ Continue</button>
             </div>
         </div>
@@ -1719,11 +1750,15 @@
         </div>
 
         <!-- ============================================================
-        FOOTER
+        FOOTER - WITH CREATOR CREDIT (SANIL)
         ============================================================ -->
         <div class="footer-note">
             <span class="malayalam">🌾 ഓണാശംസകൾ</span>
             <span class="english">Celebrate Onam with Perumpayil</span>
+            <!-- 👇 CREATOR CREDIT -->
+            <div class="creator-credit">
+                ✨ Crafted with <span class="heart">❤️</span> by <strong>Sanil</strong>
+            </div>
         </div>
     </div>
 
@@ -1770,7 +1805,6 @@
             const avScreen = document.getElementById('splashAudioVideo');
             if (avScreen) {
                 avScreen.style.display = 'block';
-                // Force reflow for animation
                 void avScreen.offsetWidth;
             }
             
